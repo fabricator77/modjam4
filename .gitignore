@@ -10,7 +10,8 @@ hs_err_pid*
 
 /eclipse/
 /gradle/
-/.gradle/
+/build/
+/.*/
 
 CREDITS-fml.txt
 forge-*-changelog.txt
@@ -21,3 +22,4 @@ MinecraftForge-Credits.txt
 MinecraftForge-License.txt
 README.txt
 _cmd.bat
+.*
