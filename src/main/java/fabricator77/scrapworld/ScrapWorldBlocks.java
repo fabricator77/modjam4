@@ -11,6 +11,8 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockFurnace;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class ScrapWorldBlocks {
 
@@ -44,5 +46,21 @@ public class ScrapWorldBlocks {
 		
 		dusts = new Dusts();
 		GameRegistry.registerItem(dusts, "dusts");
+	}
+	
+	private void registerInOreDictionary () {
+		// metals
+		OreDictionary.registerOre("dustTin", new ItemStack(dusts, 1, 0));
+		OreDictionary.registerOre("dustCopper", new ItemStack(dusts, 1, 1));
+		OreDictionary.registerOre("dustIron", new ItemStack(dusts, 1, 2));
+		OreDictionary.registerOre("dustGold", new ItemStack(dusts, 1, 3));
+		// gems
+		OreDictionary.registerOre("dustEmerald", new ItemStack(dusts, 1, 4));
+		OreDictionary.registerOre("dustDiamond", new ItemStack(dusts, 1, 5));
+		//materials
+		OreDictionary.registerOre("dustGlass", new ItemStack(dusts, 1, 6));
+		OreDictionary.registerOre("dustConcrete", new ItemStack(dusts, 1, 7));
+		OreDictionary.registerOre("woodDust", new ItemStack(dusts, 1, 8));
+		OreDictionary.registerOre("dustCharcoal", new ItemStack(dusts, 1, 9));
 	}
 }
