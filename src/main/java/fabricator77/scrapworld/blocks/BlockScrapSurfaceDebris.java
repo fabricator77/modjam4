@@ -13,9 +13,9 @@ public class BlockScrapSurfaceDebris extends Block {
 	public BlockScrapSurfaceDebris() {
 		super(Material.ground);
         float f1 = 0.015625F;
-        this.setBlockBounds(1.0F, 0.0F, 1.0F, 1.0F, f1, 1.0F);
+        this.setBlockBounds(0.0F, 0.0F, 0.0F, 1.0F, f1, 1.0F);
 		this.setCreativeTab(CreativeTabs.tabBlock);
-		this.lightOpacity = 255;
+		// this.lightOpacity = 255;
 	}
 
 	@Override

@@ -14,7 +14,8 @@ public class ScrapPlainsBiome extends BiomeGenBase {
 
 	public ScrapPlainsBiome(int par1) {
 		super(par1);
-		this.topBlock = ScrapWorldBlocks.scrapSurfaceDebris;
+		//this.topBlock = ScrapWorldBlocks.scrapSurfaceDebris;
+		this.topBlock = ScrapWorldBlocks.scrapCube;
 		
 		this.spawnableCreatureList.clear();
 		this.spawnableMonsterList.clear();
