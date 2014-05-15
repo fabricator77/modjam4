@@ -38,7 +38,7 @@ public class ScrapWorldBlocks {
 		scrapSurfaceDebris = new BlockScrapSurfaceDebris().setBlockName("scrapDebris");
 		GameRegistry.registerBlock(scrapSurfaceDebris, "scrapDebris");
 		
-		compressedScrapCube = new BlockCompressedScrapCube().setBlockName("compressedScrapCube");
+		compressedScrapCube = new BlockCompressedScrapCube().setHardness(4.0F).setBlockName("compressedScrapCube");
 		GameRegistry.registerBlock(compressedScrapCube, "compressedScrapCube");
 		
 		wireTangle = new BlockWireTangle().setBlockName("wireTangle").setHardness(4.0F);
