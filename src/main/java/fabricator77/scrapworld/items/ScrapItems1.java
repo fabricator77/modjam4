@@ -21,7 +21,7 @@ import net.minecraft.world.World;
 public class ScrapItems1 extends Item {
 	
 	// last one is always "useless"
-	public static final String[] itemNames = new String[]{"unknown", "metallic", "wire", "circuit", "plastic", "glass", "concrete", "timber", "food", "rare", "useless"};
+	public static final String[] itemNames = new String[]{"unknown", "metallic", "wire", "circuit", "plastic", "glass", "concrete", "timber", "food", "burnt", "rare", "useless"};
 	
 	private static final ItemStack[] rareLoot = new ItemStack[]{
 		new ItemStack(Items.diamond,1,0),
@@ -129,6 +129,9 @@ public class ScrapItems1 extends Item {
     	}
     	if (scrapType == "food") {
     		// random choice of food/wheat items
+    	}
+    	if (scrapType == "burnt") {
+    		// mostly useless but can drop charcoal sometimes
     	}
     	if (scrapType == "rare") {
     		if (world.rand.nextInt(10) == 0) {
