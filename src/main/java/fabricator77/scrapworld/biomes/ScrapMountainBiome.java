@@ -37,7 +37,7 @@ public class ScrapMountainBiome extends BiomeGenBase {
     private boolean field_150626_aH;
     private boolean field_150620_aI;
     
-    private static final BiomeGenBase.Height height = new BiomeGenBase.Height(1.0F, 0.5F);
+    private static final BiomeGenBase.Height height = new BiomeGenBase.Height(1.5F, 0.5F);
 
 	public ScrapMountainBiome(int par1) {
 		super(par1);
