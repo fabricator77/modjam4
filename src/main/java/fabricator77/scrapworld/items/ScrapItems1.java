@@ -19,7 +19,7 @@ import net.minecraft.world.World;
 
 public class ScrapItems1 extends Item {
 	
-	public String[] itemNames = new String[]{"unknown", "metallic", "wire", "circuit", "plastic", "glass", "concrete", "rare"};
+	public String[] itemNames = new String[]{"unknown", "metallic", "wire", "circuit", "plastic", "glass", "concrete", "rare", "useless"};
 	
 	@SideOnly(Side.CLIENT)
     private IIcon[] textures;
@@ -59,30 +59,32 @@ public class ScrapItems1 extends Item {
 
         for (int i = 0; i < textures.length; ++i)
         {
-            this.textures[i] = par1IconRegister.registerIcon(ScrapWorld.modid+":scrap_" + textures[i]);
+            this.textures[i] = par1IconRegister.registerIcon(ScrapWorld.modid+":scrap_" + itemNames[i]);
         }
     }
 	
 	//TODO: right click method to drop random item contained in this scrap
 	@Override
-	public boolean onItemUse(ItemStack itemStack, EntityPlayer player, World world, int par4, int par5, int par6, int par7, float par8, float par9, float par10)
+	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player)
     {
-        if (!player.canPlayerEdit(par4, par5, par6, par7, itemStack))
-        {
-            return false;
-        }
-        else
-        {
-        	//TODO: do something with itemStack.getItemDamage()
+		if (itemStack.stackSize > 1) {
+			return itemStack;
+		}
+        //TODO: do something with itemStack.getItemDamage()
         	int metadata = MathHelper.clamp_int(itemStack.getItemDamage(), 0, itemNames.length-1);
         	String scrapType = itemNames[metadata];
+        	--itemStack.stackSize;
+        	
         	if (scrapType == "unknown") {
         		if (world.rand.nextInt(5) != 0) {
-        			//othing of value could be found in this
+        			//nothing of value could be found in this
         			String mesage = RandomMessages.scrapMessages(itemRand);
         			//player.addChatMessage(new ChatComponentTranslation(mesage));
         			player.addChatMessage(new ChatComponentText(mesage));
-        			return false;
+        			//TODO: convert into useless version, so people cannot spam right click
+        			// last one is always "useless"
+        			itemStack.setItemDamage(itemNames.length);
+        			return itemStack;
         		}
         		// choose a random type to make this into
         		scrapType = itemNames[world.rand.nextInt(itemNames.length-1) + 1];
@@ -97,8 +99,8 @@ public class ScrapItems1 extends Item {
         		// or nothing
         	}
         	
+        	--itemStack.stackSize;
         	
-        	return true;
-        }
+        	return itemStack;
     }
 }
