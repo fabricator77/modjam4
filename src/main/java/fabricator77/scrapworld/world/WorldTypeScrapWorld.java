@@ -8,8 +8,6 @@ import net.minecraft.world.biome.WorldChunkManager;
 import net.minecraft.world.biome.WorldChunkManagerHell;
 import net.minecraft.world.gen.FlatGeneratorInfo;
 import net.minecraft.world.gen.layer.GenLayer;
-import net.minecraft.world.gen.layer.GenLayerBiome;
-import net.minecraft.world.gen.layer.GenLayerBiomeEdge;
 import net.minecraft.world.gen.layer.GenLayerZoom;
 
 public class WorldTypeScrapWorld extends WorldType {
@@ -23,7 +21,6 @@ public class WorldTypeScrapWorld extends WorldType {
         return 192.0F;
     }
 	
-	//TODO: custom WorldChunkManager
 	public WorldChunkManager getChunkManager(World world)
     {
         return new WorldChunkManagerScrap(world);
@@ -33,7 +30,7 @@ public class WorldTypeScrapWorld extends WorldType {
     {
         GenLayer ret = new GenLayerScrapBiome(200L, parentLayer, this);
         ret = GenLayerZoom.magnify(1000L, ret, 2);
-        ret = new GenLayerBiomeEdge(1000L, ret);
+        //ret = new GenLayerBiomeEdge(1000L, ret);
         return ret;
     }
 }

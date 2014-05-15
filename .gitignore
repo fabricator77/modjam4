@@ -12,6 +12,7 @@ hs_err_pid*
 /eclipse/
 /gradle/
 /build/
+/bin/
 /.*/
 
 CREDITS-fml.txt
