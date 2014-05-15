@@ -12,7 +12,7 @@ import net.minecraft.world.World;
 
 public class ScrapItems1 extends Item {
 	
-	public String[] itemNames = new String[]{"unknown", "metalic", "plastic", "glass", "concrete", "rare"};
+	public String[] itemNames = new String[]{"unknown", "metallic", "wire", "circuit", "plastic", "glass", "concrete", "rare"};
 	
 	@SideOnly(Side.CLIENT)
     private IIcon[] textures;
@@ -32,7 +32,7 @@ public class ScrapItems1 extends Item {
 	
 	public String getUnlocalizedName(ItemStack par1ItemStack)
     {
-        int i = MathHelper.clamp_int(par1ItemStack.getItemDamage(), 0, 15);
+        int i = MathHelper.clamp_int(par1ItemStack.getItemDamage(), 0, itemNames.length-1);
         return "scrap_" + itemNames[i];
     }
 	
@@ -47,15 +47,23 @@ public class ScrapItems1 extends Item {
         else
         {
         	//TODO: do something with itemStack.getItemDamage()
-        	int scrapType = itemStack.getItemDamage();
-        	if (scrapType == 0) {
+        	int metadata = MathHelper.clamp_int(itemStack.getItemDamage(), 0, itemNames.length-1);
+        	String scrapType = itemNames[metadata];
+        	if (scrapType == "unknown") {
         		if (world.rand.nextInt(5) != 0) {
         			//TODO: nothing of value could be found in this
         			return false;
         		}
         		// choose a random type to make this into
-        		scrapType = world.rand.nextInt(itemNames.length-1) + 1;
+        		scrapType = itemNames[world.rand.nextInt(itemNames.length-1) + 1];
         	}
+        	
+        	if (scrapType == "metallic") {
+        		// random choice of iron, tin, copper or nothing
+        		// usually nothing
+        	}
+        	
+        	
         	return true;
         }
     }
