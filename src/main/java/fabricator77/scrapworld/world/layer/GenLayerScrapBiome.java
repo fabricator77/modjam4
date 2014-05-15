@@ -56,7 +56,7 @@ public class GenLayerScrapBiome extends GenLayer {
                 	aint1[j1 + i1 * par3] = this.biomes[this.nextInt(this.biomes.length)].biomeID;
                 }
                 
-                ScrapWorld.logger.log(Level.INFO, "GenLayerScrapBiome.getInts="+aint1[j1 + i1 * par3]);
+                //ScrapWorld.logger.log(Level.INFO, "GenLayerScrapBiome.getInts="+aint1[j1 + i1 * par3]);
             }
         }
 
