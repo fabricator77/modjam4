@@ -18,12 +18,13 @@ public class ScrapWorldBlocks {
 	public static Item scrapItems1;
 
 	public ScrapWorldBlocks() {
-		scrapCube = new BlockScrapCube().setBlockName("scrapCube");
+		scrapCube = new BlockScrapCube().setBlockName("scrapCube").setHardness(3.0F).setResistance(5.0F);
 		GameRegistry.registerBlock(scrapCube, "scrapCube");
 		scrapSurfaceDebris = new BlockScrapSurfaceDebris().setBlockName("scrapDebris");
 		GameRegistry.registerBlock(scrapSurfaceDebris, "scrapDebris");
 		
-		wireTangle = new BlockWireTangle().setBlockName("wireTangle");
+		wireTangle = new BlockWireTangle().setBlockName("wireTangle").setHardness(4.0F);
+		GameRegistry.registerBlock(wireTangle, "wireTangle");
 		
 		
 		scrapItems1 = new ScrapItems1();

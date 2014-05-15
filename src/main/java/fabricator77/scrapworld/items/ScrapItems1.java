@@ -118,8 +118,8 @@ public class ScrapItems1 extends Item {
         	if (scrapType == "timber") {
         		// random choice of sticks, wooden plank/stairs/slabs, logs (rare), torches
         	}
-        	if (scrapType == "concrete") {
-        		// random choice of concrete, sand, gravel, cobblestone
+        	if (scrapType == "food") {
+        		// random choice of food/wheat items
         	}
         	
         	--itemStack.stackSize;
