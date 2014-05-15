@@ -1,5 +1,6 @@
 package fabricator77.scrapworld;
 
+import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.Logger;
 
 import net.minecraft.world.WorldType;
@@ -31,8 +32,9 @@ public class ScrapWorld {
 	public static Logger logger = (Logger)FMLCommonHandler.instance().getFMLLogger();
 	
 	//TODO: shift to dedicated config file
-	public static int scrapMountainID;
-	public static int scrapPlainsID;
+	public static int scrapPlainsID = 100;
+	public static int scrapMountainID = 101;
+	
 	
 	//TODO: creative tab and 16x16 icon
 	@EventHandler
@@ -40,6 +42,8 @@ public class ScrapWorld {
 		this.config = new Configuration(event.getSuggestedConfigurationFile());
 		this.config.load();
 		
+		scrapPlainsID = this.config.get("biomeIDs", "scrapPlainsID", 100).getInt();
+		scrapMountainID = this.config.get("biomeIDs", "scrapMountainID", 101).getInt();
 		
 		this.config.save();
 		
@@ -48,6 +52,7 @@ public class ScrapWorld {
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
 		new RegisterBiomes();
+		// ScrapWorld.logger.log(Level.INFO, "ScrapWorld");
 	}
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
