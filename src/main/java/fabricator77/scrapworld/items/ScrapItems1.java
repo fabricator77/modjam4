@@ -9,6 +9,7 @@ import fabricator77.scrapworld.ScrapWorld;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.ChatComponentText;
@@ -21,6 +22,13 @@ public class ScrapItems1 extends Item {
 	
 	// last one is always "useless"
 	public static final String[] itemNames = new String[]{"unknown", "metallic", "wire", "circuit", "plastic", "glass", "concrete", "timber", "food", "rare", "useless"};
+	
+	private static final ItemStack[] rareLoot = new ItemStack[]{
+		new ItemStack(Items.diamond,1,0),
+		new ItemStack(Items.emerald,1,0),
+		new ItemStack(Items.gold_ingot,1,0),
+		new ItemStack(Items.golden_apple,1,0)
+	};
 	
 	@SideOnly(Side.CLIENT)
     private IIcon[] textures;
@@ -71,69 +79,69 @@ public class ScrapItems1 extends Item {
 		//if (itemStack.stackSize > 1) {
 		//	return itemStack;
 		//}
-        //TODO: do something with itemStack.getItemDamage()
-        	int metadata = MathHelper.clamp_int(itemStack.getItemDamage(), 0, itemNames.length-1);
-        	String scrapType = itemNames[metadata];
+		
+		
+        int metadata = MathHelper.clamp_int(itemStack.getItemDamage(), 0, itemNames.length-1);
+        --itemStack.stackSize;
         	
-        	
-        	if (scrapType == "unknown") {
-        		if (world.rand.nextInt(5) != 0) {
-        			//nothing of value could be found in this
-        			String mesage = RandomMessages.scrapMessages(itemRand);
-        			//player.addChatMessage(new ChatComponentTranslation(mesage));
-        			player.addChatMessage(new ChatComponentText(mesage));
-        			//convert into useless version, so people cannot spam right click
-        			
-        			//itemStack.setItemDamage(itemNames.length);
-        			boolean added = player.inventory.addItemStackToInventory(new ItemStack(itemStack.getItem(), 1, itemNames.length-1));
-        			itemStack.stackSize = itemStack.stackSize -1;
-        			//itemStack = null;
-        			return itemStack;
-        		}
-        		// choose a random type to make this into
-        		scrapType = itemNames[1 + world.rand.nextInt(itemNames.length-1)];
-        	}
-        	
-        	if (scrapType == "metallic") {
-        		// random choice of iron, tin, copper or nothing
-        		// usually nothing
-        	}
-        	if (scrapType == "wire") {
-        		// wire to make into machines/metal
-        		// heating element
-        		// could also be fibre cable (rare)
-        	}
-        	if (scrapType == "circuit") {
-        		// random choice of wires, blank PCB, copper scrap, silicon, redstone, broken PCB, silicon chip (rare), working PCB(rare)
-        		// or nothing
-        	}
-        	if (scrapType == "plastic") {
-        		// random choice of rubber, plastic, plastic component, silicon chip (rare)
-        	}
-        	if (scrapType == "glass") {
-        		// random choice of glass fragments, sand, fibre strands
-        	}
-        	if (scrapType == "concrete") {
-        		// random choice of concrete, sand, gravel, cobblestone, various stone blocks/steps/slabs
-        	}
-        	if (scrapType == "timber") {
-        		// random choice of sticks, wooden plank/stairs/slabs, logs (rare), torches
-        	}
-        	if (scrapType == "food") {
-        		// random choice of food/wheat items
-        	}
-        	if (scrapType == "rare") {
-        		// random choice of diamonds, gold, emeralds, and the like
-        		if (world.rand.nextInt(10) == 0) {
-        			
-        		}
-        		else {
-        			
-        		}
-        	}
-        	
-        	--itemStack.stackSize;
-        	
-        	return itemStack;
+        String scrapType = itemNames[metadata];
+        
+        if (scrapType == "unknown") {
+    		if (world.rand.nextInt(5) != 0) {
+    			//nothing of value could be found in this
+    			String mesage = RandomMessages.scrapMessages(itemRand);
+    			//player.addChatMessage(new ChatComponentTranslation(mesage));
+    			player.addChatMessage(new ChatComponentText(mesage));
+    			//convert into useless version, so people cannot re-try it will
+    			
+    			
+    			boolean added = player.inventory.addItemStackToInventory(new ItemStack(itemStack.getItem(), 1, itemNames.length-1));
+    			return itemStack;
+    		}
+    		// choose a random type to make this into
+    		scrapType = itemNames[1 + world.rand.nextInt(itemNames.length-1)];
+    	}
+    	
+    	if (scrapType == "metallic") {
+    		// random choice of iron, tin, copper or nothing
+    		// usually nothing
+    	}
+    	if (scrapType == "wire") {
+    		// wire to make into machines/metal
+    		// heating element
+    		// could also be fibre cable (rare)
+    	}
+    	if (scrapType == "circuit") {
+    		// random choice of wires, blank PCB, copper scrap, silicon, redstone, broken PCB, silicon chip (rare), working PCB(rare)
+    		// or nothing
+    	}
+    	if (scrapType == "plastic") {
+    		// random choice of rubber, plastic, plastic component, silicon chip (rare)
+    	}
+    	if (scrapType == "glass") {
+    		// random choice of glass fragments, sand, fibre strands
+    	}
+    	if (scrapType == "concrete") {
+    		// random choice of concrete, sand, gravel, cobblestone, various stone blocks/steps/slabs
+    	}
+    	if (scrapType == "timber") {
+    		// random choice of sticks, wooden plank/stairs/slabs, logs (rare), torches
+    	}
+    	if (scrapType == "food") {
+    		// random choice of food/wheat items
+    	}
+    	if (scrapType == "rare") {
+    		if (world.rand.nextInt(10) == 0) {
+    			boolean added = player.inventory.addItemStackToInventory(new ItemStack(itemStack.getItem(), 1, itemNames.length-1));
+    		}
+    		// random choice of diamonds, gold, emeralds, and the like
+    		else {
+    			int i = this.itemRand.nextInt(rareLoot.length);
+    			ItemStack item = rareLoot[i];
+    			boolean added = player.inventory.addItemStackToInventory(item);
+    		}
+    	}
+    	
+    	return itemStack;
     }
 }
