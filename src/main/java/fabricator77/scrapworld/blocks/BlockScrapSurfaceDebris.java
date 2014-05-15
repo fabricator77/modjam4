@@ -11,4 +11,14 @@ public class BlockScrapSurfaceDebris extends Block {
 		this.setCreativeTab(CreativeTabs.tabBlock);
 	}
 
+	@Override
+	public int getRenderType() {
+		return 23;
+	}
+	
+	@Override
+	public boolean renderAsNormalBlock()
+    {
+        return false;
+    }
 }

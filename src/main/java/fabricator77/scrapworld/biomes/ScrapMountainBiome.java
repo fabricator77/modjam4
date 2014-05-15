@@ -8,6 +8,19 @@ import cpw.mods.fml.relauncher.SideOnly;
 import fabricator77.scrapworld.ScrapWorldBlocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import net.minecraft.entity.monster.EntityCreeper;
+import net.minecraft.entity.monster.EntityEnderman;
+import net.minecraft.entity.monster.EntitySkeleton;
+import net.minecraft.entity.monster.EntitySlime;
+import net.minecraft.entity.monster.EntitySpider;
+import net.minecraft.entity.monster.EntityWitch;
+import net.minecraft.entity.monster.EntityZombie;
+import net.minecraft.entity.passive.EntityBat;
+import net.minecraft.entity.passive.EntityChicken;
+import net.minecraft.entity.passive.EntityCow;
+import net.minecraft.entity.passive.EntityPig;
+import net.minecraft.entity.passive.EntitySheep;
+import net.minecraft.entity.passive.EntitySquid;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.biome.BiomeGenBase;
@@ -32,6 +45,13 @@ public class ScrapMountainBiome extends BiomeGenBase {
 		this.field_150604_aj = 0; // topBlock metadata
 		this.setHeight(height);
 		this.spawnableCreatureList.clear();
+		this.spawnableMonsterList.clear();
+        this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntitySpider.class, 100, 4, 4));
+        this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityZombie.class, 100, 4, 4));
+        this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityCreeper.class, 100, 4, 4));
+        this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntitySlime.class, 100, 4, 4));
+        this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityEnderman.class, 10, 1, 4));
+        this.spawnableMonsterList.add(new BiomeGenBase.SpawnListEntry(EntityWitch.class, 5, 1, 1));
 	}
 
 	public void decorate(World par1World, Random par2Random, int par3, int par4)
@@ -107,12 +127,24 @@ public class ScrapMountainBiome extends BiomeGenBase {
                 	{
                 		if (block1 == Blocks.stone)
                 		{
-                    	// custom surface goes here
+                    	    // custom mountain goes here
                 			block1 = ScrapWorldBlocks.scrapCube;
                 			blockArray[i2] = block1;
                 		}
                     }
                 }
+            	else if (l1>64) {
+            		Block block1 = blockArray[i2];
+            		if (block1 != null && block1.getMaterial() != Material.air)
+                	{
+                		if (block1 == Blocks.stone)
+                		{
+                    	    // custom mountain goes here
+                			block1 = this.topBlock;
+                			blockArray[i2] = block1;
+                		}
+                    }
+            	}
             }
         }
  }
