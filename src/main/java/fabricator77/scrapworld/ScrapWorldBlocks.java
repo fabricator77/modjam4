@@ -79,6 +79,7 @@ public class ScrapWorldBlocks {
 		FurnaceRecipes.smelting().func_151394_a(new ItemStack(dusts, 1, 2), new ItemStack(Items.iron_ingot, 1, 1), 0.0F);
 		// gold dust to gold ingot
 		FurnaceRecipes.smelting().func_151394_a(new ItemStack(dusts, 1, 3), new ItemStack(Items.gold_ingot, 1, 1), 0.0F);
+		//TODO: recipes for diamond/emerald dust 
 	}
 	
 	private void registerInOreDictionary () {
