@@ -7,6 +7,7 @@ import fabricator77.scrapworld.blocks.BlockScrapFurnace;
 import fabricator77.scrapworld.blocks.BlockScrapSurfaceDebris;
 import fabricator77.scrapworld.blocks.BlockWireTangle;
 import fabricator77.scrapworld.items.Dusts;
+import fabricator77.scrapworld.items.Ingots;
 import fabricator77.scrapworld.items.ScrapItems1;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFurnace;
@@ -29,6 +30,7 @@ public class ScrapWorldBlocks {
 	
 	public static Item scrapItems1;
 	public static Item dusts;
+	public static Item ingots;
 
 	public ScrapWorldBlocks() {
 		scrapCube = new BlockScrapCube().setBlockName("scrapCube").setHardness(3.0F).setResistance(5.0F);
@@ -54,6 +56,13 @@ public class ScrapWorldBlocks {
 		dusts = new Dusts();
 		GameRegistry.registerItem(dusts, "dusts");
 		// also need ingots for some dusts
+		ingots = new Ingots();
+		GameRegistry.registerItem(ingots, "ingots");
+		
+		
+		registerCraftingRecipes();
+		registerFurnaceRecipes();
+		registerInOreDictionary();
 	}
 	
 	private void registerCraftingRecipes () {
