@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 public class ScrapItems1 extends Item {
 	
 	// last one is always "useless"
-	public static final String[] itemNames = new String[]{"unknown", "metallic", "wire", "circuit", "plastic", "glass", "concrete", "rare", "timber", "useless"};
+	public static final String[] itemNames = new String[]{"unknown", "metallic", "wire", "circuit", "plastic", "glass", "concrete", "timber", "food", "rare", "useless"};
 	
 	@SideOnly(Side.CLIENT)
     private IIcon[] textures;
@@ -84,7 +84,8 @@ public class ScrapItems1 extends Item {
         			player.addChatMessage(new ChatComponentText(mesage));
         			//convert into useless version, so people cannot spam right click
         			
-        			itemStack.setItemDamage(itemNames.length);
+        			//itemStack.setItemDamage(itemNames.length);
+        			boolean added = player.inventory.addItemStackToInventory(new ItemStack(itemStack.getItem(), 1, itemNames.length-1));
         			--itemStack.stackSize;
         			return itemStack;
         		}
@@ -110,6 +111,15 @@ public class ScrapItems1 extends Item {
         	}
         	if (scrapType == "glass") {
         		// random choice of glass fragments, sand, fibre strands
+        	}
+        	if (scrapType == "concrete") {
+        		// random choice of concrete, sand, gravel, cobblestone, various stone blocks/steps/slabs
+        	}
+        	if (scrapType == "timber") {
+        		// random choice of sticks, wooden plank/stairs/slabs, logs (rare), torches
+        	}
+        	if (scrapType == "concrete") {
+        		// random choice of concrete, sand, gravel, cobblestone
         	}
         	
         	--itemStack.stackSize;
