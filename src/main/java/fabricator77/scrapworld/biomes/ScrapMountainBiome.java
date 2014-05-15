@@ -31,6 +31,7 @@ public class ScrapMountainBiome extends BiomeGenBase {
 		this.topBlock = ScrapWorldBlocks.scrapSurfaceDebris;
 		this.field_150604_aj = 0; // topBlock metadata
 		this.setHeight(height);
+		this.spawnableCreatureList.clear();
 	}
 
 	public void decorate(World par1World, Random par2Random, int par3, int par4)
