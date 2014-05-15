@@ -71,10 +71,13 @@ public class ScrapWorldBlocks {
 	}
 	
 	private void registerFurnaceRecipes () {
-		//TODO: tin and copper ingots
-		//iron dust to iron ingot
+		// tin dust to tin ingot
+		FurnaceRecipes.smelting().func_151394_a(new ItemStack(dusts, 1, 0), new ItemStack(ingots, 1, 0), 0.0F);
+		// copper dust to copper ingot
+		FurnaceRecipes.smelting().func_151394_a(new ItemStack(dusts, 1, 1), new ItemStack(ingots, 1, 1), 0.0F);
+		// iron dust to iron ingot
 		FurnaceRecipes.smelting().func_151394_a(new ItemStack(dusts, 1, 2), new ItemStack(Items.iron_ingot, 1, 1), 0.0F);
-		//gold dust to gold ingot
+		// gold dust to gold ingot
 		FurnaceRecipes.smelting().func_151394_a(new ItemStack(dusts, 1, 3), new ItemStack(Items.gold_ingot, 1, 1), 0.0F);
 	}
 	
