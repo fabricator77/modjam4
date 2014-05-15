@@ -21,5 +21,6 @@ public class ScrapWorldBlocks {
 		GameRegistry.registerBlock(scrapSurfaceDebris, "scrapDebris");
 		
 		scrapItems1 = new ScrapItems1();
+		GameRegistry.registerItem(scrapItems1, "scrapItems1");
 	}
 }
