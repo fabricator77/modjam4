@@ -11,8 +11,10 @@ import fabricator77.scrapworld.items.ScrapItems1;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFurnace;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class ScrapWorldBlocks {
@@ -54,8 +56,17 @@ public class ScrapWorldBlocks {
 		// also need ingots for some dusts
 	}
 	
+	private void registerCraftingRecipes () {
+		//make 9 'useless' scrap items into one compresedScrapCube
+		GameRegistry.addRecipe(new ItemStack(compressedScrapCube, 1, 0), new Object[] { "sss", "sss", "sss", Character.valueOf('s'), new ItemStack(scrapItems1, 1, 11)});
+	}
+	
 	private void registerFurnaceRecipes () {
-		//TODO:
+		//TODO: tin and copper ingots
+		//iron dust to iron ingot
+		FurnaceRecipes.smelting().func_151394_a(new ItemStack(dusts, 1, 2), new ItemStack(Items.iron_ingot, 1, 1), 0.0F);
+		//gold dust to gold ingot
+		FurnaceRecipes.smelting().func_151394_a(new ItemStack(dusts, 1, 3), new ItemStack(Items.gold_ingot, 1, 1), 0.0F);
 	}
 	
 	private void registerInOreDictionary () {
