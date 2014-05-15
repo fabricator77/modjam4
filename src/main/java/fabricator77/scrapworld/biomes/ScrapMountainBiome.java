@@ -127,7 +127,7 @@ public class ScrapMountainBiome extends BiomeGenBase {
                 	{
                 		if (block1 == Blocks.stone)
                 		{
-                    	    // custom mountain goes here
+                    	    // custom mountain
                 			block1 = ScrapWorldBlocks.scrapCube;
                 			blockArray[i2] = block1;
                 		}
@@ -139,9 +139,16 @@ public class ScrapMountainBiome extends BiomeGenBase {
                 	{
                 		if (block1 == Blocks.stone)
                 		{
-                    	    // custom mountain goes here
-                			block1 = this.topBlock;
+                    	    // needs to check air is above
+                			block1 = ScrapWorldBlocks.scrapCube;
                 			blockArray[i2] = block1;
+                			
+                			int i3 = (l * 16 + k) * k1 + l1 + 1;
+                			Block block2 = blockArray[i3];
+                			if (block1 == null || block1.getMaterial() == Material.air) {
+                				block2 = this.topBlock;
+                				blockArray[i3] = block2;
+                			}
                 		}
                     }
             	}
