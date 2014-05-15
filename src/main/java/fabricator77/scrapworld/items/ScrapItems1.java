@@ -63,7 +63,7 @@ public class ScrapItems1 extends Item {
 	@SideOnly(Side.CLIENT)
     public IIcon getIconFromDamage(int metadata)
     {
-        int j = MathHelper.clamp_int(metadata, 0, itemNames.length-1);
+        int j = MathHelper.clamp_int(metadata, 0, itemNames.length);
         return this.textures[j];
     }
 	

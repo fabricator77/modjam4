@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 
 public class Dusts extends Item {
 	
-	public static final String[] itemNames = new String[]{"tin", "copper", "iron", "gold", "emerald", "diamond", "glass", "concrete", "sawdust", "charcoaldust"};
+	public static final String[] itemNames = new String[]{"tin", "copper", "iron", "gold", "emerald", "diamond", "glass", "concrete", "sawdust", "charcoal"};
 	
 	@SideOnly(Side.CLIENT)
     private IIcon[] textures;
@@ -34,7 +34,7 @@ public class Dusts extends Item {
 	@SideOnly(Side.CLIENT)
     public IIcon getIconFromDamage(int metadata)
     {
-        int j = MathHelper.clamp_int(metadata, 0, itemNames.length-1);
+        int j = MathHelper.clamp_int(metadata, 0, itemNames.length);
         return this.textures[j];
     }
 	
