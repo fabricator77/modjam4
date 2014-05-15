@@ -47,9 +47,9 @@ public class BlockScrapFurnace extends BlockFurnace{
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister p_149651_1_)
     {
-    	this.blockIcon = p_149651_1_.registerIcon(ScrapWorld.modid+":furnace_side");
-        this.field_149936_O = p_149651_1_.registerIcon(this.field_149932_b ? ScrapWorld.modid+":furnace_front_on" : ScrapWorld.modid+":furnace_front_off");
-        this.field_149935_N = p_149651_1_.registerIcon(ScrapWorld.modid+":furnace_top");
+    	this.blockIcon = p_149651_1_.registerIcon(ScrapWorld.modid+":scrap_furnace_side");
+        this.field_149936_O = p_149651_1_.registerIcon(this.field_149932_b ? ScrapWorld.modid+":scrap_furnace_front_on" : ScrapWorld.modid+":scrap_furnace_front_off");
+        this.field_149935_N = p_149651_1_.registerIcon(ScrapWorld.modid+":scrap_furnace_top");
     }
     
     public void breakBlock(World world, int x, int y, int z, Block block, int metadata)
