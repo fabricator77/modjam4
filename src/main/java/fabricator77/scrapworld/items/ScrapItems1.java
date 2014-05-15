@@ -104,7 +104,7 @@ public class ScrapItems1 extends Item {
     	}
     	
     	if (scrapType == "metallic") {
-    		if (world.rand.nextInt(10) == 0) {
+    		if (world.rand.nextInt(25) == 0) {
     			boolean added = player.inventory.addItemStackToInventory(new ItemStack(itemStack.getItem(), 1, itemNames.length-1));
     		}
     		// random choice of iron, tin, copper
