@@ -34,7 +34,12 @@ public class BlockScrapCube extends Block {
     public ArrayList<ItemStack> getDrops(World world, int x, int y, int z, int metadata, int fortune)
     {
         ArrayList<ItemStack> ret = new ArrayList<ItemStack>();
-        ret.add(new ItemStack(ScrapWorldBlocks.scrapItems1, 1, world.rand.nextInt(ScrapItems1.itemNames.length))); // always return dirt
+        if (world.rand.nextInt(10) == 0) {
+        	ret.add(new ItemStack(ScrapWorldBlocks.scrapItems1, 1, world.rand.nextInt(ScrapItems1.itemNames.length)));
+        }
+        else {
+        	ret.add(new ItemStack(ScrapWorldBlocks.scrapItems1, 1, 0));
+        }
         if (metadata == 0) {
         	//TODO: change to drop 2x items or drop rare scrap item/loot
         	if (world.rand.nextInt(20) == 0) ret.add(new ItemStack(Items.emerald, 0, 0));
