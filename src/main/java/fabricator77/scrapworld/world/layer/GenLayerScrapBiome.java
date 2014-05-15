@@ -1,6 +1,9 @@
 package fabricator77.scrapworld.world.layer;
 
+import org.apache.logging.log4j.Level;
+
 import fabricator77.scrapworld.RegisterBiomes;
+import fabricator77.scrapworld.ScrapWorld;
 import net.minecraft.world.WorldType;
 import net.minecraft.world.biome.BiomeGenBase;
 import net.minecraft.world.gen.layer.GenLayer;
@@ -48,8 +51,12 @@ public class GenLayerScrapBiome extends GenLayer {
                 else
                 {
                 	//TODO: replace ocean/unknown biomes with something
-                    aint1[j1 + i1 * par3] = BiomeGenBase.mushroomIsland.biomeID;
+                    //aint1[j1 + i1 * par3] = BiomeGenBase.mushroomIsland.biomeID;
+                    
+                	aint1[j1 + i1 * par3] = this.biomes[this.nextInt(this.biomes.length)].biomeID;
                 }
+                
+                ScrapWorld.logger.log(Level.INFO, "GenLayerScrapBiome.getInts="+aint1[j1 + i1 * par3]);
             }
         }
 

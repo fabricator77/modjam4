@@ -1,7 +1,10 @@
 package fabricator77.scrapworld;
 
+import org.apache.logging.log4j.core.Logger;
+
 import net.minecraft.world.WorldType;
 import net.minecraftforge.common.config.Configuration;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -24,6 +27,8 @@ public class ScrapWorld {
 	public static WorldType scrapWorldType;
 	public static Configuration config;
 	public static ScrapWorldBlocks blocks;
+	
+	public static Logger logger = (Logger)FMLCommonHandler.instance().getFMLLogger();
 	
 	//TODO: shift to dedicated config file
 	public static int scrapMountainID;

@@ -23,11 +23,14 @@ public class ScrapMountainBiome extends BiomeGenBase {
     private byte[] field_150621_aC;
     private boolean field_150626_aH;
     private boolean field_150620_aI;
+    
+    private static final BiomeGenBase.Height height = new BiomeGenBase.Height(1.0F, 0.5F);
 
 	public ScrapMountainBiome(int par1) {
 		super(par1);
 		this.topBlock = ScrapWorldBlocks.scrapSurfaceDebris;
-		this.field_150604_aj = 1; // topBlock metadata
+		this.field_150604_aj = 0; // topBlock metadata
+		this.setHeight(height);
 	}
 
 	public void decorate(World par1World, Random par2Random, int par3, int par4)
