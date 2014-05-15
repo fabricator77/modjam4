@@ -97,11 +97,12 @@ public class ScrapItems1 extends Item {
     			
     			
     			boolean added = player.inventory.addItemStackToInventory(new ItemStack(itemStack.getItem(), 1, itemNames.length-1));
-    			--itemStack.stackSize;
-    			return itemStack;
+    			
     		}
     		// choose a random type to make this into
     		// scrapType = itemNames[1 + world.rand.nextInt(itemNames.length-1)];
+    		--itemStack.stackSize;
+			return itemStack;
     	}
     	
     	if (scrapType == "metallic") {
