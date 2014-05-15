@@ -5,6 +5,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockFurnace;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.IIcon;
@@ -21,6 +22,8 @@ public class BlockScrapFurnace extends BlockFurnace{
 	public BlockScrapFurnace(boolean burning) {
 		super(burning);
 		this.isBurning = burning;
+		
+		this.setCreativeTab(CreativeTabs.tabDecorations);
 	}
 	
     @SideOnly(Side.CLIENT)
