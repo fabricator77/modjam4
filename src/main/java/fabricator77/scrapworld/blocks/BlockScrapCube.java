@@ -19,7 +19,7 @@ public class BlockScrapCube extends Block {
 
 	public BlockScrapCube() {
 		super(Material.iron);
-		this.setCreativeTab(CreativeTabs.tabBlock);
+		this.setCreativeTab(ScrapWorld.creativeTab);
 	}
 
 	@SideOnly(Side.CLIENT)

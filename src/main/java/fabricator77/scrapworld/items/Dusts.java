@@ -28,7 +28,7 @@ public class Dusts extends Item {
 	public Dusts () {
 		this.setHasSubtypes(true);
         this.setMaxDamage(0);
-        this.setCreativeTab(CreativeTabs.tabMaterials);
+        this.setCreativeTab(ScrapWorld.creativeTab);
 	}
 
 	@SideOnly(Side.CLIENT)
@@ -56,11 +56,12 @@ public class Dusts extends Item {
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister par1IconRegister)
     {
-        this.textures = new IIcon[itemNames.length];
+        this.textures = new IIcon[itemNames.length+1];
 
-        for (int i = 0; i < textures.length; ++i)
+        for (int i = 0; i < itemNames.length; ++i)
         {
             this.textures[i] = par1IconRegister.registerIcon(ScrapWorld.modid+":" + itemNames[i]+"_dust");
         }
+        this.textures[textures.length-1] = par1IconRegister.registerIcon(ScrapWorld.modid+":icon");
     }
 }

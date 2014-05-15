@@ -38,7 +38,7 @@ public class BlockScrapFurnace extends BlockFurnace{
 		super(burning);
 		this.field_149932_b = burning;
 		
-		this.setCreativeTab(CreativeTabs.tabDecorations);
+		this.setCreativeTab(ScrapWorld.creativeTab);
 	}
 	
     @SideOnly(Side.CLIENT)
