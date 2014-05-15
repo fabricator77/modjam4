@@ -31,6 +31,26 @@ public class ScrapItems1 extends Item {
 		new ItemStack(Items.golden_apple,1,0)
 	};
 	
+	private static final ItemStack[] foodLoot = new ItemStack[]{
+		new ItemStack(Items.baked_potato,1,0),
+		new ItemStack(Items.apple,1,0),
+		new ItemStack(Items.bread,1,0),
+		new ItemStack(Items.bowl,2,0),
+		new ItemStack(Items.cake,1,0),
+		new ItemStack(Items.carrot,1,0),
+		new ItemStack(Items.cooked_beef,1,0),
+		new ItemStack(Items.cooked_chicken,1,0),
+		new ItemStack(Items.cooked_fished,1,0),
+		new ItemStack(Items.cooked_porkchop,1,0),
+		new ItemStack(Items.cookie,4,0),
+		//new ItemStack(Items.egg,1,0),
+		new ItemStack(Items.melon,1,0),
+		//new ItemStack(Items.melon_seeds,1,0),
+		new ItemStack(Items.mushroom_stew,1,0),
+		new ItemStack(Items.pumpkin_pie,1,0),
+		new ItemStack(Items.wheat,4,0),
+	};
+	
 	@SideOnly(Side.CLIENT)
     private IIcon[] textures;
 	
@@ -141,7 +161,18 @@ public class ScrapItems1 extends Item {
     		// random choice of sticks, wooden plank/stairs/slabs, logs (rare), torches
     	}
     	if (scrapType == "food") {
+    		if (world.rand.nextInt(10) == 0) {
+    			boolean added = player.inventory.addItemStackToInventory(new ItemStack(itemStack.getItem(), 1, itemNames.length-1));
+    		}
     		// random choice of food/wheat items
+    		else {
+    			int i = this.itemRand.nextInt(foodLoot.length);
+    			ItemStack item = foodLoot[i];
+    			boolean added = player.inventory.addItemStackToInventory(item);
+    		}
+    		--itemStack.stackSize;
+    		return itemStack;
+    		
     	}
     	if (scrapType == "burnt") {
     		// mostly useless but can drop charcoal sometimes
