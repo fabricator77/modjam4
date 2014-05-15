@@ -10,6 +10,7 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import fabricator77.scrapworld.common.CommonProxy;
+import fabricator77.scrapworld.world.WorldTypeScrapWorld;
 
 @Mod(modid="ScrapWorld", name="Scrap World", version="1.0")
 public class ScrapWorld {
@@ -45,6 +46,6 @@ public class ScrapWorld {
 	}
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-		
+		scrapWorldType = new WorldTypeScrapWorld();
 	}
 }
