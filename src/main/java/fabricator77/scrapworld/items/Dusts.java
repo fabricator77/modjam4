@@ -41,7 +41,7 @@ public class Dusts extends Item {
 	public String getUnlocalizedName(ItemStack par1ItemStack)
     {
         int i = MathHelper.clamp_int(par1ItemStack.getItemDamage(), 0, itemNames.length-1);
-        return "scrap_" + itemNames[i];
+        return "dusts_" + itemNames[i];
     }
 	
 	@SideOnly(Side.CLIENT)
@@ -60,7 +60,7 @@ public class Dusts extends Item {
 
         for (int i = 0; i < textures.length; ++i)
         {
-            this.textures[i] = par1IconRegister.registerIcon(ScrapWorld.modid+":dusts_" + itemNames[i]);
+            this.textures[i] = par1IconRegister.registerIcon(ScrapWorld.modid+":" + itemNames[i]+"_dust");
         }
     }
 }

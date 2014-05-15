@@ -33,5 +33,6 @@ public class ScrapWorldBlocks {
 		GameRegistry.registerItem(scrapItems1, "scrapItems1");
 		
 		dusts = new Dusts();
+		GameRegistry.registerItem(dusts, "dusts");
 	}
 }

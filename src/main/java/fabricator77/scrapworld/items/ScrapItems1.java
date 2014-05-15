@@ -6,6 +6,7 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fabricator77.scrapworld.RandomMessages;
 import fabricator77.scrapworld.ScrapWorld;
+import fabricator77.scrapworld.ScrapWorldBlocks;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
@@ -103,8 +104,15 @@ public class ScrapItems1 extends Item {
     	}
     	
     	if (scrapType == "metallic") {
-    		// random choice of iron, tin, copper or nothing
-    		// usually nothing
+    		if (world.rand.nextInt(10) == 0) {
+    			boolean added = player.inventory.addItemStackToInventory(new ItemStack(itemStack.getItem(), 1, itemNames.length-1));
+    		}
+    		// random choice of iron, tin, copper
+    		else {
+    			int i = this.itemRand.nextInt(3);
+    			ItemStack item = new ItemStack(ScrapWorldBlocks.dusts, 1, i);
+    			boolean added = player.inventory.addItemStackToInventory(item);
+    		}
     	}
     	if (scrapType == "wire") {
     		// wire to make into machines/metal
