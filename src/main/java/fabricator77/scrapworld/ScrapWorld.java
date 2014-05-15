@@ -3,6 +3,7 @@ package fabricator77.scrapworld;
 import org.apache.logging.log4j.Level;
 import org.apache.logging.log4j.core.Logger;
 
+import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.world.WorldType;
 import net.minecraftforge.common.config.Configuration;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -37,6 +38,8 @@ public class ScrapWorld {
 	
 	
 	//TODO: creative tab and 16x16 icon
+	public static CreativeTabs creativeTab = new CreativeTabScrapWorld(CreativeTabs.getNextID(), ScrapWorld.modid);
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		this.config = new Configuration(event.getSuggestedConfigurationFile());
