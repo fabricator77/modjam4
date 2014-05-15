@@ -83,7 +83,7 @@ public class ScrapItems1 extends Item {
 		
 		
         int metadata = MathHelper.clamp_int(itemStack.getItemDamage(), 0, itemNames.length-1);
-        --itemStack.stackSize;
+        
         	
         String scrapType = itemNames[metadata];
         
@@ -97,10 +97,11 @@ public class ScrapItems1 extends Item {
     			
     			
     			boolean added = player.inventory.addItemStackToInventory(new ItemStack(itemStack.getItem(), 1, itemNames.length-1));
+    			--itemStack.stackSize;
     			return itemStack;
     		}
     		// choose a random type to make this into
-    		scrapType = itemNames[1 + world.rand.nextInt(itemNames.length-1)];
+    		// scrapType = itemNames[1 + world.rand.nextInt(itemNames.length-1)];
     	}
     	
     	if (scrapType == "metallic") {
@@ -112,7 +113,10 @@ public class ScrapItems1 extends Item {
     			int i = this.itemRand.nextInt(3);
     			ItemStack item = new ItemStack(ScrapWorldBlocks.dusts, 1, i);
     			boolean added = player.inventory.addItemStackToInventory(item);
+    			
     		}
+    		--itemStack.stackSize;
+    		return itemStack;
     	}
     	if (scrapType == "wire") {
     		// wire to make into machines/metal
@@ -151,6 +155,8 @@ public class ScrapItems1 extends Item {
     			ItemStack item = rareLoot[i];
     			boolean added = player.inventory.addItemStackToInventory(item);
     		}
+    		--itemStack.stackSize;
+    		return itemStack;
     	}
     	
     	return itemStack;

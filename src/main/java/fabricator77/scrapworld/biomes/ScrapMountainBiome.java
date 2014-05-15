@@ -79,7 +79,7 @@ public class ScrapMountainBiome extends BiomeGenBase {
         int k;
         int l;
 
-        if (this.field_150626_aH)
+        if (this.field_150626_aH) // amplified biome code ?
         {
             k = (x & -16) + (z & 15);
             l = (z & -16) + (x & 15);
