@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 public class ScrapItems1 extends Item {
 	
 	// last one is always "useless"
-	public String[] itemNames = new String[]{"unknown", "metallic", "wire", "circuit", "plastic", "glass", "concrete", "rare", "timber", "useless"};
+	public static final String[] itemNames = new String[]{"unknown", "metallic", "wire", "circuit", "plastic", "glass", "concrete", "rare", "timber", "useless"};
 	
 	@SideOnly(Side.CLIENT)
     private IIcon[] textures;
@@ -74,7 +74,7 @@ public class ScrapItems1 extends Item {
         //TODO: do something with itemStack.getItemDamage()
         	int metadata = MathHelper.clamp_int(itemStack.getItemDamage(), 0, itemNames.length-1);
         	String scrapType = itemNames[metadata];
-        	--itemStack.stackSize;
+        	
         	
         	if (scrapType == "unknown") {
         		if (world.rand.nextInt(5) != 0) {
@@ -85,10 +85,11 @@ public class ScrapItems1 extends Item {
         			//convert into useless version, so people cannot spam right click
         			
         			itemStack.setItemDamage(itemNames.length);
+        			--itemStack.stackSize;
         			return itemStack;
         		}
         		// choose a random type to make this into
-        		scrapType = itemNames[world.rand.nextInt(itemNames.length-1) + 1];
+        		scrapType = itemNames[1 + world.rand.nextInt(itemNames.length-1)];
         	}
         	
         	if (scrapType == "metallic") {
@@ -106,6 +107,9 @@ public class ScrapItems1 extends Item {
         	}
         	if (scrapType == "plastic") {
         		// random choice of rubber, plastic, plastic component, silicon chip (rare)
+        	}
+        	if (scrapType == "glass") {
+        		// random choice of glass fragments, sand, fibre strands
         	}
         	
         	--itemStack.stackSize;
