@@ -19,7 +19,8 @@ import net.minecraft.world.World;
 
 public class ScrapItems1 extends Item {
 	
-	public String[] itemNames = new String[]{"unknown", "metallic", "wire", "circuit", "plastic", "glass", "concrete", "rare", "useless"};
+	// last one is always "useless"
+	public String[] itemNames = new String[]{"unknown", "metallic", "wire", "circuit", "plastic", "glass", "concrete", "rare", "timber", "useless"};
 	
 	@SideOnly(Side.CLIENT)
     private IIcon[] textures;
@@ -81,8 +82,8 @@ public class ScrapItems1 extends Item {
         			String mesage = RandomMessages.scrapMessages(itemRand);
         			//player.addChatMessage(new ChatComponentTranslation(mesage));
         			player.addChatMessage(new ChatComponentText(mesage));
-        			//TODO: convert into useless version, so people cannot spam right click
-        			// last one is always "useless"
+        			//convert into useless version, so people cannot spam right click
+        			
         			itemStack.setItemDamage(itemNames.length);
         			return itemStack;
         		}
@@ -94,9 +95,17 @@ public class ScrapItems1 extends Item {
         		// random choice of iron, tin, copper or nothing
         		// usually nothing
         	}
+        	if (scrapType == "wire") {
+        		// wire to make into machines/metal
+        		// heating element
+        		// could also be fibre cable (rare)
+        	}
         	if (scrapType == "circuit") {
-        		// random choice of wires, blank PCB, copper scrap, redstone, broken PCB, working PCB
+        		// random choice of wires, blank PCB, copper scrap, silicon, redstone, broken PCB, silicon chip (rare), working PCB(rare)
         		// or nothing
+        	}
+        	if (scrapType == "plastic") {
+        		// random choice of rubber, plastic, plastic component, silicon chip (rare)
         	}
         	
         	--itemStack.stackSize;
