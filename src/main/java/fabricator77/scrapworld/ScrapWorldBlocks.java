@@ -1,6 +1,7 @@
 package fabricator77.scrapworld;
 
 import cpw.mods.fml.common.registry.GameRegistry;
+import fabricator77.scrapworld.blocks.BlockCompressedScrapCube;
 import fabricator77.scrapworld.blocks.BlockScrapCube;
 import fabricator77.scrapworld.blocks.BlockScrapFurnace;
 import fabricator77.scrapworld.blocks.BlockScrapSurfaceDebris;
@@ -18,6 +19,7 @@ public class ScrapWorldBlocks {
 
 	public static Block scrapCube;
 	public static Block scrapSurfaceDebris;
+	public static Block compressedScrapCube;
 	
 	public static Block wireTangle;
 	public static Block scrapFurnace;
@@ -31,6 +33,9 @@ public class ScrapWorldBlocks {
 		GameRegistry.registerBlock(scrapCube, "scrapCube");
 		scrapSurfaceDebris = new BlockScrapSurfaceDebris().setBlockName("scrapDebris");
 		GameRegistry.registerBlock(scrapSurfaceDebris, "scrapDebris");
+		
+		compressedScrapCube = new BlockCompressedScrapCube().setBlockName("compressedScrapCube");
+		GameRegistry.registerBlock(compressedScrapCube, "compressedScrapCube");
 		
 		wireTangle = new BlockWireTangle().setBlockName("wireTangle").setHardness(4.0F);
 		GameRegistry.registerBlock(wireTangle, "wireTangle");
@@ -46,6 +51,11 @@ public class ScrapWorldBlocks {
 		
 		dusts = new Dusts();
 		GameRegistry.registerItem(dusts, "dusts");
+		// also need ingots for some dusts
+	}
+	
+	private void registerFurnaceRecipes () {
+		//TODO:
 	}
 	
 	private void registerInOreDictionary () {
