@@ -12,12 +12,15 @@ import net.minecraft.block.BlockFurnace;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityFurnace;
+//import net.minecraft.tileentity.TileEntityFurnace;
+//import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
@@ -101,6 +104,25 @@ public class BlockScrapFurnace extends BlockFurnace{
         }
 
         super.breakBlock(world, x, y, z, block, metadata);
+    }
+    
+    public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_)
+    {
+        if (world.isRemote)
+        {
+            return true;
+        }
+        else
+        {
+        	TileEntityFurnace tileentityfurnace = (TileEntityFurnace)world.getTileEntity(x, y, z);
+
+            if (tileentityfurnace != null)
+            {
+                player.func_146101_a(tileentityfurnace);
+            }
+
+            return true;
+        }
     }
     
     /**

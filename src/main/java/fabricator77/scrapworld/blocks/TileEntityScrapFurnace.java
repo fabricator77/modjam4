@@ -19,9 +19,10 @@ import net.minecraft.item.ItemTool;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
-import net.minecraft.tileentity.TileEntityFurnace;
+import net.minecraft.tileentity.TileEntity;
+//import net.minecraft.tileentity.TileEntityFurnace;
 
-public class TileEntityScrapFurnace extends TileEntityFurnace{
+public class TileEntityScrapFurnace extends TileEntity{
 	
 	private static final int[] slotsTop = new int[] {0};
     private static final int[] slotsBottom = new int[] {2, 1};
