@@ -145,7 +145,7 @@ public class ScrapMountainBiome extends BiomeGenBase {
                 			
                 			int i3 = (l * 16 + k) * k1 + l1 + 1;
                 			Block block2 = blockArray[i3];
-                			if (block1 == null || block1.getMaterial() == Material.air) {
+                			if (block2 == null || block2.getMaterial() == Material.air) {
                 				block2 = this.topBlock;
                 				blockArray[i3] = block2;
                 			}
