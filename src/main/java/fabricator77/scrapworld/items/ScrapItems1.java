@@ -68,9 +68,9 @@ public class ScrapItems1 extends Item {
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player)
     {
-		if (itemStack.stackSize > 1) {
-			return itemStack;
-		}
+		//if (itemStack.stackSize > 1) {
+		//	return itemStack;
+		//}
         //TODO: do something with itemStack.getItemDamage()
         	int metadata = MathHelper.clamp_int(itemStack.getItemDamage(), 0, itemNames.length-1);
         	String scrapType = itemNames[metadata];
@@ -86,7 +86,8 @@ public class ScrapItems1 extends Item {
         			
         			//itemStack.setItemDamage(itemNames.length);
         			boolean added = player.inventory.addItemStackToInventory(new ItemStack(itemStack.getItem(), 1, itemNames.length-1));
-        			--itemStack.stackSize;
+        			itemStack.stackSize = itemStack.stackSize -1;
+        			//itemStack = null;
         			return itemStack;
         		}
         		// choose a random type to make this into
@@ -120,6 +121,15 @@ public class ScrapItems1 extends Item {
         	}
         	if (scrapType == "food") {
         		// random choice of food/wheat items
+        	}
+        	if (scrapType == "rare") {
+        		// random choice of diamonds, gold, emeralds, and the like
+        		if (world.rand.nextInt(10) == 0) {
+        			
+        		}
+        		else {
+        			
+        		}
         	}
         	
         	--itemStack.stackSize;
