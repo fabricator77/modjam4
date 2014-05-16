@@ -5,7 +5,9 @@ import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fabricator77.scrapworld.blocks.*;
 import fabricator77.scrapworld.client.RenderFridge;
+import fabricator77.scrapworld.client.RenderMachine;
 import fabricator77.scrapworld.client.TileEntityRenderFridge;
+import fabricator77.scrapworld.client.TileEntityRenderMachine;
 import fabricator77.scrapworld.items.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFurnace;
@@ -71,7 +73,9 @@ public class ScrapWorldBlocks {
 		
 		machine = new BlockMachine().setHardness(3.5F).setBlockName("machine");
 		GameRegistry.registerBlock(machine, "machine");
-		//TODO: TileEntity
+		GameRegistry.registerTileEntity(TileEntityMachine.class, "tileEntityMachine");
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMachine.class, new TileEntityRenderMachine());
+		RenderingRegistry.registerBlockHandler(new RenderMachine());
 		
 		power = new BlockPower().setHardness(3.5F).setBlockName("power");
 		GameRegistry.registerBlock(power, "power");
