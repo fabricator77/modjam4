@@ -60,8 +60,8 @@ public class ScrapWorldBlocks {
 		
 		fridge = new BlockFridge(0).setHardness(3.5F).setBlockName("fridge");
 		GameRegistry.registerBlock(fridge, "fridge");
-		//ClientRegistry.registerTileEntity(TileEntityFridge.class, "tileEntityFridge", new TileEntityRenderFridge());
-		GameRegistry.registerTileEntity(TileEntityFridge.class, "tileEntityFridge");
+		ClientRegistry.registerTileEntity(TileEntityFridge.class, "tileEntityFridge", new TileEntityRenderFridge());
+		// GameRegistry.registerTileEntity(TileEntityFridge.class, "tileEntityFridge");
 		
 		machine = new BlockMachine().setHardness(3.5F).setBlockName("machine");
 		GameRegistry.registerBlock(machine, "machine");

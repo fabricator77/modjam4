@@ -27,7 +27,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockFridge extends BlockChest {//extends Block {
+public class BlockFridge extends Block { //extends BlockChest {
 	
 	private final Random field_149955_b = new Random();
 
@@ -58,7 +58,7 @@ public class BlockFridge extends BlockChest {//extends Block {
     public int getRenderType()
     {
 		// was 22
-        return ScrapWorld.proxy.fridgeRendererID;
+        return -1; //ScrapWorld.proxy.fridgeRendererID;
     }
 	
 	@Override
