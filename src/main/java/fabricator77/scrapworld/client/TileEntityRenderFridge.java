@@ -3,6 +3,7 @@ package fabricator77.scrapworld.client;
 import org.lwjgl.opengl.GL11;
 import org.lwjgl.opengl.GL12;
 
+import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -10,13 +11,15 @@ import fabricator77.scrapworld.ScrapWorld;
 import fabricator77.scrapworld.blocks.BlockFridge;
 import fabricator77.scrapworld.blocks.TileEntityFridge;
 import net.minecraft.block.Block;
+import net.minecraft.client.renderer.RenderBlocks;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.util.ResourceLocation;
+import net.minecraft.world.IBlockAccess;
 
 @SideOnly(Side.CLIENT)
-public class TileEntityRenderFridge extends TileEntitySpecialRenderer {
+public class TileEntityRenderFridge extends TileEntitySpecialRenderer implements ISimpleBlockRenderingHandler {
 	
     private static final ResourceLocation field_147505_d = new ResourceLocation(ScrapWorld.modid+":textures/entity/fridge_double.png");
     private static final ResourceLocation field_147504_g = new ResourceLocation(ScrapWorld.modid+":textures/entity/fridge.png");
@@ -29,7 +32,7 @@ public class TileEntityRenderFridge extends TileEntitySpecialRenderer {
     }
 
 	public void renderTileEntityAt(TileEntity te, double x, double y, double z, float var8) {
-		this.renderTileEntityAt((TileEntityChest)te, x, y, z, var8);
+		//this.renderTileEntityAt((TileEntityChest)te, x, y, z, var8);
 	}
     public void renderTileEntityAt(TileEntityChest te, double p_147502_2_, double p_147502_4_, double p_147502_6_, float p_147502_8_)
     {
@@ -146,5 +149,27 @@ public class TileEntityRenderFridge extends TileEntitySpecialRenderer {
             GL11.glPopMatrix();
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         }
+	}
+
+    
+    // ISimpleBlockRenderingHandler methods below
+	@Override
+	public void renderInventoryBlock(Block block, int metadata, int modelId, RenderBlocks renderer) {
+		
+	}
+
+	@Override
+	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
+		return true;
+	}
+
+	@Override
+	public boolean shouldRender3DInInventory(int modelId) {
+		return true;
+	}
+
+	@Override
+	public int getRenderId() {
+		return ScrapWorld.proxy.fridgeRendererID;
 	}
 }

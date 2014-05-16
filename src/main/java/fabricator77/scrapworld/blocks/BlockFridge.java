@@ -58,7 +58,7 @@ public class BlockFridge extends BlockChest {//extends Block {
     public int getRenderType()
     {
 		// was 22
-        return -1;//TODO: put correct custom renderer here
+        return ScrapWorld.proxy.fridgeRendererID;
     }
 	
 	@Override
