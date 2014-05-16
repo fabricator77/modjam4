@@ -6,6 +6,7 @@ import org.lwjgl.opengl.GL12;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fabricator77.scrapworld.ScrapWorld;
 import fabricator77.scrapworld.blocks.BlockFridge;
 import fabricator77.scrapworld.blocks.TileEntityFridge;
 import net.minecraft.block.Block;
@@ -17,8 +18,8 @@ import net.minecraft.util.ResourceLocation;
 @SideOnly(Side.CLIENT)
 public class TileEntityRenderFridge extends TileEntitySpecialRenderer {
 	
-    private static final ResourceLocation field_147505_d = new ResourceLocation("textures/entity/fridge_double.png");
-    private static final ResourceLocation field_147504_g = new ResourceLocation("textures/entity/fridge.png");
+    private static final ResourceLocation field_147505_d = new ResourceLocation(ScrapWorld.modid+":textures/entity/fridge_double.png");
+    private static final ResourceLocation field_147504_g = new ResourceLocation(ScrapWorld.modid+":textures/entity/fridge.png");
 	
 	private ModelFridge field_147510_h = new ModelFridge();
     private ModelFridge field_147511_i = new ModelLargeFridge();
