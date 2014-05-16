@@ -9,7 +9,7 @@ public class ModelFridge extends ModelBase{
     public ModelRenderer fridgeHandle;
 
     public ModelFridge () {
-    	this.fridgeDoor.addBox(0.0F, -5.0F, -14.0F, 14, 5, 14, 0.0F);
+    	this.fridgeDoor.addBox(0.0F, -5.0F, -14.0F, 14, 3, 14, 0.0F);
         this.fridgeDoor.rotationPointX = 1.0F;
         this.fridgeDoor.rotationPointY = 7.0F;
         this.fridgeDoor.rotationPointZ = 15.0F;

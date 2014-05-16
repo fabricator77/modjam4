@@ -33,6 +33,7 @@ public class BlockFridge extends BlockChest {//extends Block {
 
 	public BlockFridge(int state) {
 		super(state);
+		this.setCreativeTab(ScrapWorld.creativeTab);
 	}
 
 	@SideOnly(Side.CLIENT)

@@ -10,6 +10,7 @@ import fabricator77.scrapworld.ScrapWorldBlocks;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -29,6 +30,12 @@ public class ScrapItems1 extends Item {
 		new ItemStack(Items.emerald,1,0),
 		new ItemStack(Items.gold_ingot,1,0),
 		new ItemStack(Items.golden_apple,1,0)
+	};
+	
+	private static final ItemStack[] timberLoot = new ItemStack[]{
+		new ItemStack(Items.stick,8,0),
+		new ItemStack(Blocks.planks,1,0),
+		new ItemStack(Blocks.wooden_slab,2,0)
 	};
 	
 	private static final ItemStack[] foodLoot = new ItemStack[]{
@@ -159,6 +166,18 @@ public class ScrapItems1 extends Item {
     	}
     	if (scrapType == "timber") {
     		// random choice of sticks, wooden plank/stairs/slabs, logs (rare), torches
+    		if (world.rand.nextInt(10) == 0) {
+    			boolean added = player.inventory.addItemStackToInventory(new ItemStack(itemStack.getItem(), 1, itemNames.length-1));
+    		}
+    		// random choice of food/wheat items
+    		else {
+    			int i = this.itemRand.nextInt(timberLoot.length);
+    			ItemStack item = timberLoot[i];
+    			boolean added = player.inventory.addItemStackToInventory(item);
+    		}
+    		--itemStack.stackSize;
+    		return itemStack;
+    		
     	}
     	if (scrapType == "food") {
     		if (world.rand.nextInt(10) == 0) {
