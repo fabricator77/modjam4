@@ -1,5 +1,7 @@
 package fabricator77.scrapworld.blocks;
 
+import java.util.Random;
+
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fabricator77.scrapworld.ScrapWorld;
@@ -7,10 +9,18 @@ import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
 public class BlockFridge extends BlockChest {//extends Block {
+	
+	private final Random field_149955_b = new Random();
 
 	public BlockFridge(int state) {
 		super(state);
@@ -93,6 +103,190 @@ public class BlockFridge extends BlockChest {//extends Block {
         if (block3 == this)
         {
             this.func_149954_e(world, x + 1, y, z);
+        }
+    }
+	
+	@Override
+	public void func_149954_e(World world, int x, int y, int z)
+    {
+        if (!world.isRemote)
+        {
+            Block block = world.getBlock(x, y, z - 1);
+            Block block1 = world.getBlock(x, y, z + 1);
+            Block block2 = world.getBlock(x - 1, y, z);
+            Block block3 = world.getBlock(x + 1, y, z);
+            boolean flag = true;
+            int l;
+            Block block4;
+            int i1;
+            Block block5;
+            boolean flag1;
+            byte b0;
+            int j1;
+
+            if (block != this && block1 != this)
+            {
+                if (block2 != this && block3 != this)
+                {
+                    b0 = 3;
+
+                    if (block.func_149730_j() && !block1.func_149730_j())
+                    {
+                        b0 = 3;
+                    }
+
+                    if (block1.func_149730_j() && !block.func_149730_j())
+                    {
+                        b0 = 2;
+                    }
+
+                    if (block2.func_149730_j() && !block3.func_149730_j())
+                    {
+                        b0 = 5;
+                    }
+
+                    if (block3.func_149730_j() && !block2.func_149730_j())
+                    {
+                        b0 = 4;
+                    }
+                }
+                else
+                {
+                    l = block2 == this ? x - 1 : x + 1;
+                    block4 = world.getBlock(l, y, z - 1);
+                    i1 = block2 == this ? x - 1 : x + 1;
+                    block5 = world.getBlock(i1, y, z + 1);
+                    b0 = 3;
+                    flag1 = true;
+
+                    if (block2 == this)
+                    {
+                        j1 = world.getBlockMetadata(x - 1, y, z);
+                    }
+                    else
+                    {
+                        j1 = world.getBlockMetadata(x + 1, y, z);
+                    }
+
+                    if (j1 == 2)
+                    {
+                        b0 = 2;
+                    }
+
+                    if ((block.func_149730_j() || block4.func_149730_j()) && !block1.func_149730_j() && !block5.func_149730_j())
+                    {
+                        b0 = 3;
+                    }
+
+                    if ((block1.func_149730_j() || block5.func_149730_j()) && !block.func_149730_j() && !block4.func_149730_j())
+                    {
+                        b0 = 2;
+                    }
+                }
+            }
+            else
+            {
+                l = block == this ? z - 1 : z + 1;
+                block4 = world.getBlock(x - 1, y, l);
+                i1 = block == this ? z - 1 : z + 1;
+                block5 = world.getBlock(x + 1, y, i1);
+                b0 = 5;
+                flag1 = true;
+
+                if (block == this)
+                {
+                    j1 = world.getBlockMetadata(x, y, z - 1);
+                }
+                else
+                {
+                    j1 = world.getBlockMetadata(x, y, z + 1);
+                }
+
+                if (j1 == 4)
+                {
+                    b0 = 4;
+                }
+
+                if ((block2.func_149730_j() || block4.func_149730_j()) && !block3.func_149730_j() && !block5.func_149730_j())
+                {
+                    b0 = 5;
+                }
+
+                if ((block3.func_149730_j() || block5.func_149730_j()) && !block2.func_149730_j() && !block4.func_149730_j())
+                {
+                    b0 = 4;
+                }
+            }
+
+            world.setBlockMetadataWithNotify(x, y, z, b0, 3);
+        }
+    }
+	
+	
+	@Override
+	public void breakBlock(World world, int x, int y, int z, Block block, int metadata)
+    {
+        TileEntityChest tileentitychest = (TileEntityChest)world.getTileEntity(x, y, z);
+
+        if (tileentitychest != null)
+        {
+            for (int i1 = 0; i1 < tileentitychest.getSizeInventory(); ++i1)
+            {
+                ItemStack itemstack = tileentitychest.getStackInSlot(i1);
+
+                if (itemstack != null)
+                {
+                    float f = this.field_149955_b.nextFloat() * 0.8F + 0.1F;
+                    float f1 = this.field_149955_b.nextFloat() * 0.8F + 0.1F;
+                    EntityItem entityitem;
+
+                    for (float f2 = this.field_149955_b.nextFloat() * 0.8F + 0.1F; itemstack.stackSize > 0; world.spawnEntityInWorld(entityitem))
+                    {
+                        int j1 = this.field_149955_b.nextInt(21) + 10;
+
+                        if (j1 > itemstack.stackSize)
+                        {
+                            j1 = itemstack.stackSize;
+                        }
+
+                        itemstack.stackSize -= j1;
+                        entityitem = new EntityItem(world, (double)((float)x + f), (double)((float)y + f1), (double)((float)z + f2), new ItemStack(itemstack.getItem(), j1, itemstack.getItemDamage()));
+                        float f3 = 0.05F;
+                        entityitem.motionX = (double)((float)this.field_149955_b.nextGaussian() * f3);
+                        entityitem.motionY = (double)((float)this.field_149955_b.nextGaussian() * f3 + 0.2F);
+                        entityitem.motionZ = (double)((float)this.field_149955_b.nextGaussian() * f3);
+
+                        if (itemstack.hasTagCompound())
+                        {
+                            entityitem.getEntityItem().setTagCompound((NBTTagCompound)itemstack.getTagCompound().copy());
+                        }
+                    }
+                }
+            }
+
+            world.func_147453_f(x, y, z, block);
+        }
+
+        super.breakBlock(world, x, y, z, block, metadata);
+    }
+	
+	@Override
+	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_)
+    {
+        if (world.isRemote)
+        {
+            return true;
+        }
+        else
+        {
+            IInventory iinventory = this.func_149951_m(world, x, y, z);
+
+            if (iinventory != null)
+            {
+                //player.displayGUIChest(iinventory);
+            }
+
+            return true;
         }
     }
 }
