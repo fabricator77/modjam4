@@ -1,0 +1,28 @@
+itemGroup.ScrapWorld=Scrap World
+
+tile.scrapCube.name=Scrap Cube
+tile.scrapDebris.name=Scrap Debris
+
+scrap_unknown.name=Raw Scrap
+scrap_metallic.name=Metallic Scrap
+scrap_wire.name=Wire Scrap
+scrap_circuit.name=Circuit Scrap
+scrap_plastic.name=Plastic Scrap
+scrap_glass.name=Glass Scrap
+scrap_concrete.name=Concrete Scrap
+scrap_timber.name=Timber Scrap
+scrap_food.name=Food Scrap
+scrap_burnt.name=Burnt Scrap
+scrap_rare.name=Rare Scrap
+scrap_useless.name=Useless Scrap
+
+dusts_tin.name=Tin Dust
+dusts_copper.name=Copper Dust
+dusts_iron.name=Iron Dust
+dusts_gold.name=Gold Dust
+dusts_emerald.name=Emerald Dust
+dusts_diamond.name=Diamond Dust
+dusts_glass.name=Glass Dust
+dusts_concrete.name=Concrete Dust
+dusts_sawdust.name=Sawdust
+dusts_charcoal.name=Charcoal Dust
