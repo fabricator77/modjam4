@@ -33,12 +33,14 @@ public class ScrapItems1 extends Item {
 	};
 	
 	private static final ItemStack[] glassLoot = new ItemStack[]{
+		new ItemStack(ScrapWorldBlocks.dusts, 1, 6),// glass dust
 		new ItemStack(Blocks.sand, 1, 0),
 		new ItemStack(Blocks.glass, 1, 0),
 		new ItemStack(Blocks.glass_pane, 2, 0)
 	};
 	
 	private static final ItemStack[] concreteLoot = new ItemStack[]{
+		new ItemStack(ScrapWorldBlocks.dusts, 1, 7),// concrete dust
 		new ItemStack(Items.flint, 4, 0),
 		new ItemStack(Blocks.gravel, 1, 0),
 		new ItemStack(Blocks.cobblestone, 1, 0),
