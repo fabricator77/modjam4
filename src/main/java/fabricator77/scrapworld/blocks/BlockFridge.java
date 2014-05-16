@@ -16,6 +16,7 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryBasic;
 import net.minecraft.inventory.InventoryLargeChest;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
@@ -327,58 +328,59 @@ public class BlockFridge extends BlockChest {//extends Block {
 	        return true;
 	    }
 	 
-	 public IInventory func_149951_m(World world, int p_149951_2_, int p_149951_3_, int p_149951_4_)
+	 public IInventory func_149951_m(World world, int x, int y, int z)
 	    {
-	        Object object = (TileEntityChest)world.getTileEntity(p_149951_2_, p_149951_3_, p_149951_4_);
+	        Object object = (TileEntityFridge)world.getTileEntity(x, y, z);
 
 	        if (object == null)
 	        {
 	            return null;
 	        }
-	        else if (world.isSideSolid(p_149951_2_, p_149951_3_ + 1, p_149951_4_, DOWN))
+	        else if (world.isSideSolid(x, y + 1, z, DOWN))
 	        {
 	            return null;
 	        }
-	        else if (kitty(world, p_149951_2_, p_149951_3_, p_149951_4_))
+	        else if (kitty(world, x, y, z))
 	        {
 	            return null;
 	        }
-	        else if (world.getBlock(p_149951_2_ - 1, p_149951_3_, p_149951_4_) == this && (world.isSideSolid(p_149951_2_ - 1, p_149951_3_ + 1, p_149951_4_, DOWN) || kitty(world, p_149951_2_ - 1, p_149951_3_, p_149951_4_)))
+	        else if (world.getBlock(x - 1, y, z) == this && (world.isSideSolid(x - 1, y + 1, z, DOWN) || kitty(world, x - 1, y, z)))
 	        {
 	            return null;
 	        }
-	        else if (world.getBlock(p_149951_2_ + 1, p_149951_3_, p_149951_4_) == this && (world.isSideSolid(p_149951_2_ + 1, p_149951_3_ + 1, p_149951_4_, DOWN) || kitty(world, p_149951_2_ + 1, p_149951_3_, p_149951_4_)))
+	        else if (world.getBlock(x + 1, y, z) == this && (world.isSideSolid(x + 1, y + 1, z, DOWN) || kitty(world, x + 1, y, z)))
 	        {
 	            return null;
 	        }
-	        else if (world.getBlock(p_149951_2_, p_149951_3_, p_149951_4_ - 1) == this && (world.isSideSolid(p_149951_2_, p_149951_3_ + 1, p_149951_4_ - 1, DOWN) || kitty(world, p_149951_2_, p_149951_3_, p_149951_4_ - 1)))
+	        else if (world.getBlock(x, y, z - 1) == this && (world.isSideSolid(x, y + 1, z - 1, DOWN) || kitty(world, x, y, z - 1)))
 	        {
 	            return null;
 	        }
-	        else if (world.getBlock(p_149951_2_, p_149951_3_, p_149951_4_ + 1) == this && (world.isSideSolid(p_149951_2_, p_149951_3_ + 1, p_149951_4_ + 1, DOWN) || kitty(world, p_149951_2_, p_149951_3_, p_149951_4_ + 1)))
+	        else if (world.getBlock(x, y, z + 1) == this && (world.isSideSolid(x, y + 1, z + 1, DOWN) || kitty(world, x, y, z + 1)))
 	        {
 	            return null;
 	        }
 	        else
 	        {
-	            if (world.getBlock(p_149951_2_ - 1, p_149951_3_, p_149951_4_) == this)
+	        	
+	            if (world.getBlock(x - 1, y, z) == this)
 	            {
-	                object = new InventoryLargeChest("container.fridgeDouble", (TileEntityChest)world.getTileEntity(p_149951_2_ - 1, p_149951_3_, p_149951_4_), (IInventory)object);
+	                object = new InventoryLargeChest("container.fridge", (TileEntityChest)world.getTileEntity(x - 1, y, z), (IInventory)object);
 	            }
 
-	            if (world.getBlock(p_149951_2_ + 1, p_149951_3_, p_149951_4_) == this)
+	            if (world.getBlock(x + 1, y, z) == this)
 	            {
-	                object = new InventoryLargeChest("container.fridgeDouble", (IInventory)object, (TileEntityChest)world.getTileEntity(p_149951_2_ + 1, p_149951_3_, p_149951_4_));
+	                object = new InventoryLargeChest("container.fridge", (IInventory)object, (TileEntityChest)world.getTileEntity(x + 1, y, z));
 	            }
 
-	            if (world.getBlock(p_149951_2_, p_149951_3_, p_149951_4_ - 1) == this)
+	            if (world.getBlock(x, y, z - 1) == this)
 	            {
-	                object = new InventoryLargeChest("container.fridgeDouble", (TileEntityChest)world.getTileEntity(p_149951_2_, p_149951_3_, p_149951_4_ - 1), (IInventory)object);
+	                object = new InventoryLargeChest("container.fridge", (TileEntityChest)world.getTileEntity(x, y, z - 1), (IInventory)object);
 	            }
 
-	            if (world.getBlock(p_149951_2_, p_149951_3_, p_149951_4_ + 1) == this)
+	            if (world.getBlock(x, y, z + 1) == this)
 	            {
-	                object = new InventoryLargeChest("container.fridgeDouble", (IInventory)object, (TileEntityChest)world.getTileEntity(p_149951_2_, p_149951_3_, p_149951_4_ + 1));
+	                object = new InventoryLargeChest("container.fridge", (IInventory)object, (TileEntityChest)world.getTileEntity(x, y, z + 1));
 	            }
 
 	            return (IInventory)object;
