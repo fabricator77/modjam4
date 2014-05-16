@@ -140,7 +140,7 @@ public class ScrapItems1 extends Item {
     		}
     		// choose a random type to make this into
     		// scrapType = itemNames[1 + world.rand.nextInt(itemNames.length-1)];
-    		boolean added = player.inventory.addItemStackToInventory(new ItemStack(this, 1, 1 + world.rand.nextInt(itemNames.length-1)));
+    		//boolean added = player.inventory.addItemStackToInventory(new ItemStack(this, 1, 1 + world.rand.nextInt(itemNames.length-1)));
     		//--itemStack.stackSize;
 			return itemStack;
     	}

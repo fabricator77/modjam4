@@ -57,7 +57,8 @@ public class BlockFridge extends BlockChest {//extends Block {
 	@Override
     public int getRenderType()
     {
-        return 22;//TODO: put correct custom renderer here
+		// was 22
+        return -1;//TODO: put correct custom renderer here
     }
 	
 	@Override

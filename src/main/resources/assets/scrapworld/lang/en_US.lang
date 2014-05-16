@@ -8,6 +8,7 @@ tile.wireTangle.name=Tangled Wire
 
 container.fridge=Fridge
 container.fridgeHalf=Bar Fridge
+tile.fridge.name=Fridge
 
 scrap_unknown.name=Raw Scrap
 scrap_metallic.name=Metallic Scrap
