@@ -11,5 +11,7 @@ public class FridgeLoot {
 		new ItemStack(Items.cake,1,0),
 		new ItemStack(Blocks.yellow_flower, 1, 0),
 		new ItemStack(Blocks.red_flower, 1, 0), // 9 possible versions
+		new ItemStack(Items.dye), // 16 possible versions
+		// new ItemStack(Items.egg,1,0), // not sure, as can be used to spawn chickens
 	};
 }

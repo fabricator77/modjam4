@@ -18,6 +18,7 @@ import net.minecraft.block.BlockFurnace;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraftforge.oredict.OreDictionary;
@@ -39,7 +40,7 @@ public class ScrapWorldBlocks {
 
 	public ScrapWorldBlocks() {
 		scrapCube = new BlockScrapCube().setBlockName("scrapCube").setHardness(3.0F).setResistance(5.0F);
-		GameRegistry.registerBlock(scrapCube, "scrapCube");
+		GameRegistry.registerBlock(scrapCube, ItemBlock.class, "scrapCube");
 		scrapSurfaceDebris = new BlockScrapSurfaceDebris().setBlockName("scrapDebris");
 		GameRegistry.registerBlock(scrapSurfaceDebris, "scrapDebris");
 		

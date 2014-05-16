@@ -49,7 +49,6 @@ public class ScrapItems1 extends Item {
 		new ItemStack(Items.cooked_fished,1,0),
 		new ItemStack(Items.cooked_porkchop,1,0),
 		new ItemStack(Items.cookie,4,0),
-		//new ItemStack(Items.egg,1,0),
 		new ItemStack(Items.melon,1,0),
 		//new ItemStack(Items.melon_seeds,1,0),
 		new ItemStack(Items.mushroom_stew,1,0),
