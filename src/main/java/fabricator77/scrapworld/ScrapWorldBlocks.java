@@ -2,14 +2,7 @@ package fabricator77.scrapworld;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
-import fabricator77.scrapworld.blocks.BlockCompressedScrapCube;
-import fabricator77.scrapworld.blocks.BlockConcrete;
-import fabricator77.scrapworld.blocks.BlockFridge;
-import fabricator77.scrapworld.blocks.BlockScrapCube;
-import fabricator77.scrapworld.blocks.BlockScrapFurnace;
-import fabricator77.scrapworld.blocks.BlockScrapSurfaceDebris;
-import fabricator77.scrapworld.blocks.BlockWireTangle;
-import fabricator77.scrapworld.blocks.TileEntityFridge;
+import fabricator77.scrapworld.blocks.*;
 import fabricator77.scrapworld.client.TileEntityRenderFridge;
 import fabricator77.scrapworld.items.Dusts;
 import fabricator77.scrapworld.items.Ingots;
@@ -36,6 +29,8 @@ public class ScrapWorldBlocks {
 	
 	public static Block concreteBlock;
 	public static Block fridge;
+	public static Block machine;
+	public static Block power;
 	
 	public static Item scrapItems1;
 	public static Item dusts;
@@ -65,8 +60,15 @@ public class ScrapWorldBlocks {
 		
 		fridge = new BlockFridge(0).setHardness(3.5F).setBlockName("fridge");
 		GameRegistry.registerBlock(fridge, "fridge");
-		//TODO: create and register TileEntity for Fridge
 		ClientRegistry.registerTileEntity(TileEntityFridge.class, "tileEntityFridge", new TileEntityRenderFridge());
+		
+		machine = new BlockMachine().setHardness(3.5F).setBlockName("machine");
+		GameRegistry.registerBlock(machine, "machine");
+		//TODO: TileEntity
+		
+		power = new BlockPower().setHardness(3.5F).setBlockName("power");
+		GameRegistry.registerBlock(power, "power");
+		//TODO: TileEntity
 		
 		
 		scrapItems1 = new ScrapItems1();
