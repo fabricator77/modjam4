@@ -27,7 +27,7 @@ import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
-public class BlockFridge extends Block { //extends BlockChest {
+public class BlockFridge extends BlockChest {//extends Block {
 	
 	private final Random field_149955_b = new Random();
 
