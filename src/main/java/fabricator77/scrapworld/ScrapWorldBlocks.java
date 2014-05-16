@@ -3,6 +3,7 @@ package fabricator77.scrapworld;
 import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fabricator77.scrapworld.blocks.BlockCompressedScrapCube;
+import fabricator77.scrapworld.blocks.BlockConcrete;
 import fabricator77.scrapworld.blocks.BlockFridge;
 import fabricator77.scrapworld.blocks.BlockScrapCube;
 import fabricator77.scrapworld.blocks.BlockScrapFurnace;
@@ -32,6 +33,8 @@ public class ScrapWorldBlocks {
 	public static Block wireTangle;
 	public static Block scrapFurnace;
 	public static Block litScrapFurnace;
+	
+	public static Block concreteBlock;
 	public static Block fridge;
 	
 	public static Item scrapItems1;
@@ -50,13 +53,16 @@ public class ScrapWorldBlocks {
 		wireTangle = new BlockWireTangle().setBlockName("wireTangle").setHardness(4.0F);
 		GameRegistry.registerBlock(wireTangle, "wireTangle");
 		
+		/**
 		scrapFurnace = new BlockScrapFurnace(false).setHardness(3.5F).setBlockName("scrapFurnace");
 		GameRegistry.registerBlock(scrapFurnace, "scrapFurnace");
 		litScrapFurnace = new BlockScrapFurnace(false).setHardness(3.5F).setBlockName("litScrapFurnace");
 		GameRegistry.registerBlock(litScrapFurnace, "litScrapFurnace");
+		*/
 		
+		concreteBlock = new BlockConcrete().setHardness(4F).setBlockName("concreteBlock");
+		GameRegistry.registerBlock(concreteBlock, "concreteBlock");
 		
-		//TODO: customize renderer to suit
 		fridge = new BlockFridge(0).setHardness(3.5F).setBlockName("fridge");
 		GameRegistry.registerBlock(fridge, "fridge");
 		//TODO: create and register TileEntity for Fridge
