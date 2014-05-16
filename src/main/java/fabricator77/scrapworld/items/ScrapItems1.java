@@ -164,35 +164,25 @@ public class ScrapItems1 extends Item {
     	}
     	if (scrapType == "timber") {
     		// random choice of sticks, wooden plank/stairs/slabs, logs (rare), torches
-    		if (world.rand.nextInt(10) == 0) {
-    			boolean added = player.inventory.addItemStackToInventory(new ItemStack(itemStack.getItem(), 1, itemNames.length-1));
-    		}
-    		// random choice of food/wheat items
-    		else {
-    			int i = this.itemRand.nextInt(timberLoot.length);
-    			ItemStack item = timberLoot[i];
-    			boolean added = player.inventory.addItemStackToInventory(item);
-    		}
+    		int i = this.itemRand.nextInt(timberLoot.length);
+    		ItemStack item = timberLoot[i];
+    		boolean added = player.inventory.addItemStackToInventory(item);
     		--itemStack.stackSize;
     		return itemStack;
     		
     	}
     	if (scrapType == "food") {
-    		if (world.rand.nextInt(10) == 0) {
-    			boolean added = player.inventory.addItemStackToInventory(new ItemStack(itemStack.getItem(), 1, itemNames.length-1));
-    		}
-    		// random choice of food/wheat items
-    		else {
-    			int i = this.itemRand.nextInt(foodLoot.length);
-    			ItemStack item = foodLoot[i];
-    			boolean added = player.inventory.addItemStackToInventory(item);
-    		}
+    		int i = this.itemRand.nextInt(foodLoot.length);
+    		ItemStack item = foodLoot[i];
+    		boolean added = player.inventory.addItemStackToInventory(item);
     		--itemStack.stackSize;
     		return itemStack;
     		
     	}
     	if (scrapType == "burnt") {
     		// mostly useless but can drop charcoal sometimes
+    		ItemStack item = new ItemStack(Items.coal, 1, this.itemRand.nextInt(2));
+			boolean added = player.inventory.addItemStackToInventory(item);
     	}
     	if (scrapType == "rare") {
     		if (world.rand.nextInt(10) == 0) {
