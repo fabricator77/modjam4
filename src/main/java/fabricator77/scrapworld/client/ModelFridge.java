@@ -15,7 +15,7 @@ public class ModelFridge extends ModelBase{
         this.fridgeLid.rotationPointZ = 15.0F;
         //TODO: shift location and shape of handle
         this.fridgeHandle = (new ModelRenderer(this, 0, 0)).setTextureSize(64, 64);
-        this.fridgeHandle.addBox(-1.0F, -2.0F, -15.0F, 2, 4, 1, 0.0F);
+        this.fridgeHandle.addBox(-1.0F, -2.0F, -15.0F, 4, 1, 1, 0.0F);
         this.fridgeHandle.rotationPointX = 8.0F;
         this.fridgeHandle.rotationPointY = 7.0F;
         this.fridgeHandle.rotationPointZ = 15.0F;
@@ -24,5 +24,13 @@ public class ModelFridge extends ModelBase{
         this.fridgeBelow.rotationPointX = 1.0F;
         this.fridgeBelow.rotationPointY = 6.0F;
         this.fridgeBelow.rotationPointZ = 1.0F;
+    }
+    
+    public void renderAll()
+    {
+        this.fridgeHandle.rotateAngleX = this.fridgeLid.rotateAngleX;
+        this.fridgeLid.render(0.0625F);
+        this.fridgeHandle.render(0.0625F);
+        this.fridgeBelow.render(0.0625F);
     }
 }

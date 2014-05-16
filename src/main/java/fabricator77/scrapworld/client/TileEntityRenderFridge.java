@@ -6,11 +6,9 @@ import org.lwjgl.opengl.GL12;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fabricator77.scrapworld.block.TileEntityFridge;
+import fabricator77.scrapworld.blocks.BlockFridge;
+import fabricator77.scrapworld.blocks.TileEntityFridge;
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockChest;
-import net.minecraft.client.model.ModelChest;
-import net.minecraft.client.model.ModelLargeChest;
 import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityChest;
@@ -19,12 +17,8 @@ import net.minecraft.util.ResourceLocation;
 @SideOnly(Side.CLIENT)
 public class TileEntityRenderFridge extends TileEntitySpecialRenderer {
 	
-	//private static final ResourceLocation field_147507_b = new ResourceLocation("textures/entity/chest/trapped_double.png");
-    //private static final ResourceLocation field_147508_c = new ResourceLocation("textures/entity/chest/christmas_double.png");
-    private static final ResourceLocation field_147505_d = new ResourceLocation("textures/entity/chest/normal_double.png");
-    //private static final ResourceLocation field_147506_e = new ResourceLocation("textures/entity/chest/trapped.png");
-    //private static final ResourceLocation field_147503_f = new ResourceLocation("textures/entity/chest/christmas.png");
-    private static final ResourceLocation field_147504_g = new ResourceLocation("textures/entity/chest/normal.png");
+    private static final ResourceLocation field_147505_d = new ResourceLocation("textures/entity/fridge_double.png");
+    private static final ResourceLocation field_147504_g = new ResourceLocation("textures/entity/fridge.png");
 	
 	private ModelFridge field_147510_h = new ModelFridge();
     private ModelFridge field_147511_i = new ModelLargeFridge();
@@ -49,11 +43,11 @@ public class TileEntityRenderFridge extends TileEntitySpecialRenderer {
             Block block = te.getBlockType();
             i = te.getBlockMetadata();
 
-            if (block instanceof BlockChest && i == 0)
+            if (block instanceof BlockFridge && i == 0)
             {
                 try
                 {
-                ((BlockChest)block).func_149954_e(te.getWorldObj(), te.xCoord, te.yCoord, te.zCoord);
+                ((BlockFridge)block).func_149954_e(te.getWorldObj(), te.xCoord, te.yCoord, te.zCoord);
                 }
                 catch (ClassCastException e)
                 {

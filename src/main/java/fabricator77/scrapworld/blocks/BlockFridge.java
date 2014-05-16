@@ -14,7 +14,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.tileentity.TileEntityChest;
+//import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 
@@ -226,7 +226,10 @@ public class BlockFridge extends BlockChest {//extends Block {
 	@Override
 	public void breakBlock(World world, int x, int y, int z, Block block, int metadata)
     {
-        TileEntityChest tileentitychest = (TileEntityChest)world.getTileEntity(x, y, z);
+		if (world.getTileEntity(x, y, z) instanceof TileEntityFridge == false) {
+			world.setBlockToAir(x, y, z);
+		}
+		TileEntityFridge tileentitychest = (TileEntityFridge)world.getTileEntity(x, y, z);
 
         if (tileentitychest != null)
         {

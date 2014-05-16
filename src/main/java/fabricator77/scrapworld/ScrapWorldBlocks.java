@@ -8,6 +8,8 @@ import fabricator77.scrapworld.blocks.BlockScrapCube;
 import fabricator77.scrapworld.blocks.BlockScrapFurnace;
 import fabricator77.scrapworld.blocks.BlockScrapSurfaceDebris;
 import fabricator77.scrapworld.blocks.BlockWireTangle;
+import fabricator77.scrapworld.blocks.TileEntityFridge;
+import fabricator77.scrapworld.client.TileEntityRenderFridge;
 import fabricator77.scrapworld.items.Dusts;
 import fabricator77.scrapworld.items.Ingots;
 import fabricator77.scrapworld.items.ScrapItems1;
@@ -57,7 +59,7 @@ public class ScrapWorldBlocks {
 		fridge = new BlockFridge(0).setHardness(3.5F).setBlockName("fridge");
 		GameRegistry.registerBlock(fridge, "fridge");
 		//TODO: create and register TileEntity for Fridge
-		//ClientRegistry.registerTileEntity(tileEntityClass, id, specialRenderer);
+		ClientRegistry.registerTileEntity(TileEntityFridge.class, "tileEntityFridge", new TileEntityRenderFridge());
 		
 		
 		scrapItems1 = new ScrapItems1();
