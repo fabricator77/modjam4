@@ -40,10 +40,8 @@ public class BlockScrapCube extends Block {
 	@Override
     public void registerBlockIcons(IIconRegister iconRegister)
     {
-		int i =0;
-		//TODO: multiple textures per block
-		//this.blockIcon = iconRegister.registerIcon(ScrapWorld.modid+":scrap_cube_"+blockNames[i]);
-		for (i = 0; i < blockNames.length; ++i)
+		this.textures = new IIcon[blockNames.length];
+		for (int i = 0; i < blockNames.length; ++i)
         {
 			textures[i] = iconRegister.registerIcon(ScrapWorld.modid+":scrap_cube_"+blockNames[i]);
         }
@@ -77,10 +75,10 @@ public class BlockScrapCube extends Block {
         }
         if (metadata == 0) {
         	//TODO: change to drop 2x items or drop rare scrap item/loot
-        	if (world.rand.nextInt(20) == 0) ret.add(new ItemStack(Items.emerald, 0, 0));
+        	if (world.rand.nextInt(20) == 0) ret.add(new ItemStack(Items.gold_nugget, 1, 0));
         }
-        if (metadata == 1) {
-        	// burnt scrap ?
+        if (metadata == 9) {
+        	// burnt scrap
         	if (world.rand.nextInt(20) == 0) ret.add(new ItemStack(Items.coal, fortune, 1));
         }
         
