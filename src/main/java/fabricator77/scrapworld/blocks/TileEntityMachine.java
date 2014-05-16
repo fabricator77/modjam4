@@ -10,6 +10,7 @@ public class TileEntityMachine extends TileEntity implements IMachine {
 	
 	private boolean ready = false;
 	private boolean complete = false;
+	private boolean powered = false;
 	
 	@Override
     public void readFromNBT(NBTTagCompound par1NBTTagCompound)
@@ -26,6 +27,7 @@ public class TileEntityMachine extends TileEntity implements IMachine {
     public void writeToNBT(NBTTagCompound par1NBTTagCompound)
     {
         super.writeToNBT(par1NBTTagCompound);
+        par1NBTTagCompound.setBoolean("ready", this.ready);
     }
 
 
@@ -57,6 +59,11 @@ public class TileEntityMachine extends TileEntity implements IMachine {
 	@Override
 	public boolean isMachineComplete() {
 		return complete;
+	}
+
+	@Override
+	public boolean isMachinePowered() {
+		return powered;
 	}
     
     

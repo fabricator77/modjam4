@@ -4,4 +4,6 @@ public interface IMachine {
 	public abstract boolean isMachineReady();
 	
 	public abstract boolean isMachineComplete();
+	
+	public abstract boolean isMachinePowered();
 }
