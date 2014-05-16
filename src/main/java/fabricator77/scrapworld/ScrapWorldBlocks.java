@@ -1,5 +1,6 @@
 package fabricator77.scrapworld;
 
+import cpw.mods.fml.client.registry.ClientRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fabricator77.scrapworld.blocks.BlockCompressedScrapCube;
 import fabricator77.scrapworld.blocks.BlockFridge;
@@ -55,6 +56,8 @@ public class ScrapWorldBlocks {
 		//TODO: customize renderer to suit
 		fridge = new BlockFridge(0).setHardness(3.5F).setBlockName("fridge");
 		GameRegistry.registerBlock(fridge, "fridge");
+		//TODO: create and register TileEntity for Fridge
+		//ClientRegistry.registerTileEntity(tileEntityClass, id, specialRenderer);
 		
 		
 		scrapItems1 = new ScrapItems1();
