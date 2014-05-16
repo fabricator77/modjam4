@@ -32,6 +32,19 @@ public class ScrapItems1 extends Item {
 		new ItemStack(Items.golden_apple,1,0)
 	};
 	
+	private static final ItemStack[] glassLoot = new ItemStack[]{
+		new ItemStack(Blocks.sand, 1, 0),
+		new ItemStack(Blocks.glass, 1, 0),
+		new ItemStack(Blocks.glass_pane, 2, 0)
+	};
+	
+	private static final ItemStack[] concreteLoot = new ItemStack[]{
+		new ItemStack(Items.flint, 4, 0),
+		new ItemStack(Blocks.gravel, 1, 0),
+		new ItemStack(Blocks.cobblestone, 1, 0),
+		new ItemStack(Blocks.stone, 1, 0)
+	};
+	
 	private static final ItemStack[] timberLoot = new ItemStack[]{
 		new ItemStack(Items.stick,8,0),
 		new ItemStack(Blocks.planks,1,0),
@@ -158,9 +171,19 @@ public class ScrapItems1 extends Item {
     	}
     	if (scrapType == "glass") {
     		// random choice of glass fragments, sand, fibre strands
+    		int i = this.itemRand.nextInt(glassLoot.length);
+    		ItemStack item = glassLoot[i];
+    		boolean added = player.inventory.addItemStackToInventory(item);
+    		--itemStack.stackSize;
+    		return itemStack;
     	}
     	if (scrapType == "concrete") {
     		// random choice of concrete, sand, gravel, cobblestone, various stone blocks/steps/slabs
+    		int i = this.itemRand.nextInt(concreteLoot.length);
+    		ItemStack item = concreteLoot[i];
+    		boolean added = player.inventory.addItemStackToInventory(item);
+    		--itemStack.stackSize;
+    		return itemStack;
     	}
     	if (scrapType == "timber") {
     		// random choice of sticks, wooden plank/stairs/slabs, logs (rare), torches
@@ -169,7 +192,6 @@ public class ScrapItems1 extends Item {
     		boolean added = player.inventory.addItemStackToInventory(item);
     		--itemStack.stackSize;
     		return itemStack;
-    		
     	}
     	if (scrapType == "food") {
     		int i = this.itemRand.nextInt(foodLoot.length);
