@@ -19,10 +19,10 @@ public class ModelFridge extends ModelBase{
         this.fridgeHandle.rotationPointX = 6.0F;// was 8.0F
         this.fridgeHandle.rotationPointY = 3.0F;// was 7.0F
         this.fridgeHandle.rotationPointZ = 15.0F;// was 15.0F
-        this.fridgeCabinet = (new ModelRenderer(this, 0, 19)).setTextureSize(64, 64);
-        this.fridgeCabinet.addBox(0.0F, 0.0F, 0.0F, 14, 10, 14, 0.0F);
+        this.fridgeCabinet = (new ModelRenderer(this, 0, 17)).setTextureSize(64, 64);
+        this.fridgeCabinet.addBox(0.0F, 0.0F, 0.0F, 14, 14, 14, 0.0F);
         this.fridgeCabinet.rotationPointX = 1.0F;
-        this.fridgeCabinet.rotationPointY = 6.0F;
+        this.fridgeCabinet.rotationPointY = 4.0F;
         this.fridgeCabinet.rotationPointZ = 1.0F;
     }
     

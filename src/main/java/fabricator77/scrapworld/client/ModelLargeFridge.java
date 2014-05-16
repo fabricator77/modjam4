@@ -20,7 +20,7 @@ public class ModelLargeFridge extends ModelFridge{
         this.fridgeCabinet = (new ModelRenderer(this, 0, 17)).setTextureSize(128, 64);
         this.fridgeCabinet.addBox(0.0F, 0.0F, 0.0F, 30, 14, 14, 0.0F);
         this.fridgeCabinet.rotationPointX = 1.0F;
-        this.fridgeCabinet.rotationPointY = 5.0F;// was 6.0F
+        this.fridgeCabinet.rotationPointY = 4.0F;// was 6.0F
         this.fridgeCabinet.rotationPointZ = 1.0F;
     }
 }
