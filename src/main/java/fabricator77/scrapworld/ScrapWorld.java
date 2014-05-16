@@ -36,8 +36,6 @@ public class ScrapWorld {
 	public static int scrapPlainsID = 100;
 	public static int scrapMountainID = 101;
 	
-	
-	//TODO: creative tab and 16x16 icon
 	public static CreativeTabs creativeTab = new CreativeTabScrapWorld(CreativeTabs.getNextID(), ScrapWorld.modid);
 	
 	@EventHandler
@@ -49,6 +47,8 @@ public class ScrapWorld {
 		scrapMountainID = this.config.get("biomeIDs", "scrapMountainID", 101).getInt();
 		
 		this.config.save();
+		
+		proxy.initRendering();
 		
 		blocks = new ScrapWorldBlocks();
 	}
