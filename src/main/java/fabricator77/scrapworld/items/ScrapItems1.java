@@ -43,7 +43,6 @@ public class ScrapItems1 extends Item {
 		new ItemStack(Items.apple,1,0),
 		new ItemStack(Items.bread,1,0),
 		new ItemStack(Items.bowl,2,0),
-		new ItemStack(Items.cake,1,0),
 		new ItemStack(Items.carrot,1,0),
 		new ItemStack(Items.cooked_beef,1,0),
 		new ItemStack(Items.cooked_chicken,1,0),
