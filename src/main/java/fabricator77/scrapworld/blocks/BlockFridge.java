@@ -8,6 +8,7 @@ import java.util.Random;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fabricator77.scrapworld.ScrapWorld;
+import fabricator77.scrapworld.client.RenderFridge;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockChest;
 import net.minecraft.block.material.Material;
@@ -58,7 +59,7 @@ public class BlockFridge extends BlockChest {//extends Block {
     public int getRenderType()
     {
 		// was 22
-        return -1; //ScrapWorld.proxy.fridgeRendererID;
+        return RenderFridge.renderID; //ScrapWorld.proxy.fridgeRendererID;
     }
 	
 	@Override
