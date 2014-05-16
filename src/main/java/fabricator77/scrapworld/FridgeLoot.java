@@ -3,9 +3,10 @@ package fabricator77.scrapworld;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.WeightedRandomChestContent;
 
 public class FridgeLoot {
-	public static ItemStack[] loot = new ItemStack[]{
+	public static WeightedRandomChestContent[] loot = new WeightedRandomChestContent[]{
 		new ItemStack(Blocks.flower_pot, 1, 0),
 		new ItemStack(Items.snowball, 4, 0),
 		new ItemStack(Items.cake,1,0),

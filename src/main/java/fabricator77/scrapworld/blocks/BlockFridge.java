@@ -58,8 +58,7 @@ public class BlockFridge extends BlockChest {//extends Block {
 	@Override
     public int getRenderType()
     {
-		// was 22
-        return RenderFridge.renderID; //ScrapWorld.proxy.fridgeRendererID;
+        return RenderFridge.renderID;
     }
 	
 	@Override
