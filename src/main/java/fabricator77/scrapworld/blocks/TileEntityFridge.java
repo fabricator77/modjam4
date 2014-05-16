@@ -45,7 +45,7 @@ public class TileEntityFridge extends TileEntityChest{
     public void readFromNBT(NBTTagCompound tag)
     {
         super.readFromNBT(tag);
-        NBTTagList nbttaglist = tag.getTagList("Items", 10);
+        // NBTTagList nbttaglist = tag.getTagList("Items", 10);
         //this.chestContents = new ItemStack[this.getSizeInventory()];
 
         if (tag.hasKey("CustomName", 8))
@@ -71,7 +71,7 @@ public class TileEntityFridge extends TileEntityChest{
     public void writeToNBT(NBTTagCompound tag)
     {
         super.writeToNBT(tag);
-        NBTTagList nbttaglist = new NBTTagList();
+        //NBTTagList nbttaglist = new NBTTagList();
 
         /**
         for (int i = 0; i < this.chestContents.length; ++i)
@@ -86,7 +86,7 @@ public class TileEntityFridge extends TileEntityChest{
         }
         */
 
-        tag.setTag("Items", nbttaglist);
+        //tag.setTag("Items", nbttaglist);
 
         if (this.hasCustomInventoryName())
         {
