@@ -38,3 +38,7 @@ dusts_charcoal.name=Charcoal Dust
 tin_ingot.name=Tin Ingot
 copper_ingot.name=Copper Ingot
 plant.name=Plant
+
+hv_power_cell.name=HV Power Cell
+heater_barrel.name=Heater Barrel
+voltage_regulator.name=Voltage Regulator

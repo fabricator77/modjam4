@@ -52,7 +52,7 @@ public class PowerItems extends Item {
 
         for (int i = 0; i < textures.length; ++i)
         {
-            this.textures[i] = par1IconRegister.registerIcon(ScrapWorld.modid+":scrap_" + itemNames[i]);
+            this.textures[i] = par1IconRegister.registerIcon(ScrapWorld.modid+":" + itemNames[i]);
         }
     }
 }

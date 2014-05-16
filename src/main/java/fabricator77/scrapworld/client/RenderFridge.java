@@ -19,7 +19,7 @@ public class RenderFridge implements ISimpleBlockRenderingHandler {
 	@Override
 	public void renderInventoryBlock(Block block, int metadata, int modelId, RenderBlocks renderer) {
 		GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
-		GL11.glTranslatef(-1F, -0.3F, -0.5F);
+		GL11.glTranslatef(-0.5F, -0.3F, -0.5F);
 		GL11.glScalef(1.0F, 1.0F, 1.0F);
 		TileEntityRendererDispatcher.instance.renderTileEntityAt(teToRender, 0.0D, 0.0D, 0.0D, 0.0F);
 		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
