@@ -19,7 +19,7 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.IBlockAccess;
 
 @SideOnly(Side.CLIENT)
-public class TileEntityRenderFridge extends TileEntitySpecialRenderer implements ISimpleBlockRenderingHandler {
+public class TileEntityRenderFridge extends TileEntitySpecialRenderer {
 	
     private static final ResourceLocation field_147505_d = new ResourceLocation(ScrapWorld.modid+":textures/entity/fridge_double.png");
     private static final ResourceLocation field_147504_g = new ResourceLocation(ScrapWorld.modid+":textures/entity/fridge.png");
@@ -149,31 +149,5 @@ public class TileEntityRenderFridge extends TileEntitySpecialRenderer implements
             GL11.glPopMatrix();
             GL11.glColor4f(1.0F, 1.0F, 1.0F, 1.0F);
         }
-	}
-
-    
-    // ISimpleBlockRenderingHandler methods below
-	@Override
-	// public void renderBlockAsItem(Block p_147800_1_, int p_147800_2_, float p_147800_3_)
-	public void renderInventoryBlock(Block block, int metadata, int modelId, RenderBlocks renderer) {
-		GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
-        GL11.glTranslatef(-0.5F, -0.5F, -0.5F);
-        FridgeRenderHelper.instance.renderChest(block, metadata, 1.0F);
-        GL11.glEnable(GL12.GL_RESCALE_NORMAL);
-	}
-
-	@Override
-	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
-		return true;
-	}
-
-	@Override
-	public boolean shouldRender3DInInventory(int modelId) {
-		return true;
-	}
-
-	@Override
-	public int getRenderId() {
-		return ScrapWorld.proxy.fridgeRendererID;
 	}
 }

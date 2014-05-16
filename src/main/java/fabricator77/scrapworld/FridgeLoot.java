@@ -7,14 +7,14 @@ import net.minecraft.util.WeightedRandomChestContent;
 
 public class FridgeLoot {
 	public static WeightedRandomChestContent[] loot = new WeightedRandomChestContent[]{
-		new ItemStack(Blocks.flower_pot, 1, 0),
-		new ItemStack(Items.snowball, 4, 0),
-		new ItemStack(Items.cake,1,0),
-		new ItemStack(Blocks.yellow_flower, 1, 0),
-		new ItemStack(Blocks.red_flower, 1, 0), // 9 possible versions
-		new ItemStack(Items.dye), // 16 possible versions
+		new WeightedRandomChestContent(new ItemStack(Blocks.flower_pot, 1, 0), 0, 1, 10),
+		new WeightedRandomChestContent(new ItemStack(Items.snowball, 4, 0), 0, 4, 10),
+		new WeightedRandomChestContent(new ItemStack(Items.cake,1,0), 0, 1, 10),
+		new WeightedRandomChestContent(new ItemStack(Blocks.yellow_flower, 1, 0), 0, 1, 10),
+		new WeightedRandomChestContent(new ItemStack(Blocks.red_flower, 1, 0), 0, 1, 10),// 9 possible versions
+		new WeightedRandomChestContent(new ItemStack(Items.dye), 0, 1, 10),// 16 possible versions
 		// new ItemStack(Items.egg,1,0), // not sure, as can be used to spawn chickens
-		new ItemStack(Items.glass_bottle),
-		new ItemStack(Items.potionitem),//water bottle
+		new WeightedRandomChestContent(new ItemStack(Items.glass_bottle), 1, 10, 10),
+		new WeightedRandomChestContent(new ItemStack(Items.potionitem), 1, 10, 10),//water bottle
 	};
 }
