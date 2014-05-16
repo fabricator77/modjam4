@@ -15,6 +15,7 @@ import net.minecraft.util.MathHelper;
 public class PowerItems extends Item {
 	@SideOnly(Side.CLIENT)
     private IIcon[] textures;
+	public static final String[] itemNames = new String[]{"hv_power_cell", "heater_barrel", "voltage_regulator"};
 	
 	public PowerItems() {
 		this.setHasSubtypes(true);
@@ -25,25 +26,20 @@ public class PowerItems extends Item {
 	@SideOnly(Side.CLIENT)
     public IIcon getIconFromDamage(int metadata)
     {
-        int j = MathHelper.clamp_int(metadata, 0, 2);
+		int j = MathHelper.clamp_int(metadata, 0, itemNames.length);
         return this.textures[j];
     }
 	
 	public String getUnlocalizedName(ItemStack par1ItemStack)
     {
-        int metadata = par1ItemStack.getItemDamage();
-        if (metadata == 0) {
-        	return "hv_power_cell";
-        }
-        else {
-        	return "heater_barrel";
-        }
+		int i = MathHelper.clamp_int(par1ItemStack.getItemDamage(), 0, itemNames.length-1);
+        return itemNames[i];
     }
 	
 	@SideOnly(Side.CLIENT)
     public void getSubItems(Item item, CreativeTabs creativeTab, List list)
     {
-        for (int i = 0; i < 2; ++i)
+		for (int i = 0; i < itemNames.length; ++i)
         {
             list.add(new ItemStack(item, 1, i));
         }
@@ -52,9 +48,11 @@ public class PowerItems extends Item {
     @SideOnly(Side.CLIENT)
     public void registerIcons(IIconRegister par1IconRegister)
     {
-        this.textures = new IIcon[2];
+    	this.textures = new IIcon[itemNames.length];
 
-        this.textures[0] = par1IconRegister.registerIcon(ScrapWorld.modid+":hv_power_cell");
-        this.textures[1] = par1IconRegister.registerIcon(ScrapWorld.modid+":heater_barrel");
+        for (int i = 0; i < textures.length; ++i)
+        {
+            this.textures[i] = par1IconRegister.registerIcon(ScrapWorld.modid+":scrap_" + itemNames[i]);
+        }
     }
 }
