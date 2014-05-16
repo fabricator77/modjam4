@@ -140,7 +140,7 @@ public class TileEntityRenderFridge extends TileEntitySpecialRenderer {
 
             f1 = 1.0F - f1;
             f1 = 1.0F - f1 * f1 * f1;
-            modelchest.fridgeLid.rotateAngleX = -(f1 * (float)Math.PI / 2.0F);
+            modelchest.fridgeDoor.rotateAngleX = -(f1 * (float)Math.PI / 2.0F);
             modelchest.renderAll();
             GL11.glDisable(GL12.GL_RESCALE_NORMAL);
             GL11.glPopMatrix();
