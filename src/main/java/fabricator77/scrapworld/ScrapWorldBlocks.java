@@ -1,8 +1,10 @@
 package fabricator77.scrapworld;
 
 import cpw.mods.fml.client.registry.ClientRegistry;
+import cpw.mods.fml.client.registry.RenderingRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fabricator77.scrapworld.blocks.*;
+import fabricator77.scrapworld.client.RenderFridge;
 import fabricator77.scrapworld.client.TileEntityRenderFridge;
 import fabricator77.scrapworld.items.Dusts;
 import fabricator77.scrapworld.items.Ingots;
@@ -60,8 +62,12 @@ public class ScrapWorldBlocks {
 		
 		fridge = new BlockFridge(0).setHardness(3.5F).setBlockName("fridge");
 		GameRegistry.registerBlock(fridge, "fridge");
-		ClientRegistry.registerTileEntity(TileEntityFridge.class, "tileEntityFridge", new TileEntityRenderFridge());
-		// GameRegistry.registerTileEntity(TileEntityFridge.class, "tileEntityFridge");
+		// old system
+		//ClientRegistry.registerTileEntity(TileEntityFridge.class, "tileEntityFridge", new TileEntityRenderFridge());
+		
+		GameRegistry.registerTileEntity(TileEntityFridge.class, "tileEntityFridge");
+		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFridge.class, new TileEntityRenderFridge());
+		RenderingRegistry.registerBlockHandler(new RenderFridge());
 		
 		machine = new BlockMachine().setHardness(3.5F).setBlockName("machine");
 		GameRegistry.registerBlock(machine, "machine");

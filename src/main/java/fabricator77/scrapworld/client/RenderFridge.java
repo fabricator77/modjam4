@@ -1,17 +1,43 @@
 package fabricator77.scrapworld.client;
 
-import net.minecraft.client.model.ModelChest;
-import net.minecraft.client.model.ModelLargeChest;
-import net.minecraft.client.renderer.tileentity.TileEntitySpecialRenderer;
-import net.minecraft.tileentity.TileEntity;
+import org.lwjgl.opengl.GL11;
+import org.lwjgl.opengl.GL12;
 
-public class RenderFridge extends TileEntitySpecialRenderer {
+import net.minecraft.block.Block;
+import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
+import net.minecraft.world.IBlockAccess;
+import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
+import cpw.mods.fml.client.registry.RenderingRegistry;
+import fabricator77.scrapworld.blocks.TileEntityFridge;
+
+public class RenderFridge implements ISimpleBlockRenderingHandler {
 	
-	private ModelFridge field_147510_h = new ModelFridge();
-    private ModelFridge field_147511_i = new ModelLargeFridge();
+	public static final int renderID = RenderingRegistry.getNextAvailableRenderId();
+	private final TileEntityFridge teToRender = new TileEntityFridge();
 
 	@Override
-	public void renderTileEntityAt(TileEntity te, double x, double y, double z, float var8) {
-
+	public void renderInventoryBlock(Block block, int metadata, int modelId, RenderBlocks renderer) {
+		GL11.glRotatef(90.0F, 0.0F, 1.0F, 0.0F);
+		GL11.glTranslatef(-1.2F, -0.3F, -0.5F);
+		GL11.glScalef(1.75F, 1.75F, 1.75F);
+		TileEntityRendererDispatcher.instance.renderTileEntityAt(teToRender, 0.0D, 0.0D, 0.0D, 0.0F);
+		GL11.glEnable(GL12.GL_RESCALE_NORMAL);
 	}
+
+	@Override
+	public boolean renderWorldBlock(IBlockAccess world, int x, int y, int z, Block block, int modelId, RenderBlocks renderer) {
+		return false;
+	}
+
+	@Override
+	public boolean shouldRender3DInInventory(int modelId) {
+		return true;
+	}
+
+	@Override
+	public int getRenderId() {
+		return renderID;
+	}
+
 }
