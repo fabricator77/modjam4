@@ -123,8 +123,6 @@ public class ScrapItems1 extends Item {
 		
 		
         int metadata = MathHelper.clamp_int(itemStack.getItemDamage(), 0, itemNames.length-1);
-        
-        	
         String scrapType = itemNames[metadata];
         
         if (scrapType == "unknown") {
@@ -136,11 +134,13 @@ public class ScrapItems1 extends Item {
     			//convert into useless version, so people cannot re-try it will
     			
     			
-    			boolean added = player.inventory.addItemStackToInventory(new ItemStack(itemStack.getItem(), 1, itemNames.length-1));
-    			
+    			boolean added = player.inventory.addItemStackToInventory(new ItemStack(this, 1, itemNames.length-1));
+    			--itemStack.stackSize;
+    			return itemStack;
     		}
     		// choose a random type to make this into
     		// scrapType = itemNames[1 + world.rand.nextInt(itemNames.length-1)];
+    		boolean added = player.inventory.addItemStackToInventory(new ItemStack(this, 1, 1 + world.rand.nextInt(itemNames.length-1)));
     		--itemStack.stackSize;
 			return itemStack;
     	}
@@ -163,10 +163,12 @@ public class ScrapItems1 extends Item {
     		// wire to make into machines/metal
     		// heating element
     		// could also be fibre cable (rare)
+    		return itemStack;
     	}
     	if (scrapType == "circuit") {
     		// random choice of wires, blank PCB, copper scrap, silicon, redstone, broken PCB, silicon chip (rare), working PCB(rare)
     		// or nothing
+    		return itemStack;
     	}
     	if (scrapType == "plastic") {
     		// random choice of rubber, plastic, plastic component, silicon chip (rare)
@@ -207,6 +209,8 @@ public class ScrapItems1 extends Item {
     		// mostly useless but can drop charcoal sometimes
     		ItemStack item = new ItemStack(Items.coal, 1, this.itemRand.nextInt(2));
 			boolean added = player.inventory.addItemStackToInventory(item);
+			--itemStack.stackSize;
+    		return itemStack;
     	}
     	if (scrapType == "rare") {
     		if (world.rand.nextInt(10) == 0) {
