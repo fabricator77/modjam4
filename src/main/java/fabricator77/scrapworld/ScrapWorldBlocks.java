@@ -2,6 +2,7 @@ package fabricator77.scrapworld;
 
 import cpw.mods.fml.common.registry.GameRegistry;
 import fabricator77.scrapworld.blocks.BlockCompressedScrapCube;
+import fabricator77.scrapworld.blocks.BlockFridge;
 import fabricator77.scrapworld.blocks.BlockScrapCube;
 import fabricator77.scrapworld.blocks.BlockScrapFurnace;
 import fabricator77.scrapworld.blocks.BlockScrapSurfaceDebris;
@@ -27,6 +28,7 @@ public class ScrapWorldBlocks {
 	public static Block wireTangle;
 	public static Block scrapFurnace;
 	public static Block litScrapFurnace;
+	public static Block fridge;
 	
 	public static Item scrapItems1;
 	public static Item dusts;
@@ -48,6 +50,11 @@ public class ScrapWorldBlocks {
 		GameRegistry.registerBlock(scrapFurnace, "scrapFurnace");
 		litScrapFurnace = new BlockScrapFurnace(false).setHardness(3.5F).setBlockName("litScrapFurnace");
 		GameRegistry.registerBlock(litScrapFurnace, "litScrapFurnace");
+		
+		
+		//TODO: customize renderer to suit
+		fridge = new BlockFridge(0).setHardness(3.5F).setBlockName("fridge");
+		GameRegistry.registerBlock(fridge, "fridge");
 		
 		
 		scrapItems1 = new ScrapItems1();
