@@ -1,5 +1,8 @@
 package fabricator77.scrapworld.blocks;
 
+import static net.minecraftforge.common.util.ForgeDirection.DOWN;
+
+import java.util.Iterator;
 import java.util.Random;
 
 import cpw.mods.fml.relauncher.Side;
@@ -10,10 +13,15 @@ import net.minecraft.block.BlockChest;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.item.EntityItem;
+import net.minecraft.entity.passive.EntityOcelot;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryLargeChest;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityChest;
+import net.minecraft.util.AxisAlignedBB;
 //import net.minecraft.tileentity.TileEntityChest;
 import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
@@ -286,10 +294,94 @@ public class BlockFridge extends BlockChest {//extends Block {
 
             if (iinventory != null)
             {
-                //player.displayGUIChest(iinventory);
+                player.displayGUIChest(iinventory);
             }
 
             return true;
         }
     }
+	
+	 public TileEntity createNewTileEntity(World world, int metadata)
+	 {
+		 TileEntityFridge tileentitychest = new TileEntityFridge();
+		 return tileentitychest;
+	 }
+	 
+	    private static boolean kitty(World p_149953_0_, int p_149953_1_, int p_149953_2_, int p_149953_3_)
+	    {
+	        Iterator iterator = p_149953_0_.getEntitiesWithinAABB(EntityOcelot.class, AxisAlignedBB.getAABBPool().getAABB((double)p_149953_1_, (double)(p_149953_2_ + 1), (double)p_149953_3_, (double)(p_149953_1_ + 1), (double)(p_149953_2_ + 2), (double)(p_149953_3_ + 1))).iterator();
+	        EntityOcelot entityocelot1;
+
+	        do
+	        {
+	            if (!iterator.hasNext())
+	            {
+	                return false;
+	            }
+
+	            EntityOcelot entityocelot = (EntityOcelot)iterator.next();
+	            entityocelot1 = (EntityOcelot)entityocelot;
+	        }
+	        while (!entityocelot1.isSitting());
+
+	        return true;
+	    }
+	 
+	 public IInventory func_149951_m(World world, int p_149951_2_, int p_149951_3_, int p_149951_4_)
+	    {
+	        Object object = (TileEntityChest)world.getTileEntity(p_149951_2_, p_149951_3_, p_149951_4_);
+
+	        if (object == null)
+	        {
+	            return null;
+	        }
+	        else if (world.isSideSolid(p_149951_2_, p_149951_3_ + 1, p_149951_4_, DOWN))
+	        {
+	            return null;
+	        }
+	        else if (kitty(world, p_149951_2_, p_149951_3_, p_149951_4_))
+	        {
+	            return null;
+	        }
+	        else if (world.getBlock(p_149951_2_ - 1, p_149951_3_, p_149951_4_) == this && (world.isSideSolid(p_149951_2_ - 1, p_149951_3_ + 1, p_149951_4_, DOWN) || kitty(world, p_149951_2_ - 1, p_149951_3_, p_149951_4_)))
+	        {
+	            return null;
+	        }
+	        else if (world.getBlock(p_149951_2_ + 1, p_149951_3_, p_149951_4_) == this && (world.isSideSolid(p_149951_2_ + 1, p_149951_3_ + 1, p_149951_4_, DOWN) || kitty(world, p_149951_2_ + 1, p_149951_3_, p_149951_4_)))
+	        {
+	            return null;
+	        }
+	        else if (world.getBlock(p_149951_2_, p_149951_3_, p_149951_4_ - 1) == this && (world.isSideSolid(p_149951_2_, p_149951_3_ + 1, p_149951_4_ - 1, DOWN) || kitty(world, p_149951_2_, p_149951_3_, p_149951_4_ - 1)))
+	        {
+	            return null;
+	        }
+	        else if (world.getBlock(p_149951_2_, p_149951_3_, p_149951_4_ + 1) == this && (world.isSideSolid(p_149951_2_, p_149951_3_ + 1, p_149951_4_ + 1, DOWN) || kitty(world, p_149951_2_, p_149951_3_, p_149951_4_ + 1)))
+	        {
+	            return null;
+	        }
+	        else
+	        {
+	            if (world.getBlock(p_149951_2_ - 1, p_149951_3_, p_149951_4_) == this)
+	            {
+	                object = new InventoryLargeChest("container.fridgeDouble", (TileEntityChest)world.getTileEntity(p_149951_2_ - 1, p_149951_3_, p_149951_4_), (IInventory)object);
+	            }
+
+	            if (world.getBlock(p_149951_2_ + 1, p_149951_3_, p_149951_4_) == this)
+	            {
+	                object = new InventoryLargeChest("container.fridgeDouble", (IInventory)object, (TileEntityChest)world.getTileEntity(p_149951_2_ + 1, p_149951_3_, p_149951_4_));
+	            }
+
+	            if (world.getBlock(p_149951_2_, p_149951_3_, p_149951_4_ - 1) == this)
+	            {
+	                object = new InventoryLargeChest("container.fridgeDouble", (TileEntityChest)world.getTileEntity(p_149951_2_, p_149951_3_, p_149951_4_ - 1), (IInventory)object);
+	            }
+
+	            if (world.getBlock(p_149951_2_, p_149951_3_, p_149951_4_ + 1) == this)
+	            {
+	                object = new InventoryLargeChest("container.fridgeDouble", (IInventory)object, (TileEntityChest)world.getTileEntity(p_149951_2_, p_149951_3_, p_149951_4_ + 1));
+	            }
+
+	            return (IInventory)object;
+	        }
+	    }
 }

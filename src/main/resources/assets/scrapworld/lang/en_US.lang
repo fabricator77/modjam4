@@ -6,6 +6,8 @@ tile.scrapDebris.name=Scrap Debris
 tile.compressedScrapCube.name=Compressed Scrap Cube
 tile.wireTangle.name=Tangled Wire
 
+container.fridgeDouble=Fridge
+
 scrap_unknown.name=Raw Scrap
 scrap_metallic.name=Metallic Scrap
 scrap_wire.name=Wire Scrap
