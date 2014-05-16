@@ -36,7 +36,7 @@ public class Rares extends Item {
         	return "plant";
         }
         else {
-        	return "copper_ingot";
+        	return "book";
         }
     }
 	
@@ -55,6 +55,6 @@ public class Rares extends Item {
         this.textures = new IIcon[2];
 
         this.textures[0] = par1IconRegister.registerIcon(ScrapWorld.modid+":plant");
-        this.textures[1] = par1IconRegister.registerIcon(ScrapWorld.modid+":copper_ingot");
+        this.textures[1] = par1IconRegister.registerIcon(ScrapWorld.modid+":book");
     }
 }

@@ -42,3 +42,4 @@ plant.name=Plant
 hv_power_cell.name=HV Power Cell
 heater_barrel.name=Heater Barrel
 voltage_regulator.name=Voltage Regulator
+copper_winding.name=Copper Winding
