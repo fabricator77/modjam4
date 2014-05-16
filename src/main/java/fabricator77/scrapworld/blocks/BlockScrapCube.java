@@ -15,12 +15,16 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 public class BlockScrapCube extends Block {
 	
 	public static final String[] blockNames = new String[]{"unknown", "metallic", "wire", "circuit", "plastic", "glass", "concrete", "timber", "food", "burnt", "rare", "useless"};
 
+	@SideOnly(Side.CLIENT)
+    private IIcon[] textures;
+	
 	public BlockScrapCube() {
 		super(Material.iron);
 		this.setCreativeTab(ScrapWorld.creativeTab);
@@ -38,11 +42,18 @@ public class BlockScrapCube extends Block {
     {
 		int i =0;
 		//TODO: multiple textures per block
-		this.blockIcon = iconRegister.registerIcon(ScrapWorld.modid+":scrap_cube_"+blockNames[i]);
+		//this.blockIcon = iconRegister.registerIcon(ScrapWorld.modid+":scrap_cube_"+blockNames[i]);
 		for (i = 0; i < blockNames.length; ++i)
         {
-			
+			textures[i] = iconRegister.registerIcon(ScrapWorld.modid+":scrap_cube_"+blockNames[i]);
         }
+		this.blockIcon = textures[0];
+    }
+	
+	@SideOnly(Side.CLIENT)
+    public IIcon getIcon(int var1, int metadata)
+    {
+        return this.textures[metadata % this.textures.length];
     }
 	
 	@SideOnly(Side.CLIENT)
