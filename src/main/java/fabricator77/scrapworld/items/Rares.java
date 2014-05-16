@@ -33,7 +33,7 @@ public class Rares extends Item {
     {
         int metadata = par1ItemStack.getItemDamage();
         if (metadata == 0) {
-        	return "tin_ingot";
+        	return "plant";
         }
         else {
         	return "copper_ingot";
@@ -54,7 +54,7 @@ public class Rares extends Item {
     {
         this.textures = new IIcon[2];
 
-        this.textures[0] = par1IconRegister.registerIcon(ScrapWorld.modid+":tin_ingot");
+        this.textures[0] = par1IconRegister.registerIcon(ScrapWorld.modid+":plant");
         this.textures[1] = par1IconRegister.registerIcon(ScrapWorld.modid+":copper_ingot");
     }
 }

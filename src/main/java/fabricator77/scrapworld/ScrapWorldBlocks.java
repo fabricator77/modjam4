@@ -6,9 +6,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import fabricator77.scrapworld.blocks.*;
 import fabricator77.scrapworld.client.RenderFridge;
 import fabricator77.scrapworld.client.TileEntityRenderFridge;
-import fabricator77.scrapworld.items.Dusts;
-import fabricator77.scrapworld.items.Ingots;
-import fabricator77.scrapworld.items.ScrapItems1;
+import fabricator77.scrapworld.items.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFurnace;
 import net.minecraft.creativetab.CreativeTabs;
@@ -37,6 +35,7 @@ public class ScrapWorldBlocks {
 	public static Item scrapItems1;
 	public static Item dusts;
 	public static Item ingots;
+	public static Item rares;
 
 	public ScrapWorldBlocks() {
 		scrapCube = new BlockScrapCube().setBlockName("scrapCube").setHardness(3.0F).setResistance(5.0F);
@@ -86,6 +85,9 @@ public class ScrapWorldBlocks {
 		// also need ingots for some dusts
 		ingots = new Ingots();
 		GameRegistry.registerItem(ingots, "ingots");
+		
+		rares = new Rares();
+		GameRegistry.registerItem(rares, "rares");
 		
 		
 		registerCraftingRecipes();

@@ -5,6 +5,7 @@ tile.scrapCube.name=Scrap Cube
 tile.scrapDebris.name=Scrap Debris
 tile.compressedScrapCube.name=Compressed Scrap Cube
 tile.wireTangle.name=Tangled Wire
+tile.concreteBlock.name=Concrete Block
 
 container.fridge=Fridge
 container.fridgeHalf=Bar Fridge
@@ -36,3 +37,4 @@ dusts_charcoal.name=Charcoal Dust
 
 tin_ingot.name=Tin Ingot
 copper_ingot.name=Copper Ingot
+plant.name=Plant
