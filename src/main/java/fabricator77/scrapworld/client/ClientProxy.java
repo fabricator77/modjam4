@@ -11,7 +11,7 @@ public class ClientProxy extends CommonProxy{
 		//TODO: use this for custom block rendering
 		// eg the fridge
 		fridgeRendererID = RenderingRegistry.getNextAvailableRenderId();
-		RenderingRegistry.registerBlockHandler(fridgeRendererID, new TileEntityRenderFridge());
+		// RenderingRegistry.registerBlockHandler(fridgeRendererID, new TileEntityRenderFridge());
 	}
 
 }
