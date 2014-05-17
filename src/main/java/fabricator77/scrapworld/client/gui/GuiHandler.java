@@ -15,7 +15,7 @@ public class GuiHandler implements IGuiHandler {
 		TileEntity tileEntity = world.getTileEntity(x, y, z);
 		if(tileEntity != null && tileEntity instanceof TileEntityMachine){
 			//return new ContainerMachine(player.inventory, (TileEntityMachine)tileEntity);
-			return new GuiMachine(player.inventory, (TileEntityMachine)tileEntity);	
+			return new ContainerMachine(player.inventory, (TileEntityMachine)tileEntity);	
 		}
 		return null;
 	}

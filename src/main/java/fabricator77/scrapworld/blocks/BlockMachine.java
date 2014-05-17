@@ -15,6 +15,7 @@ import net.minecraft.client.gui.inventory.GuiDispenser;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.tileentity.TileEntityDispenser;
@@ -45,12 +46,16 @@ public class BlockMachine extends BlockContainer{
     {
 		FMLLog.info("[ScrapWorld] right click");
 		ItemStack heldItem = player.getCurrentEquippedItem();
+		if (heldItem != null && heldItem.getItem() == Items.bucket) {
+			//TODO: take/accept items and liquids
+		}
 		
 		
         if (!world.isRemote)
         {
         	//FMLNetworkHandler.openGui(player, (Object)ScrapWorld.instance, 0, world, x, y, z);
-        	player.openGui((Object)ScrapWorld.instance, 0, world, x, y, z);
+        	FMLLog.info("[ScrapWorld] right click");
+        	player.openGui(ScrapWorld.instance, 1, world, x, y, z);
         }
         return true;
     }

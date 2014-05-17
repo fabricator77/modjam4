@@ -58,6 +58,7 @@ public class ScrapWorld {
 	public void init(FMLInitializationEvent event) {
 		new RegisterBiomes();
 		NetworkRegistry.INSTANCE.registerGuiHandler(this, new GuiHandler());
+		blocks.registerTileEntities();
 	}
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {

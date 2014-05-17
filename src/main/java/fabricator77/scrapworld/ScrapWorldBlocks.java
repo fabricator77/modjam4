@@ -73,7 +73,7 @@ public class ScrapWorldBlocks {
 		
 		machine = new BlockMachine().setHardness(3.5F).setBlockName("machine");
 		GameRegistry.registerBlock(machine, "machine");
-		GameRegistry.registerTileEntity(TileEntityMachine.class, "tileEntityMachine");
+		
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMachine.class, new TileEntityRenderMachine());
 		RenderingRegistry.registerBlockHandler(new RenderMachine());
 		
@@ -134,5 +134,9 @@ public class ScrapWorldBlocks {
 		OreDictionary.registerOre("dustConcrete", new ItemStack(dusts, 1, 7));
 		OreDictionary.registerOre("woodDust", new ItemStack(dusts, 1, 8));
 		OreDictionary.registerOre("dustCharcoal", new ItemStack(dusts, 1, 9));
+	}
+
+	public void registerTileEntities() {
+		GameRegistry.registerTileEntity(TileEntityMachine.class, "tileEntityMachine");
 	}
 }
