@@ -1,5 +1,6 @@
 package fabricator77.scrapworld.blocks;
 
+import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fabricator77.scrapworld.ScrapWorld;
@@ -52,7 +53,8 @@ public class BlockMachine extends BlockContainer{
             if (tileentityMachine != null)
             {
             	//Minecraft.getMinecraft().displayGuiScreen(new GuiMachine(player.inventory, tileentityMachine));
-            	player.openGui(ScrapWorld.instance, 0, world, x, y, z);
+            	// player.openGui(ScrapWorld.instance, 0, world, x, y, z);
+            	FMLNetworkHandler.openGui(player, (Object)ScrapWorld.instance, 0, world, x, y, z);
             	return true;
             }
 
