@@ -21,7 +21,8 @@ public class ContainerMachine extends Container {
             for (j = 0; j < 3; ++j)
             {
             	// inventory (IInventory), slotIndex (int), xDisplayPosition (int), yDisplayPosition (int)
-                this.addSlotToContainer(new Slot(tileentityMachine, j + i * 3, 62 + j * 24, 17 + i * 18));
+            	// xDisplayPosition was  62 + j * 18
+                this.addSlotToContainer(new Slot(tileentityMachine, j + i * 3, 56 + j * 24, 17 + i * 18));
             }
         }
         bindPlayerInventory(inventoryPlayer);
