@@ -5,7 +5,7 @@ import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 
 public class BlockGenerator extends BlockMachine{
-	public static final String machineName = "generator";
+	// public static final String machineName = "generator";
 
 	
 	public int getPowerLevel(World world, int x, int y, int z) {

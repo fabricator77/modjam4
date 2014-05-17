@@ -10,6 +10,11 @@ public class TileEntityGenerator extends TileEntityMachine{
 	}
 	
 	@Override
+	public String getMachineName() {
+		return ((IMachineBlock)this.blockType).getMachineName();
+	}
+	
+	@Override
 	public void getPower () {
 		//TODO: is on mains power, or contains powerCell
 		int power = ((BlockGenerator)this.blockType).getPowerLevel(this.worldObj, this.xCoord, this.yCoord, this.zCoord);

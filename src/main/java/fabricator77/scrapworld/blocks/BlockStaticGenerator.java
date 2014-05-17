@@ -17,4 +17,9 @@ public class BlockStaticGenerator extends BlockGenerator{
         }
 		return 0;
     }
+	
+	@Override
+	public String getMachineName() {
+		return "static_generator";
+	}
 }
