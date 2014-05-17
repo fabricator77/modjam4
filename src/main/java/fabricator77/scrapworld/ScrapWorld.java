@@ -14,6 +14,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import fabricator77.scrapworld.client.gui.GuiHandler;
 import fabricator77.scrapworld.client.gui.GuiMain;
 import fabricator77.scrapworld.common.CommonProxy;
@@ -58,7 +59,7 @@ public class ScrapWorld {
 	public void init(FMLInitializationEvent event) {
 		new RegisterBiomes();
 		// ScrapWorld.logger.log(Level.INFO, "ScrapWorld");
-		NetworkRegistry.instance().registerGuiHandler(GuiMain.instance, new GuiHandler());
+		NetworkRegistry.INSTANCE.registerGuiHandler((Object)GuiMain.instance, new GuiHandler());
 	}
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
