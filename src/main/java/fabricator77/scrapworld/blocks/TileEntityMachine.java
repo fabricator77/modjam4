@@ -5,6 +5,7 @@ import fabricator77.scrapworld.ScrapWorldBlocks;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -124,21 +125,28 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     }
     
     private void operateCycle() {
-    	FMLLog.info("[ScrapWorld] TileEntityMachine.this.inv.length="+this.inv.length);
+    	int count = 0;
     	for (int i = 0; i < this.inv.length; ++i)
         {
     		if (this.inv[i] == null) {}
     		else {
+    			count++;
     			int damage = this.inv[i].getItemDamage();
+    			Item item = this.inv[i].getItem();
+    			//FMLLog.info("[ScrapWorld] Found "+this.inv[i].getItem());
     			//Attempt to change power cells
-    			if (this.inv[i].getItem() == ScrapWorldBlocks.hvPowerCell) {
-    				if (damage < OreDictionary.WILDCARD_VALUE) {
+    			if (item.getUnlocalizedName() == ScrapWorldBlocks.hvPowerCell.getUnlocalizedName()) {
+    				//if (damage < OreDictionary.WILDCARD_VALUE-1) {
     					FMLLog.info("[ScrapWorld] Charging "+damage);
-    					this.inv[i].setItemDamage(damage++);
-    				}
+    					this.inv[i].setItemDamage(this.worldObj.rand.nextInt(32000));
+    					this.inv[i].getItem().notify();
+    				//}
     			}
     		}
         }
+    	if (count > 0) {
+    		//FMLLog.info("[ScrapWorld] TileEntityMachine.count="+count);
+    	}
 
 	}
 
