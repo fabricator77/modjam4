@@ -63,7 +63,7 @@ public class BlockMachine extends BlockContainer{
 	@SideOnly(Side.CLIENT)
     public IIcon getIcon(int side, int metadata)
     {
-        int k = metadata & 16;
+        int k = metadata & 7;
         return side == k ? (this.frontTexture) : (k != 1 && k != 0 ? (side != 1 && side != 0 ? this.blockIcon : this.topTexture) : this.topTexture);
     }
 

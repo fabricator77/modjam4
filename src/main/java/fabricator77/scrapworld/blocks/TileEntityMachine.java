@@ -1,6 +1,9 @@
 package fabricator77.scrapworld.blocks;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import fabricator77.scrapworld.ScrapWorldBlocks;
+import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
@@ -203,5 +206,13 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack var2) {
 		return false;
+	}
+	
+	@Override
+	@SideOnly(Side.CLIENT)
+	public GuiScreen openGui(EntityPlayer entityPlayer)
+	{
+		return null;
+		
 	}
 }
