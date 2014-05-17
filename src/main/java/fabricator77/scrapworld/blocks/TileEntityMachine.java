@@ -80,6 +80,8 @@ public class TileEntityMachine extends TileEntity implements IMachine {
     	 //TODO: Entity updates
     	// includes block being placed/loaded ?
     	checkIfComplete();
+    	if (!complete) return;
+    	getPower();
     }
     
     //IMachine fields
@@ -101,7 +103,8 @@ public class TileEntityMachine extends TileEntity implements IMachine {
     
     // Actual code
 	public void checkIfComplete () {
-		int missingParts =0;
+		int missingParts = 0;
+		//TODO: specific machines need specific parts in specific slots
 		for (int i=0; i<parts.length; i++) {
 			if (parts[i].stackSize == 0) {
 				missingParts++;
@@ -112,6 +115,10 @@ public class TileEntityMachine extends TileEntity implements IMachine {
 		}
 		//TODO: write to NBT
 		this.markDirty();
+	}
+	
+	public void getPower () {
+		//TODO: is on mains power, or contains powerCell
 	}
 
 }
