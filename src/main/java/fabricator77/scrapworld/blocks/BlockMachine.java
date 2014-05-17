@@ -4,7 +4,6 @@ import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fabricator77.scrapworld.ScrapWorld;
 import fabricator77.scrapworld.client.gui.GuiMachine;
-import fabricator77.scrapworld.client.gui.GuiMain;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.BlockPistonBase;
@@ -53,7 +52,7 @@ public class BlockMachine extends BlockContainer{
             if (tileentityMachine != null)
             {
             	//Minecraft.getMinecraft().displayGuiScreen(new GuiMachine(player.inventory, tileentityMachine));
-            	player.openGui(GuiMain.instance, 0, world, x, y, z);
+            	player.openGui(ScrapWorld.instance, 0, world, x, y, z);
             	return true;
             }
 
