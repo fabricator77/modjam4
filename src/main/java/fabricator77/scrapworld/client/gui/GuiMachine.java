@@ -37,5 +37,4 @@ public class GuiMachine extends GuiContainer{
         int l = (this.height - this.ySize) / 2;
         this.drawTexturedModalRect(k, l, 0, 0, this.xSize, this.ySize);
     }
-
 }
