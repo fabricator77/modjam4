@@ -46,6 +46,6 @@ public class BlockGenerator extends BlockMachine{
 	public int getStormLevel(World world, int x, int y, int z)
     {
 		float lightningActivity = world.thunderingStrength;
-		return 0;
+		return (int)lightningActivity*15;
     }
 }
