@@ -17,6 +17,8 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class TileEntityMachine extends TileEntity implements IMachine, IInventory{
 	
+	public static final String[] machineNames = new String[]{"machine"}; 
+	
 	private boolean ready = false;
 	private boolean complete = false;
 	private boolean powered = false;
@@ -128,7 +130,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     	this.markDirty();
     }
     
-  //IMachine fields
+    //IMachine fields
     @Override
     public void operateCycle() {
     	int count = 0;

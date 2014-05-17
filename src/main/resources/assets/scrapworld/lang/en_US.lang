@@ -14,6 +14,9 @@ tile.fridge.name=Fridge
 container.machine=Machine
 tile.machine.name=Machine
 
+container.generator=Generator
+tile.generator.name=Generator
+
 scrap_unknown.name=Raw Scrap
 scrap_metallic.name=Metallic Scrap
 scrap_wire.name=Wire Scrap

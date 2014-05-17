@@ -32,6 +32,7 @@ public class ScrapWorldBlocks {
 	public static Block concreteBlock;
 	public static Block fridge;
 	public static Block machine;
+	public static Block generator;
 	public static Block power;
 	
 	public static Item scrapItems1;
@@ -74,6 +75,8 @@ public class ScrapWorldBlocks {
 		
 		machine = new BlockMachine().setHardness(3.5F).setBlockName("machine");
 		GameRegistry.registerBlock(machine, "machine");
+		generator = new BlockGenerator().setHardness(3.5F).setBlockName("generator");
+		GameRegistry.registerBlock(generator, "generator");
 		
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMachine.class, new TileEntityRenderMachine());
 		RenderingRegistry.registerBlockHandler(new RenderMachine());
@@ -142,5 +145,6 @@ public class ScrapWorldBlocks {
 
 	public void registerTileEntities() {
 		GameRegistry.registerTileEntity(TileEntityMachine.class, "tileEntityMachine");
+		GameRegistry.registerTileEntity(TileEntityGenerator.class, "tileEntityGenerator");
 	}
 }
