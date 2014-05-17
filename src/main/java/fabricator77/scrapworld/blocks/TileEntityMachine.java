@@ -17,7 +17,7 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class TileEntityMachine extends TileEntity implements IMachine, IInventory{
 	
-	public static final String[] machineNames = new String[]{"machine"}; 
+	public static final String[] machineNames = BlockMachine.machineNames; 
 	
 	private boolean ready = false;
 	private boolean complete = false;
@@ -257,7 +257,9 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 
 	@Override
 	public String getInventoryName() {
-		return "container.machine";
+		int metadata = this.blockMetadata;
+		metadata = metadata % machineNames.length;
+		return "container.machine."+machineNames[metadata];
 	}
 
 	@Override
