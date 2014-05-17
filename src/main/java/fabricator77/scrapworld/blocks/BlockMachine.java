@@ -70,8 +70,8 @@ public class BlockMachine extends BlockContainer{
     @SideOnly(Side.CLIENT)
     public void registerBlockIcons(IIconRegister iconRegister)
     {
-        this.blockIcon = iconRegister.registerIcon(machineName + "_side");
-        this.topTexture = iconRegister.registerIcon(machineName + "_top");
-        this.frontTexture = iconRegister.registerIcon(machineName + "_front");
+        this.blockIcon = iconRegister.registerIcon(ScrapWorld.modid+":"+machineName + "_side");
+        this.topTexture = iconRegister.registerIcon(ScrapWorld.modid+":"+machineName + "_top");
+        this.frontTexture = iconRegister.registerIcon(ScrapWorld.modid+":"+machineName + "_front");
     }
 }
