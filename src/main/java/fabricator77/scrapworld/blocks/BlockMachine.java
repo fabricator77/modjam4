@@ -3,9 +3,12 @@ package fabricator77.scrapworld.blocks;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fabricator77.scrapworld.ScrapWorld;
+import fabricator77.scrapworld.client.gui.GuiMachine;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.inventory.GuiDispenser;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
@@ -44,8 +47,7 @@ public class BlockMachine extends BlockContainer{
 
             if (tileentityMachine != null)
             {
-                // player.func_146102_a(tileentityMachine);
-            	//TODO: GUI calls ?
+            	Minecraft.getMinecraft().displayGuiScreen(new GuiMachine(player.inventory, tileentityMachine));
             }
 
             return true;
