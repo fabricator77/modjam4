@@ -50,6 +50,19 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
                 this.parts[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
             }
         }
+        
+        nbttaglist = tag.getTagList("Inv", 10);
+        this.inv = new ItemStack[inv.length];
+        for (int i = 0; i < nbttaglist.tagCount(); ++i)
+        {
+            NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
+            int j = nbttagcompound1.getByte("Slot") & 255;
+
+            if (j >= 0 && j < this.inv.length)
+            {
+                this.inv[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
+            }
+        }
     }
 	
 	@Override
@@ -59,7 +72,6 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
         tag.setBoolean("ready", this.ready);
         
         NBTTagList nbttaglist = new NBTTagList();
-
         for (int i = 0; i < this.parts.length; ++i)
         {
             if (this.parts[i] != null)
@@ -70,8 +82,20 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
                 nbttaglist.appendTag(nbttagcompound1);
             }
         }
-
         tag.setTag("Parts", nbttaglist);
+        
+        nbttaglist = new NBTTagList();
+        for (int i = 0; i < this.inv.length; ++i)
+        {
+            if (this.inv[i] != null)
+            {
+                NBTTagCompound nbttagcompound1 = new NBTTagCompound();
+                nbttagcompound1.setByte("Slot", (byte)i);
+                this.inv[i].writeToNBT(nbttagcompound1);
+                nbttaglist.appendTag(nbttagcompound1);
+            }
+        }
+        tag.setTag("Inv", nbttaglist);
     }
 
 
@@ -154,13 +178,29 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 	}
 
 	@Override
-	public ItemStack decrStackSize(int var1, int var2) {
-		return null;
+	public ItemStack decrStackSize(int slot, int amount) {
+		ItemStack stack = getStackInSlot(slot);
+		if (stack != null) {
+			if (stack.stackSize <= amount) {
+				setInventorySlotContents(slot, null);
+			}
+			else {
+				stack = stack.splitStack(amount);
+				if (stack.stackSize == 0) {
+					setInventorySlotContents(slot, null);
+				}
+			}
+		}
+		return stack;
 	}
 
 	@Override
 	public ItemStack getStackInSlotOnClosing(int slot) {
-		return null;
+		ItemStack stack = getStackInSlot(slot);
+		if (stack != null) {
+			setInventorySlotContents(slot, null);
+		}
+		return stack;
 	}
 
 	@Override

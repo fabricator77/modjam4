@@ -6,12 +6,16 @@ import fabricator77.scrapworld.ScrapWorld;
 import fabricator77.scrapworld.client.gui.GuiMachine;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;
+import net.minecraft.block.BlockPistonBase;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.inventory.GuiDispenser;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.tileentity.TileEntityDispenser;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
@@ -52,6 +56,13 @@ public class BlockMachine extends BlockContainer{
 
             return true;
         }
+    }
+	
+	@Override
+	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase player, ItemStack item)
+    {
+        int l = BlockPistonBase.determineOrientation(world, x, y, z, player);
+        world.setBlockMetadataWithNotify(x, y, z, l, 2);
     }
 	
 	//TODO: check if this is needed for modded TEs

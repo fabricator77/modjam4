@@ -16,6 +16,7 @@ public class GuiMachine extends GuiContainer{
 	private ResourceLocation guiTextures = new ResourceLocation(ScrapWorld.modid+":textures/gui/3x3_slots.png");
 	public  TileEntityMachine tileentity;
 
+	//TODO: figure out where/why items in machine/inv get lost
 	public GuiMachine(InventoryPlayer inventory, TileEntityMachine tileentityMachine) {
 		super(new ContainerMachine(inventory, tileentityMachine));
 		tileentity = tileentityMachine;
