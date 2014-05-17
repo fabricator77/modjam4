@@ -1,5 +1,8 @@
 package fabricator77.scrapworld.blocks;
 
+import fabricator77.scrapworld.ScrapWorldBlocks;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.IInventory;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -8,13 +11,19 @@ import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 
-public class TileEntityMachine extends TileEntity implements IMachine {
+public class TileEntityMachine extends TileEntity implements IMachine, IInventory{
 	
 	private boolean ready = false;
 	private boolean complete = false;
 	private boolean powered = false;
-	private ItemStack[] parts = new ItemStack[]{}; //read/write to NBT
-	private int numParts = 3; //TODO read/write this to NBT also
+	private ItemStack[] parts = new ItemStack[]{
+			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0),
+			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0),
+			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0)
+	};
+	private int numParts = 3;
+	
+	private ItemStack[] inv = new ItemStack[9];
 	
 	@Override
     public void readFromNBT(NBTTagCompound tag)
@@ -126,4 +135,73 @@ public class TileEntityMachine extends TileEntity implements IMachine {
     {
 		//TODO: save power status/network
     }
+
+	// IInventory
+	@Override
+	public int getSizeInventory() {
+		if (complete) {
+			return inv.length;
+		}
+		return parts.length;
+	}
+
+	@Override
+	public ItemStack getStackInSlot(int slot) {
+		return this.inv[slot];
+	}
+
+	@Override
+	public ItemStack decrStackSize(int var1, int var2) {
+		return null;
+	}
+
+	@Override
+	public ItemStack getStackInSlotOnClosing(int slot) {
+		return null;
+	}
+
+	@Override
+	public void setInventorySlotContents(int slot, ItemStack item) {
+		inv[slot] = item;
+
+        if (item != null && item.stackSize > this.getInventoryStackLimit())
+        {
+        	item.stackSize = this.getInventoryStackLimit();
+        }
+
+        this.markDirty();
+	}
+
+	@Override
+	public String getInventoryName() {
+		return "container.machine";
+	}
+
+	@Override
+	public boolean hasCustomInventoryName() {
+		return false;
+	}
+
+	@Override
+	public int getInventoryStackLimit() {
+		return 64;
+	}
+
+	@Override
+	public boolean isUseableByPlayer(EntityPlayer player) {
+		return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false : player.getDistanceSq((double)this.xCoord + 0.5D, (double)this.yCoord + 0.5D, (double)this.zCoord + 0.5D) <= 64.0D;
+	}
+
+	@Override
+	public void openInventory() {
+	}
+
+	@Override
+	public void closeInventory() {
+	}
+
+	@Override
+	public boolean isItemValidForSlot(int slot, ItemStack var2) {
+		return false;
+	}
 }
