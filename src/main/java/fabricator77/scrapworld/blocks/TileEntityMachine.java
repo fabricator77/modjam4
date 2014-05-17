@@ -111,6 +111,7 @@ public class TileEntityMachine extends TileEntity implements IMachine {
 			complete = true;
 		}
 		//TODO: write to NBT
+		this.markDirty();
 	}
 
 }
