@@ -4,10 +4,10 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 
-public class BlockStaticGenerator extends BlockMachine{
-	public static final String machineName = "static_generator";
+public class BlockStaticGenerator extends BlockGenerator{
+	//public static final String machineName = "static_generator";
 
-	
+	@Override
 	public int getPowerLevel(World world, int x, int y, int z) {
 		//detect lightning strikes
 		if (!world.provider.hasNoSky)

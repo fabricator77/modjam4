@@ -22,9 +22,7 @@ import net.minecraft.tileentity.TileEntityDispenser;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
-public class BlockMachine extends BlockContainer{
-	
-	public static final String machineName = "machine";
+public class BlockMachine extends BlockContainer implements IMachineBlock{
 	
 	@SideOnly(Side.CLIENT)
     protected IIcon topTexture;
@@ -81,8 +79,13 @@ public class BlockMachine extends BlockContainer{
     public void registerBlockIcons(IIconRegister iconRegister)
     {
     	int i = 0;
-        this.blockIcon = iconRegister.registerIcon(ScrapWorld.modid+":"+machineName + "_side");
-        this.topTexture = iconRegister.registerIcon(ScrapWorld.modid+":"+machineName + "_top");
-        this.frontTexture = iconRegister.registerIcon(ScrapWorld.modid+":"+machineName + "_front");
+        this.blockIcon = iconRegister.registerIcon(ScrapWorld.modid+":"+getMachineName() + "_side");
+        this.topTexture = iconRegister.registerIcon(ScrapWorld.modid+":"+getMachineName() + "_top");
+        this.frontTexture = iconRegister.registerIcon(ScrapWorld.modid+":"+getMachineName() + "_front");
     }
+
+	@Override
+	public String getMachineName() {
+		return "machine";
+	}
 }

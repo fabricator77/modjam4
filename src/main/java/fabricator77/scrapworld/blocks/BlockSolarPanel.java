@@ -4,11 +4,12 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 
-public class BlockSolarPanel extends BlockMachine{
-	public static final String machineName = "solar_panel";
+public class BlockSolarPanel extends BlockGenerator{
+	//public static final String machineName = "solar_panel";
 
 	
 	// code from Minecraft BlockDayLightDetector
+	@Override
 	public int getPowerLevel(World world, int x, int y, int z)
     {
 		
