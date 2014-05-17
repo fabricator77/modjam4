@@ -7,6 +7,8 @@ import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.network.IGuiHandler;
 import fabricator77.scrapworld.blocks.TileEntityGenerator;
 import fabricator77.scrapworld.blocks.TileEntityMachine;
+import fabricator77.scrapworld.blocks.TileEntitySolarPanel;
+import fabricator77.scrapworld.blocks.TileEntityStaticGenerator;
 
 public class GuiHandler implements IGuiHandler {
 
@@ -16,6 +18,8 @@ public class GuiHandler implements IGuiHandler {
 		if(tileEntity != null && tileEntity instanceof TileEntityMachine){
 			if (ID == 1) return new ContainerMachine(player.inventory, (TileEntityMachine)tileEntity);
 			if (ID == 2) return new ContainerMachine(player.inventory, (TileEntityGenerator)tileEntity);
+			if (ID == 3) return new ContainerMachine(player.inventory, (TileEntitySolarPanel)tileEntity);
+			if (ID == 4) return new ContainerMachine(player.inventory, (TileEntityStaticGenerator)tileEntity);
 		}
 		return null;
 	}
@@ -26,6 +30,8 @@ public class GuiHandler implements IGuiHandler {
 		if(tileEntity != null && tileEntity instanceof TileEntityMachine){
 			if (ID == 1) return new GuiMachine(player.inventory, (TileEntityMachine)tileEntity);
 			if (ID == 2) return new GuiMachine(player.inventory, (TileEntityGenerator)tileEntity);
+			if (ID == 3) return new GuiMachine(player.inventory, (TileEntitySolarPanel)tileEntity);
+			if (ID == 4) return new GuiMachine(player.inventory, (TileEntityStaticGenerator)tileEntity);
 		}
 		return null;
 	}
