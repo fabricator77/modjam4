@@ -79,9 +79,9 @@ public class ScrapWorldBlocks {
 		GameRegistry.registerBlock(machine, "machine");
 		generator = new BlockGenerator().setHardness(3.5F).setBlockName("generator");
 		GameRegistry.registerBlock(generator, "generator");
-		solarPanel = new BlockSolarPanel().setHardness(3.5F).setBlockName("solarPanel");
+		solarPanel = new BlockSolarPanel().setHardness(3.5F).setBlockName("solar_panel");
 		GameRegistry.registerBlock(solarPanel, "solarPanel");
-		staticGenerator = new BlockStaticGenerator().setHardness(3.5F).setBlockName("staticGenerator");
+		staticGenerator = new BlockStaticGenerator().setHardness(3.5F).setBlockName("static_generator");
 		GameRegistry.registerBlock(staticGenerator, "staticGenerator");
 		
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMachine.class, new TileEntityRenderMachine());

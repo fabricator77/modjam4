@@ -5,7 +5,7 @@ import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 
 public class BlockStaticGenerator extends BlockGenerator{
-	//public static final String machineName = "static_generator";
+	public static final String machineName = "static_generator";
 
 	@Override
 	public int getPowerLevel(World world, int x, int y, int z) {
@@ -17,9 +17,4 @@ public class BlockStaticGenerator extends BlockGenerator{
         }
 		return 0;
     }
-	
-	@Override
-	public String getMachineName() {
-		return "static_generator";
-	}
 }

@@ -1,11 +1,15 @@
 package fabricator77.scrapworld.blocks;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
+import fabricator77.scrapworld.ScrapWorld;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 
 public class BlockSolarPanel extends BlockGenerator{
-	//public static final String machineName = "solar_panel";
+	public static final String machineName = "solar_panel";
 
 	
 	// code from Minecraft BlockDayLightDetector
@@ -43,5 +47,14 @@ public class BlockSolarPanel extends BlockGenerator{
             return lightLevel;
         }
         return 0;
+    }
+	
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister iconRegister)
+    {
+    	int i = 0;
+        this.blockIcon = iconRegister.registerIcon(ScrapWorld.modid+":"+machineName + "_side");
+        this.topTexture = iconRegister.registerIcon(ScrapWorld.modid+":"+machineName + "_top");
+        this.frontTexture = this.blockIcon;
     }
 }

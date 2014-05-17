@@ -27,6 +27,8 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 	};
 	private int numParts = 3;
 	
+	public int storedPower = 0;
+	
 	private ItemStack[] inv = new ItemStack[9];
 	
 	@Override
