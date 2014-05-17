@@ -5,11 +5,11 @@ import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 
 public class BlockGenerator extends BlockMachine{
-	public static final String[] machineNames = new String[]{"solar_panel", "generator"};
+	public static final String[] machineNames = new String[]{"solar_panel", "generator", "static_generator"};
 
 	
-	// code from BlockDayLightDetector
-	public void getLightLevel(World world, int x, int y, int z)
+	// code from Minecraft BlockDayLightDetector
+	public int getLightLevel(World world, int x, int y, int z)
     {
         if (!world.provider.hasNoSky)
         {
@@ -37,11 +37,15 @@ public class BlockGenerator extends BlockMachine{
             {
                 lightLevel = 15;
             }
-
-            if (l != lightLevel)
-            {
-            	//TODO: pass light level to TileEntity
-            }
+            return lightLevel;
         }
+        return 0;
+    }
+	
+	//TODO: try to detect lightning strikes
+	public int getStormLevel(World world, int x, int y, int z)
+    {
+		float lightningActivity = world.thunderingStrength;
+		return 0;
     }
 }

@@ -14,6 +14,6 @@ public class TileEntityGenerator extends TileEntityMachine{
 	@Override
 	public void getPower () {
 		//TODO: is on mains power, or contains powerCell
-		((BlockGenerator)this.blockType).getLightLevel(this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+		int light = ((BlockGenerator)this.blockType).getLightLevel(this.worldObj, this.xCoord, this.yCoord, this.zCoord);
 	}
 }
