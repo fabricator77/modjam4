@@ -48,12 +48,8 @@ public class BlockMachine extends BlockContainer{
 		if (heldItem != null && heldItem.getItem() == Items.bucket) {
 			//TODO: take/accept items and liquids
 		}
-		
-		
         if (world.isRemote)
         {
-        	//FMLNetworkHandler.openGui(player, (Object)ScrapWorld.instance, 0, world, x, y, z);
-        	FMLLog.info("[ScrapWorld] right click");
         	player.openGui(ScrapWorld.instance, 1, world, x, y, z);
         }
         return true;

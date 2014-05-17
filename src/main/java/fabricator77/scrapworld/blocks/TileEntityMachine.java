@@ -177,6 +177,8 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 		return this.inv[slot];
 	}
 
+	//Definately problems in here somewhere
+	//cannot take items out of machine
 	@Override
 	public ItemStack decrStackSize(int slot, int amount) {
 		ItemStack stack = getStackInSlot(slot);
