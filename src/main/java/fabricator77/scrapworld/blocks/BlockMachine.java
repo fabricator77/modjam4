@@ -46,10 +46,10 @@ public class BlockMachine extends BlockContainer implements IMachineBlock{
 		if (heldItem != null && heldItem.getItem() == Items.bucket) {
 			//TODO: take/accept items and liquids
 		}
-        if (world.isRemote)
-        {
+        //if (world.isRemote)
+        //{
         	player.openGui(ScrapWorld.instance, 1, world, x, y, z);
-        }
+        //}
         return true;
     }
 	
