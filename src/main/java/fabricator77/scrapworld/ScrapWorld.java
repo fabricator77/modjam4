@@ -22,7 +22,7 @@ import fabricator77.scrapworld.world.WorldTypeScrapWorld;
 @Mod(modid="ScrapWorld", name="Scrap World", version="1.0")
 public class ScrapWorld {
 	public static String modid="ScrapWorld";
-	@Instance("ScarpWorld")
+	@Instance("ScrapWorld")
 	public static ScrapWorld instance;
 	
 	@SidedProxy(clientSide="fabricator77.scrapworld.client.ClientProxy", serverSide="fabricator77.scrapworld.common.CommonProxy")
