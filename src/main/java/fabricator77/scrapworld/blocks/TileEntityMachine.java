@@ -1,7 +1,5 @@
 package fabricator77.scrapworld.blocks;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import fabricator77.scrapworld.ScrapWorldBlocks;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
@@ -113,14 +111,34 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 
     @Override
     public void updateEntity() {
+    	
     	 //TODO: Entity updates
     	// includes block being placed/loaded ?
     	checkIfComplete();
     	if (!complete) return;
     	getPower();
+    	operateCycle();
+    	this.markDirty();
     }
     
-    //IMachine fields
+    private void operateCycle() {
+    	for (int i = 0; i < this.inv.length; ++i)
+        {
+    		if (this.inv[i] == null) {}
+    		else {
+    			int damage = this.inv[i].getItemDamage();
+    			//Attempt to change power cells
+    			if (this.inv[i].getItem() == ScrapWorldBlocks.hvPowerCell) {
+    				if (damage < 32768) {
+    					this.inv[i].setItemDamage(damage++);
+    				}
+    			}
+    		}
+        }
+
+	}
+
+	//IMachine fields
 	@Override
 	public boolean isMachineReady() {
 		if (ready && complete) return true;

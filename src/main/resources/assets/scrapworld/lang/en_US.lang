@@ -12,7 +12,7 @@ container.fridgeHalf=Bar Fridge
 tile.fridge.name=Fridge
 
 container.machine=Machine
-tile.Machine=Machine
+tile.machine.name=Machine
 
 scrap_unknown.name=Raw Scrap
 scrap_metallic.name=Metallic Scrap

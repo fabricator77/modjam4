@@ -11,10 +11,8 @@ public class GuiHandler implements IGuiHandler {
 
 	@Override
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		FMLLog.info("[ScrapWorld] GuiHandler.getServerGuiElement called");
 		TileEntity tileEntity = world.getTileEntity(x, y, z);
 		if(tileEntity != null && tileEntity instanceof TileEntityMachine){
-			//return new ContainerMachine(player.inventory, (TileEntityMachine)tileEntity);
 			return new ContainerMachine(player.inventory, (TileEntityMachine)tileEntity);	
 		}
 		return null;
@@ -22,7 +20,6 @@ public class GuiHandler implements IGuiHandler {
 
 	@Override
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
-		FMLLog.info("[ScrapWorld] GuiHandler.getClientGuiElement called");
 		TileEntity tileEntity = world.getTileEntity(x, y, z);
 		if(tileEntity != null && tileEntity instanceof TileEntityMachine){
 			return new GuiMachine(player.inventory, (TileEntityMachine)tileEntity);		 
