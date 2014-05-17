@@ -2,7 +2,7 @@ package fabricator77.scrapworld.blocks;
 
 public class TileEntityGenerator extends TileEntityMachine{
 	//override names in Parent class
-	public static final String[] machineNames = BlockGenerator.machineNames;
+	public static final String machineName = BlockGenerator.machineName;
 
 	@Override
 	public String getInventoryName() {
@@ -14,14 +14,6 @@ public class TileEntityGenerator extends TileEntityMachine{
 	@Override
 	public void getPower () {
 		//TODO: is on mains power, or contains powerCell
-		if (this.blockMetadata == 0) {
-			//TODO: check for fuel etc
-		}
-		if (this.blockMetadata == 1) {
-			int light = ((BlockGenerator)this.blockType).getLightLevel(this.worldObj, this.xCoord, this.yCoord, this.zCoord);
-		}
-		if (this.blockMetadata == 2) {
-			int light = ((BlockGenerator)this.blockType).getStormLevel(this.worldObj, this.xCoord, this.yCoord, this.zCoord);
-		}
+		int power = ((BlockGenerator)this.blockType).getPowerLevel(this.worldObj, this.xCoord, this.yCoord, this.zCoord);
 	}
 }

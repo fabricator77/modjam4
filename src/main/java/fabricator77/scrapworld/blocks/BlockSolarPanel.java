@@ -9,8 +9,10 @@ public class BlockSolarPanel extends BlockMachine{
 
 	
 	// code from Minecraft BlockDayLightDetector
-	public int getLightLevel(World world, int x, int y, int z)
+	public int getPowerLevel(World world, int x, int y, int z)
     {
+		
+		// detect light level (day light)
         if (!world.provider.hasNoSky)
         {
             int l = world.getBlockMetadata(x, y, z);
