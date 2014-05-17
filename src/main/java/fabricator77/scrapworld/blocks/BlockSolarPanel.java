@@ -7,12 +7,18 @@ import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 
 public class BlockSolarPanel extends BlockGenerator{
 	public static final String machineName = "solar_panel";
+	
+	@Override
+	public TileEntity createNewTileEntity(World world, int metadata) {
+		return new TileEntitySolarPanel();
+	}
 
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_)
