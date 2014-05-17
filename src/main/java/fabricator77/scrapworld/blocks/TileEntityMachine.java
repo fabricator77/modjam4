@@ -133,14 +133,15 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     			count++;
     			int damage = this.inv[i].getItemDamage();
     			Item item = this.inv[i].getItem();
-    			//FMLLog.info("[ScrapWorld] Found "+this.inv[i].getItem());
+    			//FMLLog.info("[ScrapWorld] Found "+item);
     			//Attempt to change power cells
-    			if (item.getUnlocalizedName() == ScrapWorldBlocks.hvPowerCell.getUnlocalizedName()) {
-    				//if (damage < OreDictionary.WILDCARD_VALUE-1) {
+    			if (Item.getIdFromItem(item) == Item.getIdFromItem(ScrapWorldBlocks.hvPowerCell)) {
+    			//		item.getUnlocalizedName() == ScrapWorldBlocks.hvPowerCell.getUnlocalizedName()) {
+    				if (damage > 0) {
     					FMLLog.info("[ScrapWorld] Charging "+damage);
-    					this.inv[i].setItemDamage(this.worldObj.rand.nextInt(32000));
-    					this.inv[i].getItem().notify();
-    				//}
+    					this.inv[i].setItemDamage(damage - 10);
+    					// this.inv[i].getItem().notify();
+    				}
     			}
     		}
         }
@@ -276,7 +277,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 	}
 
 	@Override
-	public boolean isItemValidForSlot(int slot, ItemStack var2) {
-		return false;
+	public boolean isItemValidForSlot(int slot, ItemStack item) {
+		return true;
 	}
 }
