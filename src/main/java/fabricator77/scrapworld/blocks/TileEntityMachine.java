@@ -114,7 +114,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 
     @Override
     public void updateEntity() {
-    	if (this.worldObj == null || this.worldObj.isRemote || this.worldObj.getTotalWorldTime() % 20L != 0L)
+    	if (this.worldObj == null || !this.worldObj.isRemote || this.worldObj.getTotalWorldTime() % 20L != 0L)
         {
     		return;
         }
@@ -145,7 +145,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     			//		item.getUnlocalizedName() == ScrapWorldBlocks.hvPowerCell.getUnlocalizedName()) {
     				if (damage > 0) {
     					FMLLog.info("[ScrapWorld] Charging "+damage);
-    					this.inv[i].setItemDamage(damage - 10);
+    					this.inv[i].setItemDamage(damage - 128);
     					// this.inv[i].getItem().notify();
     				}
     			}

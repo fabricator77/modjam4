@@ -39,7 +39,7 @@ public class HVPowerCell extends Item {
     public void getSubItems(Item item, CreativeTabs creativeTab, List list)
     {
 		list.add(new ItemStack(item, 1, 0));
-		list.add(new ItemStack(item, 1, 32768));
+		list.add(new ItemStack(item, 1, 32767));
     }
 
     @SideOnly(Side.CLIENT)
