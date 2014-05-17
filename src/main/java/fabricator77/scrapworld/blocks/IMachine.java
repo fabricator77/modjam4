@@ -11,4 +11,6 @@ public interface IMachine {
 	public abstract boolean isMachineComplete();
 	
 	public abstract boolean isMachinePowered();
+	
+	public abstract void operateCycle();
 }

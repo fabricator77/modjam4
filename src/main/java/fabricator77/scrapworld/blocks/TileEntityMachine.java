@@ -114,6 +114,10 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 
     @Override
     public void updateEntity() {
+    	if (this.worldObj == null || this.worldObj.isRemote || this.worldObj.getTotalWorldTime() % 20L != 0L)
+        {
+    		return;
+        }
     	//FMLLog.info("[ScrapWorld] Ticking TileEntityMachine");
     	 //TODO: Entity updates
     	// includes block being placed/loaded ?
@@ -124,7 +128,9 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     	this.markDirty();
     }
     
-    private void operateCycle() {
+  //IMachine fields
+    @Override
+    public void operateCycle() {
     	int count = 0;
     	for (int i = 0; i < this.inv.length; ++i)
         {
@@ -150,8 +156,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     	}
 
 	}
-
-	//IMachine fields
+	
 	@Override
 	public boolean isMachineReady() {
 		if (ready && complete) return true;
