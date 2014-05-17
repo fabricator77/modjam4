@@ -2,13 +2,12 @@ package fabricator77.scrapworld.blocks;
 
 public class TileEntityGenerator extends TileEntityMachine{
 	//override names in Parent class
-	public static final String machineName = BlockGenerator.machineName;
+	public static String machineName = BlockGenerator.machineName;
 
 	@Override
 	public String getInventoryName() {
-		int metadata = this.blockMetadata;
-		metadata = metadata % machineNames.length;
-		return "container.generator."+machineNames[metadata];
+		machineName = ((BlockGenerator)this.blockType).machineName;
+		return "container.generator."+machineName;
 	}
 	
 	@Override

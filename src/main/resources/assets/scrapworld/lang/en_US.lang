@@ -11,7 +11,7 @@ container.fridge=Fridge
 container.fridgeHalf=Bar Fridge
 tile.fridge.name=Fridge
 
-container.machine=Machine
+container.machine.machine=Machine
 tile.machine.name=Machine
 
 container.generator=Generator

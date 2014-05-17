@@ -24,7 +24,7 @@ import net.minecraft.world.World;
 
 public class BlockMachine extends BlockContainer{
 	
-	public static final String[] machineNames = new String[]{"machine"};
+	public static final String machineName = "machine";
 	
 	@SideOnly(Side.CLIENT)
     protected IIcon topTexture;
@@ -81,8 +81,8 @@ public class BlockMachine extends BlockContainer{
     public void registerBlockIcons(IIconRegister iconRegister)
     {
     	int i = 0;
-        this.blockIcon = iconRegister.registerIcon(ScrapWorld.modid+":"+machineNames[i] + "_side");
-        this.topTexture = iconRegister.registerIcon(ScrapWorld.modid+":"+machineNames[i] + "_top");
-        this.frontTexture = iconRegister.registerIcon(ScrapWorld.modid+":"+machineNames[i] + "_front");
+        this.blockIcon = iconRegister.registerIcon(ScrapWorld.modid+":"+machineName + "_side");
+        this.topTexture = iconRegister.registerIcon(ScrapWorld.modid+":"+machineName + "_top");
+        this.frontTexture = iconRegister.registerIcon(ScrapWorld.modid+":"+machineName + "_front");
     }
 }
