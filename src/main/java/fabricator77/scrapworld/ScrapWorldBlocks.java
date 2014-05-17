@@ -39,6 +39,7 @@ public class ScrapWorldBlocks {
 	public static Item ingots;
 	public static Item rares;
 	public static Item powerItems;
+	public static Item hvPowerCell;
 
 	public ScrapWorldBlocks() {
 		scrapCube = new BlockScrapCube().setBlockName("scrapCube").setHardness(3.0F).setResistance(5.0F);
@@ -96,6 +97,9 @@ public class ScrapWorldBlocks {
 		
 		powerItems = new PowerItems();
 		GameRegistry.registerItem(powerItems, "powerItems");
+		
+		hvPowerCell = new HVPowerCell();
+		GameRegistry.registerItem(hvPowerCell, "hvPowerCell");
 		
 		
 		registerCraftingRecipes();

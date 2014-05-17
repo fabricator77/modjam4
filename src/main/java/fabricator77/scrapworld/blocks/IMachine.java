@@ -11,7 +11,4 @@ public interface IMachine {
 	public abstract boolean isMachineComplete();
 	
 	public abstract boolean isMachinePowered();
-
-	@SideOnly(Side.CLIENT)
-	public abstract GuiScreen openGui(EntityPlayer entityPlayer);
 }

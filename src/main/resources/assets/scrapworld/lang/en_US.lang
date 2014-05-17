@@ -10,7 +10,9 @@ tile.concreteBlock.name=Concrete Block
 container.fridge=Fridge
 container.fridgeHalf=Bar Fridge
 tile.fridge.name=Fridge
+
 container.machine=Machine
+tile.Machine=Machine
 
 scrap_unknown.name=Raw Scrap
 scrap_metallic.name=Metallic Scrap

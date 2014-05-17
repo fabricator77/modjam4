@@ -249,12 +249,4 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 	public boolean isItemValidForSlot(int slot, ItemStack var2) {
 		return false;
 	}
-	
-	@Override
-	@SideOnly(Side.CLIENT)
-	public GuiScreen openGui(EntityPlayer entityPlayer)
-	{
-		return null;
-		
-	}
 }
