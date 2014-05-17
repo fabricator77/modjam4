@@ -15,4 +15,8 @@ Base mod, mcmod.info
 2 scrap blocks, scrap items, all dusts, 2 ingots and majority of textures finished.
 
 day2
-?
+87 files, 139KB
+47 textures, 38 java class files
+localization file
+scrap items almost completely functional, more textures
+small start on code for machines, check game balance

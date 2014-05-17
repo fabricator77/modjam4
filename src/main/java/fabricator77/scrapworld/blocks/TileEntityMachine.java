@@ -121,4 +121,9 @@ public class TileEntityMachine extends TileEntity implements IMachine {
 		//TODO: is on mains power, or contains powerCell
 	}
 
+	
+	public void onChunkUnload()
+    {
+		//TODO: save power status/network
+    }
 }
