@@ -1,5 +1,6 @@
 package fabricator77.scrapworld.blocks;
 
+import cpw.mods.fml.common.FMLLog;
 import fabricator77.scrapworld.ScrapWorldBlocks;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
@@ -11,6 +12,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.oredict.OreDictionary;
 
 public class TileEntityMachine extends TileEntity implements IMachine, IInventory{
 	
@@ -111,17 +113,18 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 
     @Override
     public void updateEntity() {
-    	
+    	//FMLLog.info("[ScrapWorld] Ticking TileEntityMachine");
     	 //TODO: Entity updates
     	// includes block being placed/loaded ?
     	checkIfComplete();
-    	if (!complete) return;
+    	// if (!complete) return;
     	getPower();
     	operateCycle();
     	this.markDirty();
     }
     
     private void operateCycle() {
+    	FMLLog.info("[ScrapWorld] TileEntityMachine.this.inv.length="+this.inv.length);
     	for (int i = 0; i < this.inv.length; ++i)
         {
     		if (this.inv[i] == null) {}
@@ -129,7 +132,8 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     			int damage = this.inv[i].getItemDamage();
     			//Attempt to change power cells
     			if (this.inv[i].getItem() == ScrapWorldBlocks.hvPowerCell) {
-    				if (damage < 32768) {
+    				if (damage < OreDictionary.WILDCARD_VALUE) {
+    					FMLLog.info("[ScrapWorld] Charging "+damage);
     					this.inv[i].setItemDamage(damage++);
     				}
     			}
