@@ -1,5 +1,6 @@
 package fabricator77.scrapworld.blocks;
 
+import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.network.internal.FMLNetworkHandler;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -42,24 +43,12 @@ public class BlockMachine extends BlockContainer{
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int p_149727_6_, float p_149727_7_, float p_149727_8_, float p_149727_9_)
     {
-        if (world.isRemote)
+		FMLLog.info("[ScrapWorld] right click");
+        if (!world.isRemote)
         {
-            return true;
+        	FMLNetworkHandler.openGui(player, (Object)ScrapWorld.instance, 0, world, x, y, z);
         }
-        else
-        {
-            TileEntityMachine tileentityMachine = (TileEntityMachine)world.getTileEntity(x, y, z);
-
-            if (tileentityMachine != null)
-            {
-            	//Minecraft.getMinecraft().displayGuiScreen(new GuiMachine(player.inventory, tileentityMachine));
-            	// player.openGui(ScrapWorld.instance, 0, world, x, y, z);
-            	FMLNetworkHandler.openGui(player, (Object)ScrapWorld.instance, 0, world, x, y, z);
-            	return true;
-            }
-
-            return true;
-        }
+        return true;
     }
 	
 	@Override
