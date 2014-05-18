@@ -216,8 +216,8 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
 		//TODO: is on mains power ?
 		
 		//
-		int chargingRate = 256;
-		if ((storedPower + chargingRate) > 32767) {
+		int chargingRate = 2048;
+		if ((storedPower + chargingRate) > 32768) {
 			// full don't need power
 			return;
 		}
@@ -228,8 +228,12 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
 			int damage = this.inv[batterySlot].getItemDamage();
 			int stackSize = this.inv[batterySlot].stackSize;
 			Item item = this.inv[batterySlot].getItem();
-			if (item instanceof IBattery) {	
-				if (damage < 0) {
+			if (item instanceof IBattery) {
+				FMLLog.info("[ScrapWorld] damage "+damage);
+				if (damage > 0) {
+					if (damage < chargingRate) {
+						chargingRate = damage;
+					}
 					this.inv[batterySlot].setItemDamage(damage + chargingRate);
 					storedPower = storedPower + chargingRate;
 					
@@ -344,6 +348,6 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
 
 	@Override
 	public String getMachineName() {
-		return ((IMachineBlock)this.blockType).getMachineName();
+		return "scrap_grinder";
 	}
 }

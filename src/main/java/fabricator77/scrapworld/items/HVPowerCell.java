@@ -19,7 +19,7 @@ public class HVPowerCell extends Item implements IBattery{
 	public static final String itemName = "hv_power_cell";
 	
 	public HVPowerCell() {
-        this.setMaxDamage(32768);
+        this.setMaxDamage(32767);
         this.setCreativeTab(ScrapWorld.creativeTab);
 	}
 	

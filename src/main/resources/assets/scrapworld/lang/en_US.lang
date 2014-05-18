@@ -20,6 +20,8 @@ container.solar_panel=Solar Panel
 tile.solar_panel.name=Solar Panel
 container.static_generator=Static Generator
 tile.static_generator.name=Static Generator
+container.scrap_grinder=Scrap Grinder
+tile.scrap_grinder.name=Scrap Grinder
 
 scrap_unknown.name=Raw Scrap
 scrap_metallic.name=Metallic Scrap
