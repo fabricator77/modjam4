@@ -210,7 +210,7 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
     			// player.addChatMessage(new ChatComponentText(mesage));
     			
     			//convert into useless version, so people cannot re-try it will
-    			addItemStackToInventory(new ItemStack(this, 1, itemNames.length-1));
+    			addItemStackToInventory(new ItemStack(ScrapWorldBlocks.scrapItems1, 1, itemNames.length-1));
     			--itemStack.stackSize;
     			return itemStack;
     		}
@@ -313,8 +313,8 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
     }
 	
 	//TODO: proper scan of output stack for matching stacks, and if none found, for empty slots.
-	private void addItemStackToInventory(ItemStack itemStack) {
-		return;
+	private boolean addItemStackToInventory(ItemStack itemStack) {
+		return false;
 	}
 
 	@Override
@@ -464,7 +464,7 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
 	public boolean isItemValidForSlot(int slot, ItemStack itemStack) {
 		if (slot == batterySlot) {
 			Item item = itemStack.getItem();
-			if (item instanceof IBattery) {
+			if (item instanceof IBattery && itemStack.stackSize == 1) {
 				return true;
 			}
 			else {
