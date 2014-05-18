@@ -25,21 +25,21 @@ public class ScrapItems1 extends Item {
 	// last one is always "useless"
 	public static final String[] itemNames = new String[]{"unknown", "metallic", "wire", "circuit", "plastic", "glass", "concrete", "timber", "food", "burnt", "rare", "useless"};
 	
-	private static final ItemStack[] rareLoot = new ItemStack[]{
+	public static final ItemStack[] rareLoot = new ItemStack[]{
 		new ItemStack(Items.diamond,1,0),
 		new ItemStack(Items.emerald,1,0),
 		new ItemStack(Items.gold_ingot,1,0),
 		new ItemStack(Items.golden_apple,1,0)
 	};
 	
-	private static final ItemStack[] glassLoot = new ItemStack[]{
+	public static final ItemStack[] glassLoot = new ItemStack[]{
 		new ItemStack(ScrapWorldBlocks.dusts, 1, 6),// glass dust
 		new ItemStack(Blocks.sand, 1, 0),
 		new ItemStack(Blocks.glass, 1, 0),
 		new ItemStack(Blocks.glass_pane, 2, 0)
 	};
 	
-	private static final ItemStack[] concreteLoot = new ItemStack[]{
+	public static final ItemStack[] concreteLoot = new ItemStack[]{
 		new ItemStack(ScrapWorldBlocks.dusts, 1, 7),// concrete dust
 		new ItemStack(Items.flint, 4, 0),
 		new ItemStack(Blocks.gravel, 1, 0),
@@ -47,14 +47,14 @@ public class ScrapItems1 extends Item {
 		new ItemStack(Blocks.stone, 1, 0)
 	};
 	
-	private static final ItemStack[] timberLoot = new ItemStack[]{
+	public static final ItemStack[] timberLoot = new ItemStack[]{
 		new ItemStack(Items.stick,8,0),
 		new ItemStack(Blocks.planks,1,0),
 		new ItemStack(Blocks.wooden_slab,2,0),
 		new ItemStack(ScrapWorldBlocks.dusts,2,8)
 	};
 	
-	private static final ItemStack[] foodLoot = new ItemStack[]{
+	public static final ItemStack[] foodLoot = new ItemStack[]{
 		new ItemStack(Items.baked_potato,1,0),
 		new ItemStack(Items.apple,1,0),
 		new ItemStack(Items.bread,1,0),

@@ -2,8 +2,10 @@ package fabricator77.scrapworld.machines;
 
 import cpw.mods.fml.common.FMLLog;
 import fabricator77.scrapworld.ScrapWorldBlocks;
+import fabricator77.scrapworld.items.ScrapItems1;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
@@ -14,6 +16,8 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.MathHelper;
+import net.minecraft.world.World;
 import net.minecraftforge.oredict.OreDictionary;
 
 public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInventory{
@@ -184,6 +188,133 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
 	public boolean isMachineReady() {
 		if (ready && complete) return true;
 		return false;
+	}
+	
+	public ItemStack processScrap(ItemStack itemStack, int slot)
+    {
+		//if (itemStack.stackSize > 1) {
+		//	return itemStack;
+		//}
+		
+		String[] itemNames = ScrapItems1.itemNames;
+		
+		
+        int metadata = MathHelper.clamp_int(itemStack.getItemDamage(), 0, itemNames.length-1);
+        String scrapType = ScrapItems1.itemNames[metadata];
+        
+        if (scrapType == "unknown") {
+    		if (this.worldObj.rand.nextInt(5) != 0) {
+    			//nothing of value could be found in this
+    			//String mesage = RandomMessages.scrapMessages(itemRand);
+    			//player.addChatMessage(new ChatComponentTranslation(mesage));
+    			// player.addChatMessage(new ChatComponentText(mesage));
+    			
+    			//convert into useless version, so people cannot re-try it will
+    			addItemStackToInventory(new ItemStack(this, 1, itemNames.length-1));
+    			--itemStack.stackSize;
+    			return itemStack;
+    		}
+    		// choose a random type to make this into
+    		// scrapType = itemNames[1 + world.rand.nextInt(itemNames.length-1)];
+    		//boolean added = player.inventory.addItemStackToInventory(new ItemStack(this, 1, 1 + world.rand.nextInt(itemNames.length-1)));
+    		//--itemStack.stackSize;
+			return itemStack;
+    	}
+    	
+    	if (scrapType == "metallic") {
+    		if (this.worldObj.rand.nextInt(25) == 0) {
+    			addItemStackToInventory(new ItemStack(itemStack.getItem(), 1, itemNames.length-1));
+    		}
+    		// random choice of iron, tin, copper
+    		else {
+    			int i = this.worldObj.rand.nextInt(3);
+    			ItemStack item = new ItemStack(ScrapWorldBlocks.dusts, 1, i);
+    			addItemStackToInventory(item);
+    			
+    		}
+    		--itemStack.stackSize;
+    		return itemStack;
+    	}
+    	if (scrapType == "wire") {
+    		// wire to make into machines/metal
+    		// heating element
+    		// could also be fibre cable (rare)
+    		return itemStack;
+    	}
+    	if (scrapType == "circuit") {
+    		// random choice of wires, blank PCB, copper scrap, silicon, redstone, broken PCB, silicon chip (rare), working PCB(rare)
+    		// or nothing
+    		ItemStack item = new ItemStack(ScrapWorldBlocks.components1Items, 1, 1);
+    		addItemStackToInventory(item);
+    		--itemStack.stackSize;
+    		return itemStack;
+    	}
+    	if (scrapType == "plastic") {
+    		// random choice of rubber, plastic, plastic component, silicon chip (rare)
+    		ItemStack item = new ItemStack(ScrapWorldBlocks.components1Items, 1, 3);
+    		addItemStackToInventory(item);
+    		--itemStack.stackSize;
+    		return itemStack;
+    	}
+    	if (scrapType == "glass") {
+    		// random choice of glass fragments, sand, fibre strands
+    		int i = this.worldObj.rand.nextInt(ScrapItems1.glassLoot.length);
+    		ItemStack item = ScrapItems1.glassLoot[i];
+    		addItemStackToInventory(item);
+    		--itemStack.stackSize;
+    		return itemStack;
+    	}
+    	if (scrapType == "concrete") {
+    		// random choice of concrete, sand, gravel, cobblestone, various stone blocks/steps/slabs
+    		int i = this.worldObj.rand.nextInt(ScrapItems1.concreteLoot.length);
+    		ItemStack item = ScrapItems1.concreteLoot[i];
+    		addItemStackToInventory(item);
+    		--itemStack.stackSize;
+    		return itemStack;
+    	}
+    	if (scrapType == "timber") {
+    		// random choice of sticks, wooden plank/stairs/slabs, logs (rare), torches
+    		int i = this.worldObj.rand.nextInt(ScrapItems1.timberLoot.length);
+    		ItemStack item = ScrapItems1.timberLoot[i];
+    		addItemStackToInventory(item);
+    		--itemStack.stackSize;
+    		return itemStack;
+    	}
+    	if (scrapType == "food") {
+    		int i = this.worldObj.rand.nextInt(ScrapItems1.foodLoot.length);
+    		ItemStack item = ScrapItems1.foodLoot[i];
+    		addItemStackToInventory(item);
+    		--itemStack.stackSize;
+    		return itemStack;
+    		
+    	}
+    	if (scrapType == "burnt") {
+    		// mostly useless but can drop charcoal sometimes
+    		ItemStack item = new ItemStack(Items.coal, 1, this.worldObj.rand.nextInt(2));
+    		addItemStackToInventory(item);
+			--itemStack.stackSize;
+    		return itemStack;
+    	}
+    	if (scrapType == "rare") {
+    		if (this.worldObj.rand.nextInt(10) == 0) {
+    			addItemStackToInventory(new ItemStack(itemStack.getItem(), 1, itemNames.length-1));
+    		}
+    		// random choice of diamonds, gold, emeralds, and the like
+    		else {
+    			int i = this.worldObj.rand.nextInt(ScrapItems1.rareLoot.length);
+    			ItemStack item = ScrapItems1.rareLoot[i];
+    			addItemStackToInventory(item);
+    		}
+    		--itemStack.stackSize;
+    		return itemStack;
+    	}
+    	
+    	return itemStack;
+    }
+	
+	//TODO: proper scan of output stack for matching stacks, and if none found, for empty slots.
+	private void addItemStackToInventory(ItemStack itemStack) {
+		return;
 	}
 
 	@Override
