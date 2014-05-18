@@ -128,7 +128,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     	getPower();
     	operateCycle();
     	
-    	FMLLog.info("[ScrapWorld] StoredPower "+storedPower);
+    	if (storedPower > 0) FMLLog.info("[ScrapWorld] StoredPower "+storedPower);
     	
     	this.markDirty();
     }
