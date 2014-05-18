@@ -21,10 +21,17 @@ c c
 Heater Barrel
 ???
 
+Voltage Regulator
+3x silicon + 4x copper ingots + 1 Iron Ingot
+ i
+IsI
+iii
+(i = copper ingot, s = silicon, I = iron ingot)
+
 Electric Motor
-4X Copper Winding
- c
-c c
- c
-(c = copper winding)
+3x copper Winding + 3x copper ingots + 1 iron
+ I 
+ccc
+iii
+(c = copper winding, I = iron ingot, i = copper ingot)
 
