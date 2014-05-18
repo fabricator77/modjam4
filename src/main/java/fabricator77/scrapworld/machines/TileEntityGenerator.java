@@ -19,13 +19,14 @@ public class TileEntityGenerator extends TileEntityMachine{
 			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0)
 	};
 	
-	protected ItemStack[] inv = new ItemStack[9];
+	//protected ItemStack[] inv = new ItemStack[9];
 	
 	@Override
     public void readFromNBT(NBTTagCompound tag)
     {
         super.readFromNBT(tag);
 
+        /**
         if (tag.hasKey("ready"))
         {
             ready = tag.getBoolean("ready");
@@ -61,12 +62,14 @@ public class TileEntityGenerator extends TileEntityMachine{
                 this.inv[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
             }
         }
+        */
     }
 	
 	@Override
     public void writeToNBT(NBTTagCompound tag)
     {
         super.writeToNBT(tag);
+        /**
         tag.setBoolean("ready", this.ready);
         tag.setInteger("storedPower", this.storedPower);
         
@@ -95,18 +98,7 @@ public class TileEntityGenerator extends TileEntityMachine{
             }
         }
         tag.setTag("Inv", nbttaglist);
-    }
-	
-	@Override
-    public Packet getDescriptionPacket() {
-    	NBTTagCompound tagCompound = new NBTTagCompound();
-    	this.writeToNBT(tagCompound);
-    	return new S35PacketUpdateTileEntity(xCoord, yCoord, zCoord, 2, tagCompound);
-    }
-     
-    @Override
-    public void onDataPacket(NetworkManager netManager, S35PacketUpdateTileEntity packet) {
-    	readFromNBT(packet.func_148857_g());
+        */
     }
 
 	@Override
@@ -135,7 +127,7 @@ public class TileEntityGenerator extends TileEntityMachine{
     	int count = 0;
     	for (int i = 0; i < this.inv.length; ++i)
         {
-    		// this.inv[i] = getStackInSlot(i);
+    		this.inv[i] = getStackInSlot(i);
     		// setInventorySlotContents(i, this.inv[i]);
     		if (this.inv[i] == null) {}
     		else {

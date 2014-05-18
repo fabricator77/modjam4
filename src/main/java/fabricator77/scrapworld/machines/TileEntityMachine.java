@@ -31,8 +31,8 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 	
 	public int storedPower = 0;
 	
-	public ItemStack[] inv;
 	public int inv_size = 9;
+	public ItemStack[] inv = new ItemStack[inv_size];
 	
 	@Override
     public void readFromNBT(NBTTagCompound tag)
