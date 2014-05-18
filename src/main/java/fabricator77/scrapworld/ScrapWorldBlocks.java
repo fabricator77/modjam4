@@ -42,6 +42,8 @@ public class ScrapWorldBlocks {
 	public static Item ingots;
 	public static Item rares;
 	public static Item powerItems;
+	public static Item components1Items;
+	
 	public static Item hvPowerCell;
 
 	public ScrapWorldBlocks() {
@@ -107,6 +109,9 @@ public class ScrapWorldBlocks {
 		powerItems = new PowerItems();
 		GameRegistry.registerItem(powerItems, "powerItems");
 		
+		components1Items = new Components1Items();
+		GameRegistry.registerItem(components1Items, "components1Items");
+		
 		hvPowerCell = new HVPowerCell();
 		GameRegistry.registerItem(hvPowerCell, "hvPowerCell");
 		
@@ -119,6 +124,8 @@ public class ScrapWorldBlocks {
 	private void registerCraftingRecipes () {
 		//make 9 'useless' scrap items into one compresedScrapCube
 		GameRegistry.addRecipe(new ItemStack(compressedScrapCube, 1, 0), new Object[] { "sss", "sss", "sss", Character.valueOf('s'), new ItemStack(scrapItems1, 1, 11)});
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(powerItems, 1, 3), new Object[] { new ItemStack(Items.glass_bottle, 3, 0), new ItemStack(components1Items, 1, 0)});
 	}
 	
 	private void registerFurnaceRecipes () {

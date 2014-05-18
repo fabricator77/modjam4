@@ -12,12 +12,12 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 
-public class PowerItems extends Item {
+public class Components1Items extends Item {
 	@SideOnly(Side.CLIENT)
     private IIcon[] textures;
-	public static final String[] itemNames = new String[]{"heater_barrel", "voltage_regulator", "copper_winding", "lightbulb_off", "lightbulb_on"};
+	public static final String[] itemNames = new String[]{"carbon_wire"};
 	
-	public PowerItems() {
+	public Components1Items() {
 		this.setHasSubtypes(true);
         this.setMaxDamage(0);
         this.setCreativeTab(ScrapWorld.creativeTab);
