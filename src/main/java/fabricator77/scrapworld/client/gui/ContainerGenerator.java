@@ -1,6 +1,7 @@
 package fabricator77.scrapworld.client.gui;
 
-import fabricator77.scrapworld.machines.TileEntityMachine;
+import fabricator77.scrapworld.machines.TileEntityGenerator;
+//import fabricator77.scrapworld.machines.TileEntityMachine;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -9,9 +10,9 @@ import net.minecraft.item.ItemStack;
 
 public class ContainerGenerator extends Container {
 	
-	private TileEntityMachine tileEntity;
+	private TileEntityGenerator tileEntity;
 
-	public ContainerGenerator(InventoryPlayer inventoryPlayer, TileEntityMachine tileentityMachine) {
+	public ContainerGenerator(InventoryPlayer inventoryPlayer, TileEntityGenerator tileentityMachine) {
 		this.tileEntity = tileentityMachine;
         int i;
         int j;

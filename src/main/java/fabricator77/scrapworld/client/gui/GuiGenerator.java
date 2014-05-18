@@ -3,7 +3,8 @@ package fabricator77.scrapworld.client.gui;
 import org.lwjgl.opengl.GL11;
 
 import fabricator77.scrapworld.ScrapWorld;
-import fabricator77.scrapworld.machines.TileEntityMachine;
+import fabricator77.scrapworld.machines.TileEntityGenerator;
+//import fabricator77.scrapworld.machines.TileEntityMachine;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -14,9 +15,9 @@ public class GuiGenerator extends GuiContainer{
 
 	public Container container;
 	private ResourceLocation guiTextures = new ResourceLocation(ScrapWorld.modid+":textures/gui/generator_charging.png");
-	public TileEntityMachine tileentity;
+	public TileEntityGenerator tileentity;
 
-	public GuiGenerator(InventoryPlayer inventory, TileEntityMachine tileentityMachine) {
+	public GuiGenerator(InventoryPlayer inventory, TileEntityGenerator tileentityMachine) {
 		super(new ContainerGenerator(inventory, tileentityMachine));
 		tileentity = tileentityMachine;
 	}

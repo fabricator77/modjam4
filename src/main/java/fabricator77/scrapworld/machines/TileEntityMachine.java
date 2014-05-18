@@ -31,7 +31,8 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 	
 	public int storedPower = 0;
 	
-	public ItemStack[] inv = new ItemStack[9];
+	public ItemStack[] inv;
+	public int inv_size = 9;
 	
 	@Override
     public void readFromNBT(NBTTagCompound tag)
@@ -61,16 +62,19 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
             }
         }
         
-        nbttaglist = tag.getTagList("Inv", inv.length);
-        this.inv = new ItemStack[inv.length];
+        nbttaglist = tag.getTagList("Inv", inv_size);
+        this.inv = new ItemStack[inv_size];
         for (int i = 0; i < nbttaglist.tagCount(); ++i)
         {
+        	
+        	
             NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
             int j = nbttagcompound1.getByte("Slot") & 255;
 
-            if (j >= 0 && j < this.inv.length)
+            if (j >= 0 && j < this.inv_size)
             {
                 this.inv[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
+                FMLLog.info("[ScrapWorld] reading "+ this.inv[j]);
             }
         }
     }
@@ -96,8 +100,9 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
         tag.setTag("Parts", nbttaglist);
         
         nbttaglist = new NBTTagList();
-        for (int i = 0; i < this.inv.length; ++i)
+        for (int i = 0; i < this.inv_size; ++i)
         {
+        	FMLLog.info("[ScrapWorld] writing "+this.inv[i]);
             if (this.inv[i] != null)
             {
                 NBTTagCompound nbttagcompound1 = new NBTTagCompound();
@@ -262,8 +267,6 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 		return this.inv[slot];
 	}
 
-	//Definately problems in here somewhere
-	//cannot take items out of machine
 	@Override
 	public ItemStack decrStackSize(int slot, int amount) {
 		ItemStack stack = getStackInSlot(slot);
