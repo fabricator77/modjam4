@@ -190,7 +190,6 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 		if (missingParts == 0) {
 			complete = true;
 		}
-		//TODO: write to NBT
 		this.markDirty();
 	}
 	

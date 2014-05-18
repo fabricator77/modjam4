@@ -1,5 +1,6 @@
 package fabricator77.scrapworld.machines;
 
+import cpw.mods.fml.common.FMLLog;
 import net.minecraft.world.World;
 
 public class TileEntityStaticGenerator extends TileEntityGenerator{
@@ -16,8 +17,9 @@ public class TileEntityStaticGenerator extends TileEntityGenerator{
 	
 	@Override
 	public void getPower () {
-		this.worldObj.getWorldInfo().setThundering(true);
+		// this.worldObj.getWorldInfo().setThundering(true);
 		//this.worldObj.thunderingStrength = 1.0F;
+		// if (storedPower > 0) FMLLog.info("[ScrapWorld] thunderingStrength "+this.worldObj.thunderingStrength);
 		
 		//TODO: is on mains power, or contains powerCell
 		int power = ((BlockStaticGenerator)this.blockType).getPowerLevel(this.worldObj, this.xCoord, this.yCoord, this.zCoord);
