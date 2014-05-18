@@ -7,11 +7,11 @@ import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-public class ContainerMachine extends Container {
+public class ContainerGenerator extends Container {
 	
 	private TileEntityMachine tileEntity;
 
-	public ContainerMachine(InventoryPlayer inventoryPlayer, TileEntityMachine tileentityMachine) {
+	public ContainerGenerator(InventoryPlayer inventoryPlayer, TileEntityMachine tileentityMachine) {
 		this.tileEntity = tileentityMachine;
         int i;
         int j;
@@ -25,11 +25,7 @@ public class ContainerMachine extends Container {
                 this.addSlotToContainer(new Slot(tileentityMachine, j + i * 3, 56 + j * 24, 17 + i * 18));
             }
         }
-        
-        // Power cell slot
-        this.addSlotToContainer(new Slot(tileentityMachine, 19, 56 + 24, 17 + 2 * 18));
-        
-        //bindPlayerInventory(inventoryPlayer);
+        bindPlayerInventory(inventoryPlayer);
 	}
 	
 	// needed

@@ -10,15 +10,15 @@ import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
 
-public class GuiMachine extends GuiContainer{
+public class GuiGenerator extends GuiContainer{
 
 	public Container container;
-	private ResourceLocation guiTextures = new ResourceLocation(ScrapWorld.modid+":textures/gui/machine_slots.png");
+	private ResourceLocation guiTextures = new ResourceLocation(ScrapWorld.modid+":textures/gui/generator_charging.png");
 	public TileEntityMachine tileentity;
 
 	//TODO: figure out where/why items in machine/inv get lost
-	public GuiMachine(InventoryPlayer inventory, TileEntityMachine tileentityMachine) {
-		super(new ContainerMachine(inventory, tileentityMachine));
+	public GuiGenerator(InventoryPlayer inventory, TileEntityMachine tileentityMachine) {
+		super(new ContainerGenerator(inventory, tileentityMachine));
 		tileentity = tileentityMachine;
 	}
 	

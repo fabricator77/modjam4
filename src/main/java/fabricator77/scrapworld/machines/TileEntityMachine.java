@@ -32,7 +32,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 	
 	public int storedPower = 0;
 	
-	protected ItemStack[] inv = new ItemStack[9];
+	protected ItemStack[] inv = new ItemStack[19];
 	
 	@Override
     public void readFromNBT(NBTTagCompound tag)
@@ -44,7 +44,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
             ready = tag.getBoolean("ready");
         }
         
-        NBTTagList nbttaglist = tag.getTagList("Parts", 10);
+        NBTTagList nbttaglist = tag.getTagList("Parts", 19);
         this.parts = new ItemStack[numParts];
         for (int i = 0; i < nbttaglist.tagCount(); ++i)
         {
@@ -57,7 +57,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
             }
         }
         
-        nbttaglist = tag.getTagList("Inv", 10);
+        nbttaglist = tag.getTagList("Inv", 19);
         this.inv = new ItemStack[inv.length];
         for (int i = 0; i < nbttaglist.tagCount(); ++i)
         {
