@@ -12,11 +12,11 @@ i i
 (i = ingot)
 
 Carbon Wire
-4X Charcoal Dust
+4X Carbon Dust
  c
 c c
  c
-(c = charcoal dust)
+(c = carbon dust)
 
 Heater Barrel
 ???
@@ -29,9 +29,16 @@ iii
 (i = copper ingot, s = silicon, I = iron ingot)
 
 Electric Motor
-3x copper Winding + 3x copper ingots + 1 iron
+3x copper Winding + 3x copper ingots + 1 iron ingot
  I 
 ccc
 iii
 (c = copper winding, I = iron ingot, i = copper ingot)
+
+Machine Casing
+8x iron ingot + 1x tin ingot
+III
+ITI
+III
+(I = iron ingot, T = copper ingot)
 

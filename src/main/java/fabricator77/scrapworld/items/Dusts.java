@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 
 public class Dusts extends Item {
 	
-	public static final String[] itemNames = new String[]{"tin", "copper", "iron", "gold", "emerald", "diamond", "glass", "concrete", "sawdust", "charcoal"};
+	public static final String[] itemNames = new String[]{"tin", "copper", "iron", "gold", "emerald", "diamond", "glass", "concrete", "sawdust", "carbon"};
 	
 	@SideOnly(Side.CLIENT)
     private IIcon[] textures;
