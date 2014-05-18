@@ -173,8 +173,10 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
     				}
     				setInventorySlotContents(i, this.inv[i]);
     				// output result.
-    				this.inv[i+9] = outputProduct;
-					setInventorySlotContents(i+9, this.inv[i+9]);
+    				//this.inv[i+9] = outputProduct;
+					//setInventorySlotContents(i+9, this.inv[i+9]);
+					
+					putItemStackIntoOutput(outputProduct);
 					return;
     			}
     			if (storedPower == 0) {
@@ -314,7 +316,7 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
 	
 	//TODO: proper scan of output stack for matching stacks, and if none found, for empty slots.
 	private boolean addItemStackToInventory(ItemStack itemStack) {
-		return false;
+		return putItemStackIntoOutput(itemStack);
 	}
 
 	@Override
@@ -481,15 +483,29 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
 	
 	//
 	public boolean putItemStackIntoOutput (ItemStack itemStack) {
+		boolean partialTranfer = false;
 		for (int i=8; i<17; i++) {
+			if (itemStack.stackSize == 0) return true;
 			if (ItemStack.areItemStacksEqual(this.inv[i], itemStack)) {
 				if (this.inv[i].stackSize + itemStack.stackSize > this.inv[i].getMaxStackSize()) {
 					// too big to all fit in this stack.
+					this.inv[i].stackSize = this.inv[i].getMaxStackSize();
+					setInventorySlotContents(i, this.inv[i]);
 					
+					int overflow = (this.inv[i].getMaxStackSize() - this.inv[i].stackSize + itemStack.stackSize);
+					//TODO: still possible loose items this way
+					// if all other output slots are full
+					itemStack.stackSize = overflow;
+					partialTranfer = true;
 				}
-				return true;
+				else {
+					this.inv[i].stackSize = this.inv[i].stackSize + itemStack.stackSize;
+					setInventorySlotContents(i, this.inv[i]);
+					return true;
+				}
 			}
 		}
+		if (partialTranfer) return true; //TODO: item loss
 		return false;
 	}
 }

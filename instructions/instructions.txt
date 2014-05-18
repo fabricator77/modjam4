@@ -18,8 +18,12 @@ c c
  c
 (c = carbon dust)
 
-Heater Barrel
-???
+Heater Barrel (not implemented yet !)
+3x concrete dust + 2x copper ingot + 4 Carbon Wire
+ciw
+c w
+ciw
+(c = concrete dust + )
 
 Voltage Regulator
 3x silicon + 4x copper ingots + 1 Iron Ingot

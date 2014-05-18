@@ -34,8 +34,10 @@ public class TileEntityScrapFurnace extends TileEntityScrapGrinder{
 	    				}
 	    				setInventorySlotContents(i, this.inv[i]);
 	    				// output result.
-	    				this.inv[i+9] = outputProduct;
-						setInventorySlotContents(i+9, this.inv[i+9]);
+	    				//this.inv[i+9] = outputProduct;
+						//setInventorySlotContents(i+9, this.inv[i+9]);
+						
+						putItemStackIntoOutput(outputProduct);
 						return;
 	    			}
 	    			if (storedPower == 0) {
