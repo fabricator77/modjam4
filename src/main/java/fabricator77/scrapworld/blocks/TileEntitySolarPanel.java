@@ -6,7 +6,7 @@ public class TileEntitySolarPanel extends TileEntityMachine{
 
 	@Override
 	public String getInventoryName() {
-		return "container."+((IMachineBlock)this.blockType).getMachineName();
+		return "container."+BlockSolarPanel.machineName;
 	}
 	
 	@Override

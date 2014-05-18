@@ -20,6 +20,7 @@ public class PowerItems extends Item {
 	public PowerItems() {
 		this.setHasSubtypes(true);
         this.setMaxDamage(0);
+        this.maxStackSize=8;
         this.setCreativeTab(ScrapWorld.creativeTab);
 	}
 	

@@ -258,7 +258,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 	@Override
 	public String getInventoryName() {
 
-		return "container.machine."+this.getMachineName();
+		return "container."+this.getMachineName();
 	}
 
 	@Override
