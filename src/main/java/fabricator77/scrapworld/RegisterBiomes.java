@@ -10,10 +10,9 @@ public class RegisterBiomes {
 	public static BiomeGenBase scrapOcean; 
 	
 	public RegisterBiomes() {
-		scrapPlains = new ScrapMountainBiome(ScrapWorld.scrapMountainID).setBiomeName("Scrap Mountain");
-		scrapMountain = new ScrapPlainsBiome(ScrapWorld.scrapPlainsID).setBiomeName("Scrap Plains");
+		scrapPlains = new ScrapPlainsBiome(ScrapWorld.scrapPlainsID).setBiomeName("Scrap Plains");
+		scrapMountain = new ScrapMountainBiome(ScrapWorld.scrapMountainID).setBiomeName("Scrap Mountain");
 		scrapRiver = new ScrapRiverBiome(ScrapWorld.scrapRiverID).setBiomeName("Scrap River");
 		scrapOcean = new ScrapOceanBiome(ScrapWorld.scrapOceanID).setBiomeName("Scrap Ocean");
 	}
-
 }
