@@ -26,7 +26,7 @@ public class BlockScrapCube extends Block {
     private IIcon[] textures;
 	
 	public BlockScrapCube() {
-		super(Material.iron);
+		super(Material.wood);
 		this.setCreativeTab(ScrapWorld.creativeTab);
 	}
 	
@@ -76,6 +76,11 @@ public class BlockScrapCube extends Block {
         if (metadata == 0) {
         	//TODO: change to drop 2x items or drop rare scrap item/loot
         	if (world.rand.nextInt(20) == 0) ret.add(new ItemStack(Items.gold_nugget, 1, 0));
+        }
+        if (metadata == 1) {
+        	// timber scrap always drops timber scrap items
+        	ret = new ArrayList<ItemStack>();
+        	ret.add(new ItemStack(ScrapWorldBlocks.scrapItems1, 1, 7));
         }
         if (metadata == 9) {
         	// burnt scrap

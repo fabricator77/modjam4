@@ -51,7 +51,7 @@ public class ScrapWorldBlocks {
 	public static Item hvPowerCell;
 
 	public ScrapWorldBlocks() {
-		scrapCube = new BlockScrapCube().setBlockName("scrapCube").setHardness(3.0F).setResistance(5.0F);
+		scrapCube = new BlockScrapCube().setBlockName("scrapCube").setHardness(2.0F).setResistance(5.0F);
 		GameRegistry.registerBlock(scrapCube, ItemBlock.class, "scrapCube");
 		scrapSurfaceDebris = new BlockScrapSurfaceDebris().setBlockName("scrapDebris");
 		GameRegistry.registerBlock(scrapSurfaceDebris, "scrapDebris");
