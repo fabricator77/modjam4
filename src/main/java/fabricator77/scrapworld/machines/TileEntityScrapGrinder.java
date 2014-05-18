@@ -229,10 +229,12 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
 			int stackSize = this.inv[batterySlot].stackSize;
 			Item item = this.inv[batterySlot].getItem();
 			if (item instanceof IBattery) {	
-				this.inv[batterySlot].setItemDamage(damage - chargingRate);
-				storedPower = storedPower + chargingRate;
-				
-				setInventorySlotContents(batterySlot, this.inv[batterySlot]);
+				if (damage < 0) {
+					this.inv[batterySlot].setItemDamage(damage + chargingRate);
+					storedPower = storedPower + chargingRate;
+					
+					setInventorySlotContents(batterySlot, this.inv[batterySlot]);
+				}
 			}
 		}
 	}
