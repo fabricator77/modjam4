@@ -38,7 +38,12 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
 
         if (tag.hasKey("ready"))
         {
-            ready = tag.getBoolean("ready");
+        	this.ready = tag.getBoolean("ready");
+        }
+        
+        if (tag.hasKey("storedPower"))
+        {
+        	this.storedPower = tag.getInteger("storedPower");
         }
         
         NBTTagList nbttaglist = tag.getTagList("Parts", 10);
@@ -73,6 +78,7 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
     {
         super.writeToNBT(tag);
         tag.setBoolean("ready", this.ready);
+        tag.setInteger("storedPower", this.storedPower);
         
         NBTTagList nbttaglist = new NBTTagList();
         for (int i = 0; i < this.parts.length; ++i)
@@ -146,8 +152,8 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
     			Item item = this.inv[i].getItem();
     			//FMLLog.info("[ScrapWorld] Found "+item);
     			//Attempt to change power cells
-    			if (Item.getIdFromItem(item) == Item.getIdFromItem(ScrapWorldBlocks.hvPowerCell)) {
-    			//		item.getUnlocalizedName() == ScrapWorldBlocks.hvPowerCell.getUnlocalizedName()) {
+    			//if (Item.getIdFromItem(item) == Item.getIdFromItem(ScrapWorldBlocks.scrapItems1)) {
+    			if (item.getUnlocalizedName().equals(ScrapWorldBlocks.hvPowerCell.getUnlocalizedName())  ) {
     				if (damage > 0) {
     					//FMLLog.info("[ScrapWorld] Charging "+damage);
     					this.inv[i].setItemDamage(damage - 128);

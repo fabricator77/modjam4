@@ -146,8 +146,8 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     			Item item = this.inv[i].getItem();
     			//FMLLog.info("[ScrapWorld] Found "+item);
     			//Attempt to change power cells
-    			if (Item.getIdFromItem(item) == Item.getIdFromItem(ScrapWorldBlocks.hvPowerCell)) {
-    			//		item.getUnlocalizedName() == ScrapWorldBlocks.hvPowerCell.getUnlocalizedName()) {
+    			// if (Item.getIdFromItem(item) == Item.getIdFromItem(ScrapWorldBlocks.hvPowerCell)) {
+    			if (item.getUnlocalizedName().equals(ScrapWorldBlocks.hvPowerCell.getUnlocalizedName())  ) {
     				if (damage > 0) {
     					//FMLLog.info("[ScrapWorld] Charging "+damage);
     					this.inv[i].setItemDamage(damage - 128);
