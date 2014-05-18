@@ -211,7 +211,7 @@ public class ScrapWorldBlocks {
 	public void registerTileEntities() {
 		// machines
 		GameRegistry.registerTileEntity(TileEntityMachine.class, "tileEntityMachine");
-		GameRegistry.registerTileEntity(TileEntityScrapGrinder.class, "tileEntityScrapGrinder");
+		GameRegistry.registerTileEntity(TileEntityScrapGrinder_old.class, "tileEntityScrapGrinder");
 		//generators
 		GameRegistry.registerTileEntity(TileEntityGenerator.class, "tileEntityGenerator");
 		GameRegistry.registerTileEntity(TileEntitySolarPanel.class, "tileEntitySolarPanel");
