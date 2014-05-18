@@ -155,23 +155,33 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     			// if (Item.getIdFromItem(item) == Item.getIdFromItem(ScrapWorldBlocks.hvPowerCell)) {
     			if (item.getUnlocalizedName().equals(ScrapWorldBlocks.hvPowerCell.getUnlocalizedName())  ) {
     				if (damage > 0) {
+    					// stacked cells can require a lot of stored power to charge.
+    					if (storedPower < stackSize) {
+    						return; // try again next second
+    					}
+    					
     					int chargingRate = 256;
+    					// take into account available power
+    					if (storedPower < chargingRate) {
+    						chargingRate = storedPower;
+    					}
     					//alter charging rate if cells are stacked
     					if (chargingRate % stackSize > 0) {
     						chargingRate = chargingRate-(chargingRate % stackSize);
     					}
+    					// divide charging rate over available cells
     					if (stackSize > 0) {
     						chargingRate = chargingRate / stackSize;
     					}
     					
     					// This needs redoing to work correctly.
-    					if (storedPower < chargingRate && storedPower > stackSize) {
-    						chargingRate = storedPower;
-    						storedPower = 0;
-    					}
-    					else {
-    						storedPower = storedPower - chargingRate;
-    					}
+    					//if (storedPower < chargingRate && storedPower > stackSize) {
+    					//	chargingRate = storedPower;
+    					//	storedPower = 0;
+    					//}
+    					//else {
+    						storedPower = storedPower - (chargingRate * stackSize);
+    					//}
     					FMLLog.info("[ScrapWorld] Charging "+damage);
     					this.inv[i].setItemDamage(damage - chargingRate);
     					
