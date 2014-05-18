@@ -127,7 +127,9 @@ public class ScrapWorldBlocks {
 		GameRegistry.addRecipe(new ItemStack(compressedScrapCube, 1, 0), new Object[] { "sss", "sss", "sss", Character.valueOf('s'), new ItemStack(scrapItems1, 1, 11)});
 		
 		// copper coil from 4 ingots
-		GameRegistry.addRecipe(new ItemStack(powerItems, 1, 2), new Object[] { " i ", "i i", " i ", Character.valueOf('w'), new ItemStack(ingots, 1, 1)});
+		GameRegistry.addRecipe(new ItemStack(powerItems, 1, 2), new Object[] { " i ", "i i", " i ", Character.valueOf('i'), new ItemStack(ingots, 1, 1)});
+		// carbon wire from 4 charcoal dust
+		GameRegistry.addRecipe(new ItemStack(components1Items, 3, 0), new Object[] { " d ", "d d", " d ", Character.valueOf('d'), new ItemStack(dusts, 1, 9)});
 		
 		GameRegistry.addShapelessRecipe(new ItemStack(powerItems, 1, 3), new Object[] { new ItemStack(Items.glass_bottle, 1, 0), new ItemStack(Items.glass_bottle, 1, 0), new ItemStack(Items.glass_bottle, 1, 0), new ItemStack(components1Items, 1, 0)});
 		

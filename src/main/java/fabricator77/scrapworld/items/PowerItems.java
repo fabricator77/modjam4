@@ -15,7 +15,7 @@ import net.minecraft.util.MathHelper;
 public class PowerItems extends Item {
 	@SideOnly(Side.CLIENT)
     private IIcon[] textures;
-	public static final String[] itemNames = new String[]{"heater_barrel", "voltage_regulator", "copper_winding", "lightbulb_off", "lightbulb_on"};
+	public static final String[] itemNames = new String[]{"heater_barrel", "voltage_regulator", "copper_winding", "lightbulb_off", "lightbulb_on", "motor"};
 	
 	public PowerItems() {
 		this.setHasSubtypes(true);
