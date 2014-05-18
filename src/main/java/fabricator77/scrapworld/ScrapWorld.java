@@ -35,10 +35,14 @@ public class ScrapWorld {
 	public static Logger logger = (Logger)FMLCommonHandler.instance().getFMLLogger();
 	
 	//TODO: shift to dedicated config file
-	public static int scrapPlainsID = 100;
-	public static int scrapMountainID = 101;
+	public static int scrapPlainsID = 90;
+	public static int scrapMountainID = 91;
+	public static int scrapRiverID = 92;
+	public static int scrapOceanID = 93;
 	
 	public static CreativeTabs creativeTab = new CreativeTabScrapWorld(CreativeTabs.getNextID(), ScrapWorld.modid);
+	
+	
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {

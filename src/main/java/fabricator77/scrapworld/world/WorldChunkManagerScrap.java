@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Random;
 
 import fabricator77.scrapworld.RegisterBiomes;
+import fabricator77.scrapworld.world.layer.GenLayerScrap;
 import net.minecraft.crash.CrashReport;
 import net.minecraft.crash.CrashReportCategory;
 import net.minecraft.util.ReportedException;
@@ -35,7 +36,7 @@ public class WorldChunkManagerScrap extends WorldChunkManager {
 	public WorldChunkManagerScrap(long par1, WorldType par3WorldType)
 	{
 		 this();
-	     GenLayer[] agenlayer = GenLayer.initializeAllBiomeGenerators(par1, par3WorldType);
+	     GenLayer[] agenlayer = GenLayerScrap.initializeAllBiomeGenerators(par1, par3WorldType);
 	     agenlayer = getModdedBiomeGenerators(par3WorldType, par1, agenlayer);
 	     this.genBiomes = agenlayer[0];
 	     this.biomeIndexLayer = agenlayer[1];
