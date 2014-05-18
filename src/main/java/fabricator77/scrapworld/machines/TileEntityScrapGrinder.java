@@ -29,7 +29,7 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
 	
 	public int storedPower = 0;
 	
-	private ItemStack[] inv = new ItemStack[9];
+	private ItemStack[] inv = new ItemStack[9 + 9 + 1];
 	
 	@Override
     public void readFromNBT(NBTTagCompound tag)

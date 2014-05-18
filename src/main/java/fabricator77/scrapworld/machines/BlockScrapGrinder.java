@@ -43,10 +43,10 @@ public class BlockScrapGrinder extends BlockMachine{
 		if (heldItem != null && heldItem.getItem() == Items.bucket) {
 			//TODO: take/accept items and liquids
 		}
-        //if (world.isRemote)
-        //{
-        	player.openGui(ScrapWorld.instance, 1, world, x, y, z);
-        //}
+        if (!world.isRemote)
+        {
+        	player.openGui(ScrapWorld.instance, 5, world, x, y, z);
+        }
         return true;
     }
 	
