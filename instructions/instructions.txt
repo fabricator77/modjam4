@@ -1,0 +1,30 @@
+Crafting Recipes
+
+Lightbulb
+1x Carbon Wire
+3x Glass Bottle
+
+Copper Winding
+4X Copper Ingot
+ i
+i i
+ i
+(i = ingot)
+
+Carbon Wire
+4X Charcoal Dust
+ c
+c c
+ c
+(c = charcoal dust)
+
+Heater Barrel
+???
+
+Electric Motor
+4X Copper Winding
+ c
+c c
+ c
+(c = copper winding)
+
