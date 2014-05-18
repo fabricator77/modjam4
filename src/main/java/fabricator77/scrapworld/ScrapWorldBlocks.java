@@ -144,6 +144,15 @@ public class ScrapWorldBlocks {
 		GameRegistry.addRecipe(new ItemStack(components1Items, 3, 0), new Object[] { " d ", "d d", " d ", Character.valueOf('d'), new ItemStack(dusts, 1, 9)});
 		// HVPowerCell
 		//TODO: use tin, glass, emerald_dust and some redstone
+		GameRegistry.addRecipe(new ItemStack(hvPowerCell, 1, 32767), new Object[] {
+			"gig", "tEr", "gig",
+			
+			Character.valueOf('i'), new ItemStack(ingots, 1, 1),// copper ingot
+			Character.valueOf('g'), new ItemStack(Blocks.glass, 1, 0),//glass blocks
+			Character.valueOf('t'), new ItemStack(ingots, 1, 0),// tin ingot
+			Character.valueOf('E'), new ItemStack(dusts, 1, 4), // emerald dust
+			Character.valueOf('r'), new ItemStack(Items.redstone, 1, 0)// redstone
+		});
 		// lightbulb (off)
 		GameRegistry.addShapelessRecipe(new ItemStack(powerItems, 1, 3), new Object[] { new ItemStack(Items.glass_bottle, 1, 0), new ItemStack(Items.glass_bottle, 1, 0), new ItemStack(Items.glass_bottle, 1, 0), new ItemStack(components1Items, 1, 0)});
 		
