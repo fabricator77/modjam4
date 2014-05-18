@@ -118,6 +118,10 @@ public class ScrapItems1 extends Item {
 	@Override
 	public ItemStack onItemRightClick(ItemStack itemStack, World world, EntityPlayer player)
     {
+		if (!world.isRemote) {
+			itemStack.stackSize--;
+			return itemStack;
+		}
 		//if (itemStack.stackSize > 1) {
 		//	return itemStack;
 		//}
@@ -183,7 +187,7 @@ public class ScrapItems1 extends Item {
     	if (scrapType == "glass") {
     		// random choice of glass fragments, sand, fibre strands
     		int i = this.itemRand.nextInt(glassLoot.length);
-    		ItemStack item = glassLoot[i];
+    		ItemStack item = glassLoot[i].copy();
     		boolean added = player.inventory.addItemStackToInventory(item);
     		--itemStack.stackSize;
     		return itemStack;
@@ -191,7 +195,7 @@ public class ScrapItems1 extends Item {
     	if (scrapType == "concrete") {
     		// random choice of concrete, sand, gravel, cobblestone, various stone blocks/steps/slabs
     		int i = this.itemRand.nextInt(concreteLoot.length);
-    		ItemStack item = concreteLoot[i];
+    		ItemStack item = concreteLoot[i].copy();
     		boolean added = player.inventory.addItemStackToInventory(item);
     		--itemStack.stackSize;
     		return itemStack;
@@ -199,14 +203,14 @@ public class ScrapItems1 extends Item {
     	if (scrapType == "timber") {
     		// random choice of sticks, wooden plank/stairs/slabs, logs (rare), torches
     		int i = this.itemRand.nextInt(timberLoot.length);
-    		ItemStack item = timberLoot[i];
+    		ItemStack item = timberLoot[i].copy();
     		boolean added = player.inventory.addItemStackToInventory(item);
     		--itemStack.stackSize;
     		return itemStack;
     	}
     	if (scrapType == "food") {
     		int i = this.itemRand.nextInt(foodLoot.length);
-    		ItemStack item = foodLoot[i];
+    		ItemStack item = foodLoot[i].copy();
     		boolean added = player.inventory.addItemStackToInventory(item);
     		--itemStack.stackSize;
     		return itemStack;
@@ -226,7 +230,7 @@ public class ScrapItems1 extends Item {
     		// random choice of diamonds, gold, emeralds, and the like
     		else {
     			int i = this.itemRand.nextInt(rareLoot.length);
-    			ItemStack item = rareLoot[i];
+    			ItemStack item = rareLoot[i].copy();
     			boolean added = player.inventory.addItemStackToInventory(item);
     		}
     		--itemStack.stackSize;
