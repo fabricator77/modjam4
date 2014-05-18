@@ -7,6 +7,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
@@ -26,9 +27,9 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
 	};
 	private int numParts = 3;
 	
-	public int storedPower = 0;
+	public int storedPower = 32000;
 	
-	private ItemStack[] inv = new ItemStack[9];
+	private ItemStack[] inv = new ItemStack[9 + 9 + 1];
 	
 	@Override
     public void readFromNBT(NBTTagCompound tag)
@@ -125,7 +126,8 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
     	checkIfComplete();
     	// if (!complete) return;
     	getPower();
-    	if (storedPower > 0) operateCycle();
+    	//if (storedPower > 0)
+    		operateCycle();
     	
     	if (storedPower > 0) FMLLog.info("[ScrapWorld] StoredPower "+storedPower);
     	
@@ -149,37 +151,14 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
     			//FMLLog.info("[ScrapWorld] Found "+item);
     			//Attempt to change power cells
     			// if (Item.getIdFromItem(item) == Item.getIdFromItem(ScrapWorldBlocks.hvPowerCell)) {
-    			if (item instanceof IBattery) {
-    			//if (item.getUnlocalizedName().equals(ScrapWorldBlocks.hvPowerCell.getUnlocalizedName())  ) {
-    				if (damage > 0) {
-    					// stacked cells can require a lot of stored power to charge.
-    					if (storedPower < stackSize) {
-    						return; // try again next second
-    					}
-    					
-    					int chargingRate = 256;
-    					// take into account available power
-    					if (storedPower < chargingRate) {
-    						chargingRate = storedPower;
-    					}
-    					//alter charging rate if cells are stacked
-    					if (chargingRate % stackSize > 0) {
-    						chargingRate = chargingRate-(chargingRate % stackSize);
-    					}
-    					// divide charging rate over available cells
-    					if (stackSize > 0) {
-    						chargingRate = chargingRate / stackSize;
-    					}
-    					// finally drain the power actually used
-    					storedPower = storedPower - (chargingRate * stackSize);
-    					// FMLLog.info("[ScrapWorld] Charging "+this.inv[i].getItem());
-    					this.inv[i].setItemDamage(damage - chargingRate);
-    					
-    					setInventorySlotContents(i, this.inv[i]);
-    					// this.inv[i].getItem().notify();
-    					return;
-    				}
-    			}
+    			//if (stackSize > 1) {this.inv[i].stackSize--;}
+				ItemStack outputProduct = FurnaceRecipes.smelting().getSmeltingResult(this.inv[i]);
+				FMLLog.info("[ScrapWorld] TileEntityScrapGrinder.outputProduct="+outputProduct);
+				if (outputProduct != null) {
+					this.inv[i] = outputProduct;
+					setInventorySlotContents(i, this.inv[i]);
+					return;
+				}
     			if (storedPower == 0) {
     				break;
     			}

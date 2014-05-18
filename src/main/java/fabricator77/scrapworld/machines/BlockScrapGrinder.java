@@ -33,7 +33,7 @@ public class BlockScrapGrinder extends BlockMachine{
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int metadata) {
-		return new TileEntityScrapGrinder_old();
+		return new TileEntityScrapGrinder();
 	}
 	
 	@Override

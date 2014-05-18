@@ -1,6 +1,6 @@
 package fabricator77.scrapworld.client.gui;
 
-import fabricator77.scrapworld.machines.TileEntityScrapGrinder_old;
+import fabricator77.scrapworld.machines.TileEntityScrapGrinder;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
@@ -9,9 +9,9 @@ import net.minecraft.item.ItemStack;
 
 public class ContainerScrapGrinder extends Container {
 	
-	private TileEntityScrapGrinder_old tileEntity;
+	private TileEntityScrapGrinder tileEntity;
 
-	public ContainerScrapGrinder(InventoryPlayer inventoryPlayer, TileEntityScrapGrinder_old tileentityMachine) {
+	public ContainerScrapGrinder(InventoryPlayer inventoryPlayer, TileEntityScrapGrinder tileentityMachine) {
 		this.tileEntity = tileentityMachine;
         int i;
         int j;
