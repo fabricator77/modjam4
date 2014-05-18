@@ -32,7 +32,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 	
 	public int storedPower = 0;
 	
-	protected ItemStack[] inv = new ItemStack[19];
+	protected ItemStack[] inv = new ItemStack[9];
 	
 	@Override
     public void readFromNBT(NBTTagCompound tag)
@@ -132,7 +132,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     	//FMLLog.info("[ScrapWorld] Ticking TileEntityMachine");
     	 //TODO: Entity updates
     	// includes block being placed/loaded ?
-    	checkIfComplete();
+    	//checkIfComplete(); // in sin bin for being bad (throwing NPE BS)
     	// if (!complete) return;
     	getPower();
     	if (storedPower > 0) operateCycle();
@@ -228,7 +228,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 		int missingParts = 0;
 		//TODO: specific machines need specific parts in specific slots
 		for (int i=0; i<parts.length; i++) {
-			if (parts[i] != null || parts[i].stackSize == 0) {
+			if (parts[i] != null || parts[i].getItem() != null || parts[i].stackSize == 0) {
 				missingParts++;
 			}
 		}

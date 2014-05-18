@@ -31,7 +31,7 @@ public class ContainerMachine extends Container {
         }
         
         // Power cell slot
-        this.addSlotToContainer(new Slot(tileentityMachine, 19, 56 + 24, 17 + 2 * 18));
+        this.addSlotToContainer(new Slot(tileentityMachine, 18, 56 + 24, 17 + 2 * 18));
         
         //bindPlayerInventory(inventoryPlayer);
 	}

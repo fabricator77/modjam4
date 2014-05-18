@@ -16,7 +16,7 @@ public class MainGuiHandler implements IGuiHandler {
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity tileEntity = world.getTileEntity(x, y, z);
 		if(tileEntity != null && tileEntity instanceof TileEntityMachine){
-			if (ID == 1) return new ContainerMachine(player.inventory, (TileEntityMachine)tileEntity);
+			if (ID == 1) return new ContainerGenerator(player.inventory, (TileEntityMachine)tileEntity);
 			if (ID == 2) return new ContainerGenerator(player.inventory, (TileEntityGenerator)tileEntity);
 			if (ID == 3) return new ContainerGenerator(player.inventory, (TileEntitySolarPanel)tileEntity);
 			if (ID == 4) return new ContainerGenerator(player.inventory, (TileEntityStaticGenerator)tileEntity);
@@ -28,7 +28,7 @@ public class MainGuiHandler implements IGuiHandler {
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		TileEntity tileEntity = world.getTileEntity(x, y, z);
 		if(tileEntity != null && tileEntity instanceof TileEntityMachine){
-			if (ID == 1) return new GuiMachine(player.inventory, (TileEntityMachine)tileEntity);
+			if (ID == 1) return new GuiGenerator(player.inventory, (TileEntityMachine)tileEntity);
 			if (ID == 2) return new GuiGenerator(player.inventory, (TileEntityGenerator)tileEntity);
 			if (ID == 3) return new GuiGenerator(player.inventory, (TileEntitySolarPanel)tileEntity);
 			if (ID == 4) return new GuiGenerator(player.inventory, (TileEntityStaticGenerator)tileEntity);
