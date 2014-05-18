@@ -32,7 +32,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 	
 	public int storedPower = 0;
 	
-	private ItemStack[] inv = new ItemStack[9];
+	protected ItemStack[] inv = new ItemStack[9];
 	
 	@Override
     public void readFromNBT(NBTTagCompound tag)
@@ -186,6 +186,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     					this.inv[i].setItemDamage(damage - chargingRate);
     					
     					setInventorySlotContents(i, this.inv[i]);
+    					return;
     					// this.inv[i].getItem().notify();
     				}
     			}

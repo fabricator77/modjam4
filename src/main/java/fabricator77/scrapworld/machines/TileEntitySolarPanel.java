@@ -5,7 +5,7 @@ import net.minecraft.util.MathHelper;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 
-public class TileEntitySolarPanel extends TileEntityMachine{
+public class TileEntitySolarPanel extends TileEntityGenerator{
 
 	@Override
 	public String getInventoryName() {
