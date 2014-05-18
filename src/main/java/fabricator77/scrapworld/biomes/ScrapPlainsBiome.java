@@ -33,8 +33,11 @@ public class ScrapPlainsBiome extends BiomeGenBase {
         this.theBiomeDecorator = new BiomeDecoratorScrap();
 	}
 	
+	@Override
 	public void decorate(World par1World, Random par2Random, int par3, int par4)
     {
         this.theBiomeDecorator.decorateChunk(par1World, par2Random, this, par3, par4);
     }
+	
+
 }
