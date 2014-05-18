@@ -8,6 +8,7 @@ import static net.minecraftforge.event.terraingen.DecorateBiomeEvent.Decorate.Ev
 import java.util.Random;
 
 import fabricator77.scrapworld.ScrapWorldBlocks;
+import fabricator77.scrapworld.biomes.worldgen.WorldGenConcretePillar;
 import fabricator77.scrapworld.biomes.worldgen.WorldGenSurfaceItems;
 import net.minecraft.block.BlockFlower;
 import net.minecraft.block.material.Material;
@@ -28,6 +29,7 @@ import net.minecraftforge.event.terraingen.TerrainGen;
 public class BiomeDecoratorScrap extends BiomeDecorator{
 	
 	private int wireTanglePerChunk;
+	private int concretePillarPerChunk;
 
 	public BiomeDecoratorScrap()
     {
@@ -58,6 +60,8 @@ public class BiomeDecoratorScrap extends BiomeDecorator{
         this.generateLakes = true;
         // added
         this.wireTanglePerChunk = 1;
+        
+        this.concretePillarPerChunk = 1;
     }
 
 	/**
@@ -116,12 +120,23 @@ public class BiomeDecoratorScrap extends BiomeDecorator{
         
         int l, i1;
         
-        for (j = 0; doGen && j < this.wireTanglePerChunk; ++j)
+        for (j = 0; j < this.wireTanglePerChunk; ++j)
         {
             k = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
             l = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
             i1 = this.randomGenerator.nextInt(this.currentWorld.getHeightValue(k, l) * 2);
             WorldGenerator worldgenerator = new WorldGenSurfaceItems(ScrapWorldBlocks.wireTangle, 1);
+            worldgenerator.generate(this.currentWorld, this.randomGenerator, k, i1, l);
+        }
+        
+        for (j = 0; j < this.concretePillarPerChunk; ++j)
+        {
+        	if (this.randomGenerator.nextInt(5) == 0) break;
+        	
+            k = this.chunk_X + this.randomGenerator.nextInt(16) + 8;
+            l = this.chunk_Z + this.randomGenerator.nextInt(16) + 8;
+            i1 = this.randomGenerator.nextInt(this.currentWorld.getHeightValue(k, l) * 2);
+            WorldGenerator worldgenerator = new WorldGenConcretePillar(ScrapWorldBlocks.concreteBlock, 1);
             worldgenerator.generate(this.currentWorld, this.randomGenerator, k, i1, l);
         }
 
