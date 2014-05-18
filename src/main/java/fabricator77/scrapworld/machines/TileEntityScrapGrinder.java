@@ -27,9 +27,11 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
 	};
 	private int numParts = 3;
 	
-	public int storedPower = 32000;
+	public int storedPower = 0;
 	
 	private ItemStack[] inv = new ItemStack[9 + 9 + 1];
+	
+	public int batterySlot = 18;
 	
 	@Override
     public void readFromNBT(NBTTagCompound tag)
@@ -126,6 +128,7 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
     	checkIfComplete();
     	// if (!complete) return;
     	getPower();
+    	FMLLog.info("[ScrapWorld] StoredPower "+storedPower);
     	if (storedPower > 0) operateCycle();
     	
     	//if (storedPower > 0) FMLLog.info("[ScrapWorld] StoredPower "+storedPower);
@@ -219,17 +222,15 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
 			return;
 		}
 		
-		// see if Power Cell in slot 18 (0-17 are input/output
-		int batterySlot = 18;
-		
+		// see if Power Cell in slot
 		if (this.inv[batterySlot] == null) {}
 		else {
 			int damage = this.inv[batterySlot].getItemDamage();
 			int stackSize = this.inv[batterySlot].stackSize;
 			Item item = this.inv[batterySlot].getItem();
-			if (item instanceof IBattery) {
-				
+			if (item instanceof IBattery) {	
 				this.inv[batterySlot].setItemDamage(damage - chargingRate);
+				storedPower = storedPower + chargingRate;
 				
 				setInventorySlotContents(batterySlot, this.inv[batterySlot]);
 			}
@@ -326,7 +327,16 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
 	}
 
 	@Override
-	public boolean isItemValidForSlot(int slot, ItemStack item) {
+	public boolean isItemValidForSlot(int slot, ItemStack itemStack) {
+		if (slot == batterySlot) {
+			Item item = itemStack.getItem();
+			if (item instanceof IBattery) {
+				return true;
+			}
+			else {
+				return false;
+			}
+		}
 		return true;
 	}
 
