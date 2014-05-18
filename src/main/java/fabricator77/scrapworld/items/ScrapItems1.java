@@ -168,10 +168,17 @@ public class ScrapItems1 extends Item {
     	if (scrapType == "circuit") {
     		// random choice of wires, blank PCB, copper scrap, silicon, redstone, broken PCB, silicon chip (rare), working PCB(rare)
     		// or nothing
+    		ItemStack item = new ItemStack(ScrapWorldBlocks.components1Items, 1, 1);
+    		boolean added = player.inventory.addItemStackToInventory(item);
+    		--itemStack.stackSize;
     		return itemStack;
     	}
     	if (scrapType == "plastic") {
     		// random choice of rubber, plastic, plastic component, silicon chip (rare)
+    		ItemStack item = new ItemStack(ScrapWorldBlocks.components1Items, 1, 3);
+    		boolean added = player.inventory.addItemStackToInventory(item);
+    		--itemStack.stackSize;
+    		return itemStack;
     	}
     	if (scrapType == "glass") {
     		// random choice of glass fragments, sand, fibre strands

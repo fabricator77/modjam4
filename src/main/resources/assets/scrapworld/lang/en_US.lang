@@ -50,6 +50,8 @@ copper_ingot.name=Copper Ingot
 
 silicon.name=Silicon
 carbon_wire.name=Carbon Wire
+machine_casing.name=Machine Casing
+plastic.name=Plastic
 
 plant.name=Plant
 book.name=Book
