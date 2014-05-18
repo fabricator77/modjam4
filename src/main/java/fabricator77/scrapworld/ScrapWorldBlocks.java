@@ -139,10 +139,21 @@ public class ScrapWorldBlocks {
 		GameRegistry.addShapelessRecipe(new ItemStack(powerItems, 1, 3), new Object[] { new ItemStack(Items.glass_bottle, 1, 0), new ItemStack(Items.glass_bottle, 1, 0), new ItemStack(Items.glass_bottle, 1, 0), new ItemStack(components1Items, 1, 0)});
 		
 		// Voltage Regulator
-		// 3x silicon + 4x copper ingots
-		GameRegistry.addRecipe(new ItemStack(powerItems, 1, 5), new Object[] { " i ", "IsI", "iii", Character.valueOf('s'), new ItemStack(components1Items, 1, 1), Character.valueOf('i'), new ItemStack(ingots, 1, 1), Character.valueOf('i'), new ItemStack(Items.iron_ingot, 1, 0), });
+		// 3x silicon + 4x copper ingots + 1 Iron Ingot
+		GameRegistry.addRecipe(new ItemStack(powerItems, 1, 1), new Object[] {
+			" i ", "IsI", "iii",
+			Character.valueOf('s'), new ItemStack(components1Items, 1, 1),
+			Character.valueOf('i'), new ItemStack(ingots, 1, 1),
+			Character.valueOf('I'), new ItemStack(Items.iron_ingot, 1, 0)
+		});
 		// electric motor
-		GameRegistry.addRecipe(new ItemStack(powerItems, 1, 5), new Object[] { " I ", "ccc", "iii", Character.valueOf('c'), new ItemStack(powerItems, 1, 2), Character.valueOf('i'), new ItemStack(ingots, 1, 1), Character.valueOf('i'), new ItemStack(Items.iron_ingot, 1, 0), });
+		// 3x copper coil + 3x copper ingots + 1 iron
+		GameRegistry.addRecipe(new ItemStack(powerItems, 1, 5), new Object[] {
+			" I ", "ccc", "iii",
+			Character.valueOf('c'), new ItemStack(powerItems, 1, 2),
+			Character.valueOf('i'), new ItemStack(ingots, 1, 1),
+			Character.valueOf('I'), new ItemStack(Items.iron_ingot, 1, 0)
+		});
 	}
 	
 	private void registerFurnaceRecipes () {
