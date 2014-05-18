@@ -47,13 +47,18 @@ dusts_charcoal.name=Charcoal Dust
 
 tin_ingot.name=Tin Ingot
 copper_ingot.name=Copper Ingot
+
+silicon.name=Silicon
+carbon_wire.name=Carbon Wire
+
 plant.name=Plant
+book.name=Book
 
 hv_power_cell.name=HV Power Cell
 heater_barrel.name=Heater Barrel
 voltage_regulator.name=Voltage Regulator
 copper_winding.name=Copper Winding
-carbon_wire.name=Carbon Wire
+
 lightbulb_off.name=Lightbulb
 lightbulb_glowing.name=Lightbulb Glowing
 electric_motor.name=Electric Motor

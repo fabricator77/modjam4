@@ -4,7 +4,7 @@ import java.util.List;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import fabricator77.scrapworld.RandomMessages;
+//import fabricator77.scrapworld.RandomMessages;
 import fabricator77.scrapworld.ScrapWorld;
 import fabricator77.scrapworld.ScrapWorldBlocks;
 import net.minecraft.client.renderer.texture.IIconRegister;
@@ -129,12 +129,11 @@ public class ScrapItems1 extends Item {
         if (scrapType == "unknown") {
     		if (world.rand.nextInt(5) != 0) {
     			//nothing of value could be found in this
-    			String mesage = RandomMessages.scrapMessages(itemRand);
+    			//String mesage = RandomMessages.scrapMessages(itemRand);
     			//player.addChatMessage(new ChatComponentTranslation(mesage));
     			// player.addChatMessage(new ChatComponentText(mesage));
+    			
     			//convert into useless version, so people cannot re-try it will
-    			
-    			
     			boolean added = player.inventory.addItemStackToInventory(new ItemStack(this, 1, itemNames.length-1));
     			--itemStack.stackSize;
     			return itemStack;

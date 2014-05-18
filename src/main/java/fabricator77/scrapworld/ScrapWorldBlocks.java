@@ -134,14 +134,15 @@ public class ScrapWorldBlocks {
 		// carbon wire from 4 charcoal dust
 		GameRegistry.addRecipe(new ItemStack(components1Items, 3, 0), new Object[] { " d ", "d d", " d ", Character.valueOf('d'), new ItemStack(dusts, 1, 9)});
 		// HVPowerCell
-		//TODO: use tin, glass, emerald_dust and some other rare item
+		//TODO: use tin, glass, emerald_dust and some redstone
 		// lightbulb (off)
 		GameRegistry.addShapelessRecipe(new ItemStack(powerItems, 1, 3), new Object[] { new ItemStack(Items.glass_bottle, 1, 0), new ItemStack(Items.glass_bottle, 1, 0), new ItemStack(Items.glass_bottle, 1, 0), new ItemStack(components1Items, 1, 0)});
 		
 		// Voltage Regulator
 		// 3x silicon + 4x copper ingots
+		GameRegistry.addRecipe(new ItemStack(powerItems, 1, 5), new Object[] { " i ", "IsI", "iii", Character.valueOf('s'), new ItemStack(components1Items, 1, 1), Character.valueOf('i'), new ItemStack(ingots, 1, 1), Character.valueOf('i'), new ItemStack(Items.iron_ingot, 1, 0), });
 		// electric motor
-		GameRegistry.addRecipe(new ItemStack(powerItems, 1, 5), new Object[] { " c ", "c c", " c ", Character.valueOf('c'), new ItemStack(powerItems, 1, 2)});
+		GameRegistry.addRecipe(new ItemStack(powerItems, 1, 5), new Object[] { " I ", "ccc", "iii", Character.valueOf('c'), new ItemStack(powerItems, 1, 2), Character.valueOf('i'), new ItemStack(ingots, 1, 1), Character.valueOf('i'), new ItemStack(Items.iron_ingot, 1, 0), });
 	}
 	
 	private void registerFurnaceRecipes () {
