@@ -16,7 +16,7 @@ public class Components1Items extends Item {
 	@SideOnly(Side.CLIENT)
     private IIcon[] textures;
 	//TODO: make machine_casing block instead
-	public static final String[] itemNames = new String[]{"carbon_wire", "silicon", "machine_casing"};
+	public static final String[] itemNames = new String[]{"carbon_wire", "silicon", "machine_casing", "plastic"};
 	
 	public Components1Items() {
 		this.setHasSubtypes(true);
