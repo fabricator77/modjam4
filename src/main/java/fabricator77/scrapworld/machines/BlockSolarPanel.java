@@ -27,10 +27,10 @@ public class BlockSolarPanel extends BlockGenerator{
 		if (heldItem != null && heldItem.getItem() == Items.bucket) {
 			//TODO: take/accept items and liquids
 		}
-        //if (world.isRemote)
-        //{
+        if (world.isRemote) // leaving this here, breaks moving items in/out of inv
+        {
         	player.openGui(ScrapWorld.instance, 3, world, x, y, z);
-        //}
+        }
         return true;
     }
 	

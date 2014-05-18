@@ -18,6 +18,7 @@ import net.minecraftforge.oredict.OreDictionary;
 public class TileEntityMachine extends TileEntity implements IMachine, IInventory{
 	
 	//TODO: charging (damage repair) on items in machine gets reset when GUI opened
+	// 
 	
 	private boolean ready = false;
 	private boolean complete = false;
@@ -161,6 +162,8 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     					}
     					FMLLog.info("[ScrapWorld] Charging "+damage);
     					this.inv[i].setItemDamage(damage - chargingRate);
+    					
+    					setInventorySlotContents(i, this.inv[i]);
     					// this.inv[i].getItem().notify();
     				}
     			}
