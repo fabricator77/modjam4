@@ -131,7 +131,7 @@ public class ScrapItems1 extends Item {
     			//nothing of value could be found in this
     			String mesage = RandomMessages.scrapMessages(itemRand);
     			//player.addChatMessage(new ChatComponentTranslation(mesage));
-    			player.addChatMessage(new ChatComponentText(mesage));
+    			// player.addChatMessage(new ChatComponentText(mesage));
     			//convert into useless version, so people cannot re-try it will
     			
     			
