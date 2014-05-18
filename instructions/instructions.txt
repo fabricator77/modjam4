@@ -42,3 +42,8 @@ ITI
 III
 (I = iron ingot, T = copper ingot)
 
+HVPowerCell (empty)
+gig
+tEr
+gig
+(i = copper ingot, g = glass block, t = tin ingot, E = emerald dust, r = redstone dust)

@@ -142,8 +142,7 @@ public class ScrapWorldBlocks {
 		GameRegistry.addRecipe(new ItemStack(powerItems, 1, 2), new Object[] { " i ", "i i", " i ", Character.valueOf('i'), new ItemStack(ingots, 1, 1)});
 		// carbon wire from 4 charcoal dust
 		GameRegistry.addRecipe(new ItemStack(components1Items, 3, 0), new Object[] { " d ", "d d", " d ", Character.valueOf('d'), new ItemStack(dusts, 1, 9)});
-		// HVPowerCell
-		//TODO: use tin, glass, emerald_dust and some redstone
+		// HVPowerCell (empty)
 		GameRegistry.addRecipe(new ItemStack(hvPowerCell, 1, 32767), new Object[] {
 			"gig", "tEr", "gig",
 			

@@ -478,4 +478,18 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
 	public String getMachineName() {
 		return "scrap_grinder";
 	}
+	
+	//
+	public boolean putItemStackIntoOutput (ItemStack itemStack) {
+		for (int i=8; i<17; i++) {
+			if (ItemStack.areItemStacksEqual(this.inv[i], itemStack)) {
+				if (this.inv[i].stackSize + itemStack.stackSize > this.inv[i].getMaxStackSize()) {
+					// too big to all fit in this stack.
+					
+				}
+				return true;
+			}
+		}
+		return false;
+	}
 }
