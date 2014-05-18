@@ -22,7 +22,11 @@ public class ContainerMachine extends Container {
             {
             	// inventory (IInventory), slotIndex (int), xDisplayPosition (int), yDisplayPosition (int)
             	// xDisplayPosition was  62 + j * 18
-                this.addSlotToContainer(new Slot(tileentityMachine, j + i * 3, 56 + j * 24, 17 + i * 18));
+                this.addSlotToContainer(new Slot(tileentityMachine, j + i * 3, 44 + j * 18, 17 + i * 18));
+                
+                //this.addSlotToContainer(new Slot(tileentityMachine, j + i * 3, 56 + j * 24, 17 + i * 18));
+                
+                this.addSlotToContainer(new Slot(tileentityMachine, 9 + j + i * 3, 68 + j * 18, 17 + i * 18));
             }
         }
         

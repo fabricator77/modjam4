@@ -44,7 +44,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
             ready = tag.getBoolean("ready");
         }
         
-        NBTTagList nbttaglist = tag.getTagList("Parts", 19);
+        NBTTagList nbttaglist = tag.getTagList("Parts", numParts);
         this.parts = new ItemStack[numParts];
         for (int i = 0; i < nbttaglist.tagCount(); ++i)
         {
@@ -222,7 +222,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 		int missingParts = 0;
 		//TODO: specific machines need specific parts in specific slots
 		for (int i=0; i<parts.length; i++) {
-			if (parts[i].stackSize == 0) {
+			if (parts[i] != null || parts[i].stackSize == 0) {
 				missingParts++;
 			}
 		}
