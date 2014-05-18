@@ -53,5 +53,6 @@ hv_power_cell.name=HV Power Cell
 heater_barrel.name=Heater Barrel
 voltage_regulator.name=Voltage Regulator
 copper_winding.name=Copper Winding
+carbon_wire.name=Carbon Wire
 lightbulb_off.name=Lightbulb
 lightbulb_on.name=Lightbulb Glowing
