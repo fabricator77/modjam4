@@ -126,10 +126,9 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
     	checkIfComplete();
     	// if (!complete) return;
     	getPower();
-    	//if (storedPower > 0)
-    		operateCycle();
+    	if (storedPower > 0) operateCycle();
     	
-    	if (storedPower > 0) FMLLog.info("[ScrapWorld] StoredPower "+storedPower);
+    	//if (storedPower > 0) FMLLog.info("[ScrapWorld] StoredPower "+storedPower);
     	
     	this.markDirty();
     }
@@ -137,37 +136,44 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
     //IMachine fields
 	@Override
     public void operateCycle() {
-    	int count = 0;
-    	for (int i = 0; i < this.inv.length; ++i)
+		
+    	// only first 9 slots are inputs
+    	for (int i = 0; i < 9; ++i)
         {
     		// this.inv[i] = getStackInSlot(i);
     		// setInventorySlotContents(i, this.inv[i]);
     		if (this.inv[i] == null) {}
     		else {
-    			count++;
     			int damage = this.inv[i].getItemDamage();
-    			int stackSize = this.inv[i].stackSize;//TODO: charge stacked cells evenly
+    			int stackSize = this.inv[i].stackSize;
     			Item item = this.inv[i].getItem();
     			//FMLLog.info("[ScrapWorld] Found "+item);
-    			//Attempt to change power cells
-    			// if (Item.getIdFromItem(item) == Item.getIdFromItem(ScrapWorldBlocks.hvPowerCell)) {
-    			//if (stackSize > 1) {this.inv[i].stackSize--;}
-				ItemStack outputProduct = FurnaceRecipes.smelting().getSmeltingResult(this.inv[i]);
-				FMLLog.info("[ScrapWorld] TileEntityScrapGrinder.outputProduct="+outputProduct);
-				if (outputProduct != null) {
-					this.inv[i] = outputProduct;
-					setInventorySlotContents(i, this.inv[i]);
+
+    			if (stackSize > 1) {
+    				this.inv[i].stackSize--;
+    			}
+    			
+    			//Check to see if this item burns
+    			ItemStack outputProduct = FurnaceRecipes.smelting().getSmeltingResult(this.inv[i]);
+    			if (outputProduct != null) {
+    				// reduce input items by 1
+    				if (stackSize > 1) {
+        				this.inv[i].stackSize--;
+        			}
+    				else {
+    					this.inv[i] = null;
+    				}
+    				setInventorySlotContents(i, this.inv[i]);
+    				// output result.
+    				this.inv[i+9] = outputProduct;
+					setInventorySlotContents(i+9, this.inv[i+9]);
 					return;
-				}
+    			}
     			if (storedPower == 0) {
     				break;
     			}
     		}
         }
-    	if (count > 0) {
-    		//FMLLog.info("[ScrapWorld] TileEntityMachine.count="+count);
-    	}
-
 	}
 	
 	@Override
@@ -202,7 +208,32 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
 	}
 	
 	public void getPower () {
-		//TODO: is on mains power, or contains powerCell
+		// 
+		
+		//TODO: is on mains power ?
+		
+		//
+		int chargingRate = 256;
+		if ((storedPower + chargingRate) > 32767) {
+			// full don't need power
+			return;
+		}
+		
+		// see if Power Cell in slot 18 (0-17 are input/output
+		int batterySlot = 18;
+		
+		if (this.inv[batterySlot] == null) {}
+		else {
+			int damage = this.inv[batterySlot].getItemDamage();
+			int stackSize = this.inv[batterySlot].stackSize;
+			Item item = this.inv[batterySlot].getItem();
+			if (item instanceof IBattery) {
+				
+				this.inv[batterySlot].setItemDamage(damage - chargingRate);
+				
+				setInventorySlotContents(batterySlot, this.inv[batterySlot]);
+			}
+		}
 	}
 
 	
