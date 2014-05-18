@@ -88,4 +88,8 @@ public class BlockMachine extends BlockContainer implements IMachineBlock{
 	public String getMachineName() {
 		return "machine";
 	}
+
+	public int getPowerLevel(World worldObj, int xCoord, int yCoord, int zCoord) {
+		return 0;
+	}
 }

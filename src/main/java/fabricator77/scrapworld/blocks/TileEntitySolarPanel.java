@@ -17,7 +17,7 @@ public class TileEntitySolarPanel extends TileEntityMachine{
 	@Override
 	public void getPower () {
 		//TODO: is on mains power, or contains powerCell
-		int power = ((BlockGenerator)this.blockType).getPowerLevel(this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+		int power = ((BlockSolarPanel)this.blockType).getPowerLevel(this.worldObj, this.xCoord, this.yCoord, this.zCoord);
 		storedPower = storedPower + power;
 	}
 	

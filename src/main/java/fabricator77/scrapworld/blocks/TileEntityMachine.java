@@ -127,6 +127,9 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     	// if (!complete) return;
     	getPower();
     	operateCycle();
+    	
+    	FMLLog.info("[ScrapWorld] StoredPower "+storedPower);
+    	
     	this.markDirty();
     }
     
@@ -146,7 +149,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     			if (Item.getIdFromItem(item) == Item.getIdFromItem(ScrapWorldBlocks.hvPowerCell)) {
     			//		item.getUnlocalizedName() == ScrapWorldBlocks.hvPowerCell.getUnlocalizedName()) {
     				if (damage > 0) {
-    					FMLLog.info("[ScrapWorld] Charging "+damage);
+    					//FMLLog.info("[ScrapWorld] Charging "+damage);
     					this.inv[i].setItemDamage(damage - 128);
     					// this.inv[i].getItem().notify();
     				}

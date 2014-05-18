@@ -35,7 +35,6 @@ public class BlockSolarPanel extends BlockGenerator{
     }
 	
 	// code from Minecraft BlockDayLightDetector
-	@Override
 	public int getPowerLevel(World world, int x, int y, int z)
     {
 		
