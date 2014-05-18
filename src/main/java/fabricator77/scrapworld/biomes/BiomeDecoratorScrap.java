@@ -37,7 +37,7 @@ public class BiomeDecoratorScrap extends BiomeDecorator{
         this.gravelAsSandGen = new WorldGenSand(Blocks.gravel, 6); // gen only in grass/dirt 
         
         this.dirtGen = new WorldGenMinable(Blocks.dirt, 32, ScrapWorldBlocks.scrapCube);
-        this.gravelGen = new WorldGenMinable(Blocks.gravel, 32, ScrapWorldBlocks.scrapCube);
+        this.gravelGen = new WorldGenMinable(ScrapWorldBlocks.scrapCube, 1, 32, ScrapWorldBlocks.scrapCube);
         this.coalGen = new WorldGenMinable(Blocks.coal_ore, 16, ScrapWorldBlocks.scrapCube);
         this.ironGen = new WorldGenMinable(Blocks.iron_ore, 8, ScrapWorldBlocks.scrapCube);
         this.goldGen = new WorldGenMinable(Blocks.gold_ore, 8, ScrapWorldBlocks.scrapCube);

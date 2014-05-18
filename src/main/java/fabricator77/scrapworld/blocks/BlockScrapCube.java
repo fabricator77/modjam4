@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 
 public class BlockScrapCube extends Block {
 	
-	public static final String[] blockNames = new String[]{"unknown" }; //, "metallic", "wire", "circuit", "plastic", "glass", "concrete", "timber", "food", "burnt", "rare", "useless"};
+	public static final String[] blockNames = new String[]{"unknown", "timber" }; //, "metallic", "wire", "circuit", "plastic", "glass", "concrete", "timber", "food", "burnt", "rare", "useless"};
 
 	@SideOnly(Side.CLIENT)
     private IIcon[] textures;
