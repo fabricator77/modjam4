@@ -148,7 +148,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     		else {
     			count++;
     			int damage = this.inv[i].getItemDamage();
-    			int stackSize = this.inv[i].stackSize;
+    			int stackSize = this.inv[i].stackSize;//TODO: charge stacked cells evenly
     			Item item = this.inv[i].getItem();
     			//FMLLog.info("[ScrapWorld] Found "+item);
     			//Attempt to change power cells
@@ -156,7 +156,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     			if (item.getUnlocalizedName().equals(ScrapWorldBlocks.hvPowerCell.getUnlocalizedName())  ) {
     				if (damage > 0) {
     					int chargingRate = 256;
-    					if (storedPower < chargingRate) {
+    					if (storedPower < chargingRate && storedPower > stackSize) {
     						chargingRate = storedPower;
     						storedPower = 0;
     					}
