@@ -19,7 +19,7 @@ public class BlockStaticGenerator extends BlockGenerator{
 		if (!world.provider.hasNoSky)
         {
 			float lightningActivity = world.thunderingStrength;
-			return (int)lightningActivity*15*10;
+			return (int)lightningActivity*15*100;
         }
 		return 0;
     }

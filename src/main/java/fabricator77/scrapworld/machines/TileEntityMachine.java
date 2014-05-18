@@ -17,6 +17,8 @@ import net.minecraftforge.oredict.OreDictionary;
 
 public class TileEntityMachine extends TileEntity implements IMachine, IInventory{
 	
+	//TODO: charging (damage repair) on items in machine gets reset when GUI opened
+	
 	private boolean ready = false;
 	private boolean complete = false;
 	private boolean powered = false;
@@ -149,11 +151,10 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     			// if (Item.getIdFromItem(item) == Item.getIdFromItem(ScrapWorldBlocks.hvPowerCell)) {
     			if (item.getUnlocalizedName().equals(ScrapWorldBlocks.hvPowerCell.getUnlocalizedName())  ) {
     				if (damage > 0) {
-    					int chargingRate = 128;
-    					if (storedPower < 128) {
+    					int chargingRate = 256;
+    					if (storedPower < chargingRate) {
     						chargingRate = storedPower;
     						storedPower = 0;
-    						break;
     					}
     					else {
     						storedPower = storedPower - chargingRate;
@@ -162,6 +163,9 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     					this.inv[i].setItemDamage(damage - chargingRate);
     					// this.inv[i].getItem().notify();
     				}
+    			}
+    			if (storedPower == 0) {
+    				break;
     			}
     		}
         }
