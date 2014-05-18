@@ -16,7 +16,6 @@ public class GuiGenerator extends GuiContainer{
 	private ResourceLocation guiTextures = new ResourceLocation(ScrapWorld.modid+":textures/gui/generator_charging.png");
 	public TileEntityMachine tileentity;
 
-	//TODO: figure out where/why items in machine/inv get lost
 	public GuiGenerator(InventoryPlayer inventory, TileEntityMachine tileentityMachine) {
 		super(new ContainerGenerator(inventory, tileentityMachine));
 		tileentity = tileentityMachine;

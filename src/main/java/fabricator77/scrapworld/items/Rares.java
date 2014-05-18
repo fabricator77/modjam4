@@ -35,15 +35,16 @@ public class Rares extends Item {
         if (metadata == 0) {
         	return "plant";
         }
-        else {
-        	return "book";
-        }
+        //else {
+        //	return "book";
+        //}
+        return "";
     }
 	
 	@SideOnly(Side.CLIENT)
     public void getSubItems(Item item, CreativeTabs creativeTab, List list)
     {
-        for (int i = 0; i < 2; ++i)
+        for (int i = 0; i < 1; ++i)
         {
             list.add(new ItemStack(item, 1, i));
         }
@@ -55,6 +56,6 @@ public class Rares extends Item {
         this.textures = new IIcon[2];
 
         this.textures[0] = par1IconRegister.registerIcon(ScrapWorld.modid+":plant");
-        this.textures[1] = par1IconRegister.registerIcon(ScrapWorld.modid+":book");
+        //this.textures[1] = par1IconRegister.registerIcon(ScrapWorld.modid+":book");
     }
 }

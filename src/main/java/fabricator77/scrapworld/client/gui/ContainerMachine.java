@@ -21,23 +21,21 @@ public class ContainerMachine extends Container {
             for (j = 0; j < 3; ++j)
             {
             	// inventory (IInventory), slotIndex (int), xDisplayPosition (int), yDisplayPosition (int)
-            	// xDisplayPosition was  62 + j * 18
-                this.addSlotToContainer(new Slot(tileentityMachine, j + i * 3, 44 + j * 18, 17 + i * 18));
-                
-                //this.addSlotToContainer(new Slot(tileentityMachine, j + i * 3, 56 + j * 24, 17 + i * 18));
-                
-                this.addSlotToContainer(new Slot(tileentityMachine, 9 + j + i * 3, 68 + j * 18, 17 + i * 18));
+            	//left (input)
+                this.addSlotToContainer(new Slot(tileentityMachine, j + i * 3, 20 + j * 18, 17 + i * 18));
+                //right (input)
+                this.addSlotToContainer(new Slot(tileentityMachine, 9 + j + i * 3, 104 + j * 18, 17 + i * 18));
             }
         }
         
         // Power cell slot
         this.addSlotToContainer(new Slot(tileentityMachine, 18, 56 + 24, 17 + 2 * 18));
         
-        //bindPlayerInventory(inventoryPlayer);
+        bindPlayerInventory(inventoryPlayer, 19);
 	}
 	
 	// needed
-	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
+	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer, int startingSlot) {
 		int i, j;
 		for (i = 0; i < 3; ++i)
         {
