@@ -44,7 +44,12 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
             ready = tag.getBoolean("ready");
         }
         
-        NBTTagList nbttaglist = tag.getTagList("Parts", numParts);
+        if (tag.hasKey("storedPower"))
+        {
+        	this.storedPower = tag.getInteger("storedPower");
+        }
+        
+        NBTTagList nbttaglist = tag.getTagList("Parts", inv.length);
         this.parts = new ItemStack[numParts];
         for (int i = 0; i < nbttaglist.tagCount(); ++i)
         {
@@ -57,7 +62,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
             }
         }
         
-        nbttaglist = tag.getTagList("Inv", 19);
+        nbttaglist = tag.getTagList("Inv", inv.length);
         this.inv = new ItemStack[inv.length];
         for (int i = 0; i < nbttaglist.tagCount(); ++i)
         {
@@ -76,6 +81,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     {
         super.writeToNBT(tag);
         tag.setBoolean("ready", this.ready);
+        tag.setInteger("storedPower", this.storedPower);
         
         NBTTagList nbttaglist = new NBTTagList();
         for (int i = 0; i < this.parts.length; ++i)
@@ -253,6 +259,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 
 	@Override
 	public ItemStack getStackInSlot(int slot) {
+		if (slot > this.inv.length) return null;
 		return this.inv[slot];
 	}
 

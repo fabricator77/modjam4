@@ -98,8 +98,8 @@ public class ScrapWorldBlocks {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityMachine.class, new TileEntityRenderMachine());
 		RenderingRegistry.registerBlockHandler(new RenderMachine());
 		
-		power = new BlockPower().setHardness(3.5F).setBlockName("power");
-		GameRegistry.registerBlock(power, "power");
+		//power = new BlockPower().setHardness(3.5F).setBlockName("power");
+		//GameRegistry.registerBlock(power, "power");
 		//TODO: TileEntity
 		
 		
