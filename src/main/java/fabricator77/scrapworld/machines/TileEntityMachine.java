@@ -23,7 +23,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 	private boolean ready = false;
 	private boolean complete = false;
 	private boolean powered = false;
-	private ItemStack[] parts = new ItemStack[]{
+	public ItemStack[] parts = new ItemStack[]{
 			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0),
 			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0),
 			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0)
@@ -49,7 +49,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
         	this.storedPower = tag.getInteger("storedPower");
         }
         
-        NBTTagList nbttaglist = tag.getTagList("Parts", inv.length);
+        NBTTagList nbttaglist = tag.getTagList("Parts", parts.length);
         this.parts = new ItemStack[numParts];
         for (int i = 0; i < nbttaglist.tagCount(); ++i)
         {
@@ -132,7 +132,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     	//FMLLog.info("[ScrapWorld] Ticking TileEntityMachine");
     	 //TODO: Entity updates
     	// includes block being placed/loaded ?
-    	//checkIfComplete(); // in sin bin for being bad (throwing NPE BS)
+    	checkIfComplete(); // in sin bin for being bad (throwing NPE BS)
     	// if (!complete) return;
     	getPower();
     	if (storedPower > 0) operateCycle();
@@ -228,7 +228,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 		int missingParts = 0;
 		//TODO: specific machines need specific parts in specific slots
 		for (int i=0; i<parts.length; i++) {
-			if (parts[i] != null || parts[i].getItem() != null || parts[i].stackSize == 0) {
+			if (parts[i] == null || parts[i].getItem() == null || parts[i].stackSize == 0) {
 				missingParts++;
 			}
 		}
