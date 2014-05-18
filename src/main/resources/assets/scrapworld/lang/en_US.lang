@@ -22,6 +22,8 @@ container.static_generator=Static Generator
 tile.static_generator.name=Static Generator
 container.scrap_grinder=Scrap Grinder
 tile.scrap_grinder.name=Scrap Grinder
+container.scrap_furnace=Scrap Furnace
+tile.scrap_furnace.name=Scrap Furnace
 
 scrap_unknown.name=Raw Scrap
 scrap_metallic.name=Metallic Scrap

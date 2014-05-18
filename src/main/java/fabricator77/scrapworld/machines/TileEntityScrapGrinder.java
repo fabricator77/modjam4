@@ -29,7 +29,7 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
 	
 	public int storedPower = 0;
 	
-	private ItemStack[] inv = new ItemStack[9 + 9 + 1];
+	public ItemStack[] inv = new ItemStack[9 + 9 + 1];
 	
 	public int batterySlot = 18;
 	
@@ -151,9 +151,10 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
     			int stackSize = this.inv[i].stackSize;
     			Item item = this.inv[i].getItem();
     			//FMLLog.info("[ScrapWorld] Found "+item);
-
-    			if (stackSize > 1) {
-    				this.inv[i].stackSize--;
+    			
+    			// only take scrap as inputs
+    			if (item.getUnlocalizedName().equals(ScrapWorldBlocks.scrapItems1)) {
+    				
     			}
     			
     			//Check to see if this item burns
