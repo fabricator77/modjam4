@@ -130,11 +130,13 @@ public class ScrapWorldBlocks {
 		GameRegistry.addRecipe(new ItemStack(powerItems, 1, 2), new Object[] { " i ", "i i", " i ", Character.valueOf('i'), new ItemStack(ingots, 1, 1)});
 		// carbon wire from 4 charcoal dust
 		GameRegistry.addRecipe(new ItemStack(components1Items, 3, 0), new Object[] { " d ", "d d", " d ", Character.valueOf('d'), new ItemStack(dusts, 1, 9)});
-		
+		//
 		GameRegistry.addShapelessRecipe(new ItemStack(powerItems, 1, 3), new Object[] { new ItemStack(Items.glass_bottle, 1, 0), new ItemStack(Items.glass_bottle, 1, 0), new ItemStack(Items.glass_bottle, 1, 0), new ItemStack(components1Items, 1, 0)});
 		
 		ItemStack dust = new ItemStack(ScrapWorldBlocks.dusts,1,8);
 		GameRegistry.addShapelessRecipe(new ItemStack(Blocks.planks, 1, 0), new Object[] { dust, dust, dust, dust});
+		// electric motor
+		GameRegistry.addShapelessRecipe(new ItemStack(powerItems, 1, 5), new Object[] { new ItemStack(powerItems, 1, 2)});
 	}
 	
 	private void registerFurnaceRecipes () {
