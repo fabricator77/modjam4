@@ -9,7 +9,7 @@ import net.minecraft.client.renderer.tileentity.TileEntityRendererDispatcher;
 import net.minecraft.world.IBlockAccess;
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import cpw.mods.fml.client.registry.RenderingRegistry;
-import fabricator77.scrapworld.blocks.TileEntityMachine;
+import fabricator77.scrapworld.machines.TileEntityMachine;
 
 public class RenderMachine implements ISimpleBlockRenderingHandler {
 	

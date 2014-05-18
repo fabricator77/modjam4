@@ -3,7 +3,7 @@ package fabricator77.scrapworld.client.gui;
 import org.lwjgl.opengl.GL11;
 
 import fabricator77.scrapworld.ScrapWorld;
-import fabricator77.scrapworld.blocks.TileEntityMachine;
+import fabricator77.scrapworld.machines.TileEntityMachine;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;

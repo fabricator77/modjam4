@@ -5,10 +5,10 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.network.IGuiHandler;
-import fabricator77.scrapworld.blocks.TileEntityGenerator;
-import fabricator77.scrapworld.blocks.TileEntityMachine;
-import fabricator77.scrapworld.blocks.TileEntitySolarPanel;
-import fabricator77.scrapworld.blocks.TileEntityStaticGenerator;
+import fabricator77.scrapworld.machines.TileEntityGenerator;
+import fabricator77.scrapworld.machines.TileEntityMachine;
+import fabricator77.scrapworld.machines.TileEntitySolarPanel;
+import fabricator77.scrapworld.machines.TileEntityStaticGenerator;
 
 public class GuiHandler implements IGuiHandler {
 
