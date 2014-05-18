@@ -65,3 +65,4 @@ copper_winding.name=Copper Winding
 lightbulb_off.name=Lightbulb
 lightbulb_glowing.name=Lightbulb Glowing
 electric_motor.name=Electric Motor
+motor_controller=Motor Controller

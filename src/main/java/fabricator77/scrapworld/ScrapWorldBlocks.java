@@ -126,6 +126,7 @@ public class ScrapWorldBlocks {
 		
 		
 		registerCraftingRecipes();
+		registerMachineCraftingRecipes();
 		registerFurnaceRecipes();
 		registerInOreDictionary();
 	}
@@ -168,6 +169,11 @@ public class ScrapWorldBlocks {
 		// grinding disc
 		// 3 flint, 3 iron ingots
 		GameRegistry.addRecipe(new ItemStack(components1Items, 1, 4), new Object[] { "fff", "III", Character.valueOf('f'), new ItemStack(Items.flint, 1, 0), Character.valueOf('I'), new ItemStack(Items.iron_ingot, 1, 0) });
+	}
+	
+	private void registerMachineCraftingRecipes () {
+		// Grinding machine
+		// 1x machine casing + 1 motor controller + 1 motor + 1 grinding disk
 	}
 	
 	private void registerFurnaceRecipes () {
