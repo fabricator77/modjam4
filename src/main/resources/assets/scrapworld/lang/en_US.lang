@@ -52,6 +52,7 @@ silicon.name=Silicon
 carbon_wire.name=Carbon Wire
 machine_casing.name=Machine Casing
 plastic.name=Plastic
+grinding_disk.name=Grinding Disk
 
 plant.name=Plant
 book.name=Book
