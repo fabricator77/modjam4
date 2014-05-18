@@ -156,6 +156,15 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     			if (item.getUnlocalizedName().equals(ScrapWorldBlocks.hvPowerCell.getUnlocalizedName())  ) {
     				if (damage > 0) {
     					int chargingRate = 256;
+    					//alter charging rate if cells are stacked
+    					if (chargingRate % stackSize > 0) {
+    						chargingRate = chargingRate-(chargingRate % stackSize);
+    					}
+    					if (stackSize > 0) {
+    						chargingRate = chargingRate / stackSize;
+    					}
+    					
+    					// This needs redoing to work correctly.
     					if (storedPower < chargingRate && storedPower > stackSize) {
     						chargingRate = storedPower;
     						storedPower = 0;
