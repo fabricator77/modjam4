@@ -119,7 +119,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 
     @Override
     public void updateEntity() {
-    	if (this.worldObj == null || !this.worldObj.isRemote || this.worldObj.getTotalWorldTime() % 20L != 0L)
+    	if (this.worldObj == null || this.worldObj.isRemote || this.worldObj.getTotalWorldTime() % 20L != 0L)
         {
     		return;
         }
@@ -143,11 +143,12 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     	for (int i = 0; i < this.inv.length; ++i)
         {
     		// this.inv[i] = getStackInSlot(i);
-    		setInventorySlotContents(i, this.inv[i]);
+    		// setInventorySlotContents(i, this.inv[i]);
     		if (this.inv[i] == null) {}
     		else {
     			count++;
     			int damage = this.inv[i].getItemDamage();
+    			int stackSize = this.inv[i].stackSize;
     			Item item = this.inv[i].getItem();
     			//FMLLog.info("[ScrapWorld] Found "+item);
     			//Attempt to change power cells
