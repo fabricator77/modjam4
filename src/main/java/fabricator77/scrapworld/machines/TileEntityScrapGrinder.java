@@ -7,6 +7,7 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.network.NetworkManager;
@@ -148,17 +149,23 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
     		if (this.inv[i] == null) {}
     		else {
     			count++;
-    			int damage = this.inv[i].getItemDamage();
+    			int damage = this.inv[i].getItemDamage();// not used in this machine
+    			int stackSize = this.inv[i].stackSize;
     			Item item = this.inv[i].getItem();
     			//FMLLog.info("[ScrapWorld] Found "+item);
     			//Attempt to change power cells
     			//if (Item.getIdFromItem(item) == Item.getIdFromItem(ScrapWorldBlocks.scrapItems1)) {
-    			if (item.getUnlocalizedName().equals(ScrapWorldBlocks.hvPowerCell.getUnlocalizedName())  ) {
-    				if (damage > 0) {
-    					//FMLLog.info("[ScrapWorld] Charging "+damage);
-    					this.inv[i].setItemDamage(damage - 128);
-    					// this.inv[i].getItem().notify();
+    			if (true) {
+    				// process this block
+    				if (stackSize > 1) {
+    					this.inv[i].stackSize--;
     				}
+    				else {
+    					ItemStack outputProduct = FurnaceRecipes.smelting().getSmeltingResult(this.inv[i]);
+    					this.inv[i] = outputProduct;
+    				}
+    				setInventorySlotContents(i, this.inv[i]);
+    				return;
     			}
     		}
         }
