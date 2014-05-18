@@ -20,86 +20,6 @@ public class TileEntityGenerator extends TileEntityMachine{
 	};
 	
 	//protected ItemStack[] inv = new ItemStack[9];
-	
-	@Override
-    public void readFromNBT(NBTTagCompound tag)
-    {
-        super.readFromNBT(tag);
-
-        /**
-        if (tag.hasKey("ready"))
-        {
-            ready = tag.getBoolean("ready");
-        }
-        
-        if (tag.hasKey("storedPower"))
-        {
-        	this.storedPower = tag.getInteger("storedPower");
-        }
-        
-        NBTTagList nbttaglist = tag.getTagList("Parts", parts.length);
-        this.parts = new ItemStack[parts.length];
-        for (int i = 0; i < nbttaglist.tagCount(); ++i)
-        {
-            NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
-            int j = nbttagcompound1.getByte("Slot") & 255;
-
-            if (j >= 0 && j < this.parts.length)
-            {
-                this.parts[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
-            }
-        }
-        
-        nbttaglist = tag.getTagList("Inv", inv.length);
-        this.inv = new ItemStack[inv.length];
-        for (int i = 0; i < nbttaglist.tagCount(); ++i)
-        {
-            NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
-            int j = nbttagcompound1.getByte("Slot") & 255;
-
-            if (j >= 0 && j < this.inv.length)
-            {
-                this.inv[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
-            }
-        }
-        */
-    }
-	
-	@Override
-    public void writeToNBT(NBTTagCompound tag)
-    {
-        super.writeToNBT(tag);
-        /**
-        tag.setBoolean("ready", this.ready);
-        tag.setInteger("storedPower", this.storedPower);
-        
-        NBTTagList nbttaglist = new NBTTagList();
-        for (int i = 0; i < this.parts.length; ++i)
-        {
-            if (this.parts[i] != null)
-            {
-                NBTTagCompound nbttagcompound1 = new NBTTagCompound();
-                nbttagcompound1.setByte("Slot", (byte)i);
-                this.parts[i].writeToNBT(nbttagcompound1);
-                nbttaglist.appendTag(nbttagcompound1);
-            }
-        }
-        tag.setTag("Parts", nbttaglist);
-        
-        nbttaglist = new NBTTagList();
-        for (int i = 0; i < this.inv.length; ++i)
-        {
-            if (this.inv[i] != null)
-            {
-                NBTTagCompound nbttagcompound1 = new NBTTagCompound();
-                nbttagcompound1.setByte("Slot", (byte)i);
-                this.inv[i].writeToNBT(nbttagcompound1);
-                nbttaglist.appendTag(nbttagcompound1);
-            }
-        }
-        tag.setTag("Inv", nbttaglist);
-        */
-    }
 
 	@Override
 	public String getInventoryName() {
@@ -160,7 +80,7 @@ public class TileEntityGenerator extends TileEntityMachine{
     					}
     					// finally drain the power actually used
     					storedPower = storedPower - (chargingRate * stackSize);
-    					//FMLLog.info("[ScrapWorld] Charging "+damage);
+    					FMLLog.info("[ScrapWorld] Charging "+this.inv[i].getItem());
     					this.inv[i].setItemDamage(damage - chargingRate);
     					
     					setInventorySlotContents(i, this.inv[i]);

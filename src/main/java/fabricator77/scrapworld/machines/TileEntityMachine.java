@@ -192,7 +192,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     					//else {
     						storedPower = storedPower - (chargingRate * stackSize);
     					//}
-    					FMLLog.info("[ScrapWorld] Charging "+damage);
+    					// FMLLog.info("[ScrapWorld] Charging "+damage);
     					this.inv[i].setItemDamage(damage - chargingRate);
     					
     					setInventorySlotContents(i, this.inv[i]);
