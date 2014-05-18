@@ -91,7 +91,7 @@ public class GenLayerScrap extends GenLayer{
         }
 
         GenLayerSmooth genlayersmooth1 = new GenLayerSmooth(1000L, (GenLayer)object);
-        GenLayerRiverMix genlayerrivermix = new GenLayerRiverMix(100L, genlayersmooth1, genlayersmooth);
+        GenLayerScrapRiverMix genlayerrivermix = new GenLayerScrapRiverMix(100L, genlayersmooth1, genlayersmooth);
         GenLayerVoronoiZoom genlayervoronoizoom = new GenLayerVoronoiZoom(10L, genlayerrivermix);
         genlayerrivermix.initWorldGenSeed(par0);
         genlayervoronoizoom.initWorldGenSeed(par0);

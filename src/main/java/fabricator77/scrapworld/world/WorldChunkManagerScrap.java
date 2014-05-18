@@ -37,7 +37,7 @@ public class WorldChunkManagerScrap extends WorldChunkManager {
 	{
 		 this();
 	     GenLayer[] agenlayer = GenLayerScrap.initializeAllBiomeGenerators(par1, par3WorldType);
-	     agenlayer = getModdedBiomeGenerators(par3WorldType, par1, agenlayer);
+	     // agenlayer = getModdedBiomeGenerators(par3WorldType, par1, agenlayer);
 	     this.genBiomes = agenlayer[0];
 	     this.biomeIndexLayer = agenlayer[1];
 	 }
