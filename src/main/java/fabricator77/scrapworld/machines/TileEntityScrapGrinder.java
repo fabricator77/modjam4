@@ -20,7 +20,7 @@ public class TileEntityScrapGrinder extends TileEntityMachine {
 	private boolean ready = false;
 	private boolean complete = false;
 	private boolean powered = false;
-	private ItemStack[] parts = new ItemStack[]{
+	private static ItemStack[] parts = new ItemStack[]{
 			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0),//motor
 			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0),//some sort of cutting/grinding disc/block
 			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0)//motor control (TBD)
@@ -28,7 +28,8 @@ public class TileEntityScrapGrinder extends TileEntityMachine {
 	
 	public int storedPower = 0;
 	
-	private ItemStack[] inv = new ItemStack[9+9+1];
+	// 9 in + 9 out + power cell slot
+	private ItemStack[] inv = new ItemStack[19];
 	
 	@Override
     public void readFromNBT(NBTTagCompound tag)
@@ -37,7 +38,7 @@ public class TileEntityScrapGrinder extends TileEntityMachine {
 
         if (tag.hasKey("ready"))
         {
-        	this.ready = tag.getBoolean("ready");
+            ready = tag.getBoolean("ready");
         }
         
         if (tag.hasKey("storedPower"))
@@ -188,14 +189,13 @@ public class TileEntityScrapGrinder extends TileEntityMachine {
 		int missingParts = 0;
 		//TODO: specific machines need specific parts in specific slots
 		for (int i=0; i<parts.length; i++) {
-			if (parts[i].stackSize == 0) {
+			if (parts[i] == null || parts[i].getItem() == null || parts[i].stackSize == 0) {
 				missingParts++;
 			}
 		}
 		if (missingParts == 0) {
 			complete = true;
 		}
-		//TODO: write to NBT
 		this.markDirty();
 	}
 	

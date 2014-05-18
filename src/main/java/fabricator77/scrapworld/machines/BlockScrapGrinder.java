@@ -45,7 +45,7 @@ public class BlockScrapGrinder extends BlockMachine{
 		}
         //if (world.isRemote)
         //{
-        	player.openGui(ScrapWorld.instance, 1, world, x, y, z);
+        	player.openGui(ScrapWorld.instance, 5, world, x, y, z);
         //}
         return true;
     }
