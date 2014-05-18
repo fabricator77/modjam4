@@ -5,6 +5,7 @@ import java.util.List;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fabricator77.scrapworld.ScrapWorld;
+import fabricator77.scrapworld.machines.IBattery;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
@@ -12,7 +13,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 
-public class HVPowerCell extends Item {
+public class HVPowerCell extends Item implements IBattery{
 	@SideOnly(Side.CLIENT)
     private IIcon texture;
 	public static final String itemName = "hv_power_cell";

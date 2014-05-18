@@ -20,19 +20,19 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 	//TODO: charging (damage repair) on items in machine gets reset when GUI opened
 	// 
 	
-	public boolean ready = false;
-	public boolean complete = false;
-	public boolean powered = false;
-	public ItemStack[] parts = new ItemStack[]{
+	private boolean ready = false;
+	private boolean complete = false;
+	private boolean powered = false;
+	private ItemStack[] parts = new ItemStack[]{
 			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0),
 			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0),
 			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0)
 	};
+	private int numParts = 3;
 	
 	public int storedPower = 0;
 	
-	public int inv_size = 9;
-	public ItemStack[] inv = new ItemStack[inv_size];
+	private ItemStack[] inv = new ItemStack[9];
 	
 	@Override
     public void readFromNBT(NBTTagCompound tag)
@@ -44,13 +44,8 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
             ready = tag.getBoolean("ready");
         }
         
-        if (tag.hasKey("storedPower"))
-        {
-        	this.storedPower = tag.getInteger("storedPower");
-        }
-        
-        NBTTagList nbttaglist = tag.getTagList("Parts", parts.length);
-        this.parts = new ItemStack[parts.length];
+        NBTTagList nbttaglist = tag.getTagList("Parts", 10);
+        this.parts = new ItemStack[numParts];
         for (int i = 0; i < nbttaglist.tagCount(); ++i)
         {
             NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
@@ -62,19 +57,16 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
             }
         }
         
-        nbttaglist = tag.getTagList("Inv", inv_size);
-        this.inv = new ItemStack[inv_size];
+        nbttaglist = tag.getTagList("Inv", 10);
+        this.inv = new ItemStack[inv.length];
         for (int i = 0; i < nbttaglist.tagCount(); ++i)
         {
-        	
-        	
             NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
             int j = nbttagcompound1.getByte("Slot") & 255;
 
-            if (j >= 0 && j < this.inv_size)
+            if (j >= 0 && j < this.inv.length)
             {
                 this.inv[j] = ItemStack.loadItemStackFromNBT(nbttagcompound1);
-                FMLLog.info("[ScrapWorld] reading "+ this.inv[j]);
             }
         }
     }
@@ -84,7 +76,6 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     {
         super.writeToNBT(tag);
         tag.setBoolean("ready", this.ready);
-        tag.setInteger("storedPower", this.storedPower);
         
         NBTTagList nbttaglist = new NBTTagList();
         for (int i = 0; i < this.parts.length; ++i)
@@ -100,9 +91,8 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
         tag.setTag("Parts", nbttaglist);
         
         nbttaglist = new NBTTagList();
-        for (int i = 0; i < this.inv_size; ++i)
+        for (int i = 0; i < this.inv.length; ++i)
         {
-        	FMLLog.info("[ScrapWorld] writing "+this.inv[i]);
             if (this.inv[i] != null)
             {
                 NBTTagCompound nbttagcompound1 = new NBTTagCompound();
@@ -136,18 +126,18 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     	//FMLLog.info("[ScrapWorld] Ticking TileEntityMachine");
     	 //TODO: Entity updates
     	// includes block being placed/loaded ?
-    	checkIfComplete(); // in sin bin for being bad (throwing NPE BS)
+    	checkIfComplete();
     	// if (!complete) return;
     	getPower();
     	if (storedPower > 0) operateCycle();
     	
-    	//if (storedPower > 0) FMLLog.info("[ScrapWorld] Residual storedPower "+storedPower);
+    	if (storedPower > 0) FMLLog.info("[ScrapWorld] StoredPower "+storedPower);
     	
     	this.markDirty();
     }
     
     //IMachine fields
-    @Override
+	@Override
     public void operateCycle() {
     	int count = 0;
     	for (int i = 0; i < this.inv.length; ++i)
@@ -163,7 +153,8 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     			//FMLLog.info("[ScrapWorld] Found "+item);
     			//Attempt to change power cells
     			// if (Item.getIdFromItem(item) == Item.getIdFromItem(ScrapWorldBlocks.hvPowerCell)) {
-    			if (item.getUnlocalizedName().equals(ScrapWorldBlocks.hvPowerCell.getUnlocalizedName())  ) {
+    			if (item instanceof IBattery) {
+    			//if (item.getUnlocalizedName().equals(ScrapWorldBlocks.hvPowerCell.getUnlocalizedName())  ) {
     				if (damage > 0) {
     					// stacked cells can require a lot of stored power to charge.
     					if (storedPower < stackSize) {
@@ -183,21 +174,14 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
     					if (stackSize > 0) {
     						chargingRate = chargingRate / stackSize;
     					}
-    					
-    					// This needs redoing to work correctly.
-    					//if (storedPower < chargingRate && storedPower > stackSize) {
-    					//	chargingRate = storedPower;
-    					//	storedPower = 0;
-    					//}
-    					//else {
-    						storedPower = storedPower - (chargingRate * stackSize);
-    					//}
-    					// FMLLog.info("[ScrapWorld] Charging "+damage);
+    					// finally drain the power actually used
+    					storedPower = storedPower - (chargingRate * stackSize);
+    					// FMLLog.info("[ScrapWorld] Charging "+this.inv[i].getItem());
     					this.inv[i].setItemDamage(damage - chargingRate);
     					
     					setInventorySlotContents(i, this.inv[i]);
-    					return;
     					// this.inv[i].getItem().notify();
+    					return;
     				}
     			}
     			if (storedPower == 0) {
@@ -232,7 +216,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 		int missingParts = 0;
 		//TODO: specific machines need specific parts in specific slots
 		for (int i=0; i<parts.length; i++) {
-			if (parts[i] == null || parts[i].getItem() == null || parts[i].stackSize == 0) {
+			if (parts[i].stackSize == 0) {
 				missingParts++;
 			}
 		}
@@ -263,10 +247,11 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 
 	@Override
 	public ItemStack getStackInSlot(int slot) {
-		if (slot > this.inv.length) return null;
 		return this.inv[slot];
 	}
 
+	//Definately problems in here somewhere
+	//cannot take items out of machine
 	@Override
 	public ItemStack decrStackSize(int slot, int amount) {
 		ItemStack stack = getStackInSlot(slot);

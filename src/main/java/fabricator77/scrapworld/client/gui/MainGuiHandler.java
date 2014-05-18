@@ -23,7 +23,7 @@ public class MainGuiHandler implements IGuiHandler {
 			if (ID == 3) return new ContainerGenerator(player.inventory, (TileEntitySolarPanel)tileEntity);
 			if (ID == 4) return new ContainerGenerator(player.inventory, (TileEntityStaticGenerator)tileEntity);
 			
-			if (ID == 5) return new ContainerMachine(player.inventory, (TileEntityScrapGrinder)tileEntity);
+			//if (ID == 5) return new ContainerMachine(player.inventory, (TileEntityScrapGrinder)tileEntity);
 		}
 		return null;
 	}
@@ -38,7 +38,7 @@ public class MainGuiHandler implements IGuiHandler {
 			if (ID == 3) return new GuiGenerator(player.inventory, (TileEntitySolarPanel)tileEntity);
 			if (ID == 4) return new GuiGenerator(player.inventory, (TileEntityStaticGenerator)tileEntity);
 			
-			if (ID == 5) return new GuiMachine(player.inventory, (TileEntityScrapGrinder)tileEntity);
+			//if (ID == 5) return new GuiMachine(player.inventory, (TileEntityScrapGrinder)tileEntity);
 		}
 		return null;
 	}

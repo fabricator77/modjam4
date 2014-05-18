@@ -15,21 +15,21 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class TileEntityScrapGrinder extends TileEntityMachine {
+public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInventory{
 	
 	private boolean ready = false;
 	private boolean complete = false;
 	private boolean powered = false;
-	private static ItemStack[] parts = new ItemStack[]{
-			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0),//motor
-			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0),//some sort of cutting/grinding disc/block
-			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0)//motor control (TBD)
+	private ItemStack[] parts = new ItemStack[]{
+			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0),
+			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0),
+			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0)
 	};
+	private int numParts = 3;
 	
 	public int storedPower = 0;
 	
-	// 9 in + 9 out + power cell slot
-	private ItemStack[] inv = new ItemStack[19];
+	private ItemStack[] inv = new ItemStack[9];
 	
 	@Override
     public void readFromNBT(NBTTagCompound tag)
@@ -38,7 +38,7 @@ public class TileEntityScrapGrinder extends TileEntityMachine {
 
         if (tag.hasKey("ready"))
         {
-            ready = tag.getBoolean("ready");
+        	this.ready = tag.getBoolean("ready");
         }
         
         if (tag.hasKey("storedPower"))
@@ -46,8 +46,8 @@ public class TileEntityScrapGrinder extends TileEntityMachine {
         	this.storedPower = tag.getInteger("storedPower");
         }
         
-        NBTTagList nbttaglist = tag.getTagList("Parts", parts.length);
-        this.parts = new ItemStack[parts.length];
+        NBTTagList nbttaglist = tag.getTagList("Parts", 10);
+        this.parts = new ItemStack[numParts];
         for (int i = 0; i < nbttaglist.tagCount(); ++i)
         {
             NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
@@ -59,7 +59,7 @@ public class TileEntityScrapGrinder extends TileEntityMachine {
             }
         }
         
-        nbttaglist = tag.getTagList("Inv", inv.length);
+        nbttaglist = tag.getTagList("Inv", 10);
         this.inv = new ItemStack[inv.length];
         for (int i = 0; i < nbttaglist.tagCount(); ++i)
         {
@@ -189,13 +189,14 @@ public class TileEntityScrapGrinder extends TileEntityMachine {
 		int missingParts = 0;
 		//TODO: specific machines need specific parts in specific slots
 		for (int i=0; i<parts.length; i++) {
-			if (parts[i] == null || parts[i].getItem() == null || parts[i].stackSize == 0) {
+			if (parts[i].stackSize == 0) {
 				missingParts++;
 			}
 		}
 		if (missingParts == 0) {
 			complete = true;
 		}
+		//TODO: write to NBT
 		this.markDirty();
 	}
 	

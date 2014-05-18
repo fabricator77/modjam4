@@ -1,19 +1,11 @@
 package fabricator77.scrapworld.machines;
 
 import cpw.mods.fml.common.FMLLog;
-import fabricator77.scrapworld.ScrapWorldBlocks;
-import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.EnumSkyBlock;
 import net.minecraft.world.World;
 
 public class TileEntitySolarPanel extends TileEntityGenerator{
-	
-	public ItemStack[] parts = new ItemStack[]{
-			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0),
-			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0),
-			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0)
-	};
 
 	@Override
 	public String getInventoryName() {
