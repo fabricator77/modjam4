@@ -9,14 +9,7 @@ import fabricator77.scrapworld.client.RenderMachine;
 import fabricator77.scrapworld.client.TileEntityRenderFridge;
 import fabricator77.scrapworld.client.TileEntityRenderMachine;
 import fabricator77.scrapworld.items.*;
-import fabricator77.scrapworld.machines.BlockGenerator;
-import fabricator77.scrapworld.machines.BlockMachine;
-import fabricator77.scrapworld.machines.BlockSolarPanel;
-import fabricator77.scrapworld.machines.BlockStaticGenerator;
-import fabricator77.scrapworld.machines.TileEntityGenerator;
-import fabricator77.scrapworld.machines.TileEntityMachine;
-import fabricator77.scrapworld.machines.TileEntitySolarPanel;
-import fabricator77.scrapworld.machines.TileEntityStaticGenerator;
+import fabricator77.scrapworld.machines.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFurnace;
 import net.minecraft.creativetab.CreativeTabs;
@@ -41,6 +34,8 @@ public class ScrapWorldBlocks {
 	public static Block concreteBlock;
 	public static Block fridge;
 	public static Block machine;
+	public static Block scrapGrinder;
+	
 	public static Block generator;
 	public static Block solarPanel;
 	public static Block staticGenerator;
@@ -86,8 +81,13 @@ public class ScrapWorldBlocks {
 		ClientRegistry.bindTileEntitySpecialRenderer(TileEntityFridge.class, new TileEntityRenderFridge());
 		RenderingRegistry.registerBlockHandler(new RenderFridge());
 		
+		// machines
 		machine = new BlockMachine().setHardness(3.5F).setBlockName("machine");
 		GameRegistry.registerBlock(machine, "machine");
+		scrapGrinder = new BlockScrapGrinder().setHardness(3.5F).setBlockName("scrapGrinder");
+		GameRegistry.registerBlock(scrapGrinder, "scrapGrinder");
+		
+		// generators
 		generator = new BlockGenerator().setHardness(3.5F).setBlockName("generator");
 		GameRegistry.registerBlock(generator, "generator");
 		solarPanel = new BlockSolarPanel().setHardness(3.5F).setBlockName("solar_panel");
@@ -209,7 +209,10 @@ public class ScrapWorldBlocks {
 	}
 
 	public void registerTileEntities() {
+		// machines
 		GameRegistry.registerTileEntity(TileEntityMachine.class, "tileEntityMachine");
+		GameRegistry.registerTileEntity(TileEntityScrapGrinder.class, "tileEntityScrapGrinder");
+		//generators
 		GameRegistry.registerTileEntity(TileEntityGenerator.class, "tileEntityGenerator");
 		GameRegistry.registerTileEntity(TileEntitySolarPanel.class, "tileEntitySolarPanel");
 		GameRegistry.registerTileEntity(TileEntityStaticGenerator.class, "tileEntityStaticGenerator");

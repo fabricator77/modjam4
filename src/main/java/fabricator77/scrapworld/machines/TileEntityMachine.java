@@ -20,19 +20,18 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
 	//TODO: charging (damage repair) on items in machine gets reset when GUI opened
 	// 
 	
-	private boolean ready = false;
-	private boolean complete = false;
-	private boolean powered = false;
+	public boolean ready = false;
+	public boolean complete = false;
+	public boolean powered = false;
 	public ItemStack[] parts = new ItemStack[]{
 			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0),
 			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0),
 			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0)
 	};
-	private int numParts = 3;
 	
 	public int storedPower = 0;
 	
-	protected ItemStack[] inv = new ItemStack[9];
+	public ItemStack[] inv = new ItemStack[9];
 	
 	@Override
     public void readFromNBT(NBTTagCompound tag)
@@ -50,7 +49,7 @@ public class TileEntityMachine extends TileEntity implements IMachine, IInventor
         }
         
         NBTTagList nbttaglist = tag.getTagList("Parts", parts.length);
-        this.parts = new ItemStack[numParts];
+        this.parts = new ItemStack[parts.length];
         for (int i = 0; i < nbttaglist.tagCount(); ++i)
         {
             NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);

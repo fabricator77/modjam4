@@ -25,7 +25,6 @@ public class TileEntityScrapGrinder extends TileEntityMachine {
 			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0),//some sort of cutting/grinding disc/block
 			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0)//motor control (TBD)
 	};
-	private int numParts = 3;
 	
 	public int storedPower = 0;
 	
@@ -46,8 +45,8 @@ public class TileEntityScrapGrinder extends TileEntityMachine {
         	this.storedPower = tag.getInteger("storedPower");
         }
         
-        NBTTagList nbttaglist = tag.getTagList("Parts", inv.length);
-        this.parts = new ItemStack[numParts];
+        NBTTagList nbttaglist = tag.getTagList("Parts", parts.length);
+        this.parts = new ItemStack[parts.length];
         for (int i = 0; i < nbttaglist.tagCount(); ++i)
         {
             NBTTagCompound nbttagcompound1 = nbttaglist.getCompoundTagAt(i);
