@@ -50,7 +50,8 @@ public class ScrapItems1 extends Item {
 	private static final ItemStack[] timberLoot = new ItemStack[]{
 		new ItemStack(Items.stick,8,0),
 		new ItemStack(Blocks.planks,1,0),
-		new ItemStack(Blocks.wooden_slab,2,0)
+		new ItemStack(Blocks.wooden_slab,2,0),
+		new ItemStack(ScrapWorldBlocks.dusts,2,8)
 	};
 	
 	private static final ItemStack[] foodLoot = new ItemStack[]{

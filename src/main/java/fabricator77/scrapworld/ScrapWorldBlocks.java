@@ -12,6 +12,7 @@ import fabricator77.scrapworld.items.*;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFurnace;
 import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemBlock;
@@ -125,7 +126,11 @@ public class ScrapWorldBlocks {
 		//make 9 'useless' scrap items into one compresedScrapCube
 		GameRegistry.addRecipe(new ItemStack(compressedScrapCube, 1, 0), new Object[] { "sss", "sss", "sss", Character.valueOf('s'), new ItemStack(scrapItems1, 1, 11)});
 		
-		GameRegistry.addShapelessRecipe(new ItemStack(powerItems, 1, 3), new Object[] { new ItemStack(Items.glass_bottle, 3, 0), new ItemStack(components1Items, 1, 0)});
+		GameRegistry.addShapelessRecipe(new ItemStack(powerItems, 1, 3), new Object[] { new ItemStack(Items.glass_bottle, 1, 0), new ItemStack(Items.glass_bottle, 1, 0), new ItemStack(Items.glass_bottle, 1, 0), new ItemStack(components1Items, 1, 0)});
+		
+		//TODO:
+		// new ItemStack(ScrapWorldBlocks.dusts,4,8) -> Blocks.planks
+		GameRegistry.addShapelessRecipe(new ItemStack(powerItems, 1, 3), new Object[] { new ItemStack(ScrapWorldBlocks.dusts,4,8), new ItemStack(Blocks.planks, 1, 0)});
 	}
 	
 	private void registerFurnaceRecipes () {
