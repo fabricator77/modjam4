@@ -20,3 +20,6 @@ day2
 localization file
 scrap items almost completely functional, more textures
 small start on code for machines, check game balance
+
+day3
+forgot to make stats :(
