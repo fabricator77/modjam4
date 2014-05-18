@@ -71,6 +71,7 @@ public class TileEntityGenerator extends TileEntityMachine{
     					
     					setInventorySlotContents(i, this.inv[i]);
     					// this.inv[i].getItem().notify();
+    					return;
     				}
     			}
     			if (storedPower == 0) {

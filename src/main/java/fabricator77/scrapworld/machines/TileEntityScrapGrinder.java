@@ -15,21 +15,21 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.oredict.OreDictionary;
 
-public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInventory{
+public class TileEntityScrapGrinder extends TileEntityMachine {
 	
 	private boolean ready = false;
 	private boolean complete = false;
 	private boolean powered = false;
 	private ItemStack[] parts = new ItemStack[]{
-			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0),
-			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0),
-			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0)
+			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0),//motor
+			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0),//some sort of cutting/grinding disc/block
+			new ItemStack(ScrapWorldBlocks.powerItems, 1, 0)//motor control (TBD)
 	};
 	private int numParts = 3;
 	
 	public int storedPower = 0;
 	
-	private ItemStack[] inv = new ItemStack[9];
+	private ItemStack[] inv = new ItemStack[9+9+1];
 	
 	@Override
     public void readFromNBT(NBTTagCompound tag)
@@ -46,7 +46,7 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
         	this.storedPower = tag.getInteger("storedPower");
         }
         
-        NBTTagList nbttaglist = tag.getTagList("Parts", 10);
+        NBTTagList nbttaglist = tag.getTagList("Parts", inv.length);
         this.parts = new ItemStack[numParts];
         for (int i = 0; i < nbttaglist.tagCount(); ++i)
         {
@@ -59,7 +59,7 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
             }
         }
         
-        nbttaglist = tag.getTagList("Inv", 10);
+        nbttaglist = tag.getTagList("Inv", inv.length);
         this.inv = new ItemStack[inv.length];
         for (int i = 0; i < nbttaglist.tagCount(); ++i)
         {

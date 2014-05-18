@@ -165,7 +165,9 @@ public class ScrapWorldBlocks {
 		// machine casing
 		// 8x iron ingots 1x tins ingot
 		GameRegistry.addRecipe(new ItemStack(components1Items, 1, 2), new Object[] { "III", "ITI", "III", Character.valueOf('I'), new ItemStack(Items.iron_ingot, 1, 0), Character.valueOf('T'), new ItemStack(ingots, 1, 0)});
-		
+		// grinding disc
+		// 3 flint, 3 iron ingots
+		GameRegistry.addRecipe(new ItemStack(components1Items, 1, 4), new Object[] { "fff", "III", Character.valueOf('f'), new ItemStack(Items.flint, 1, 0), Character.valueOf('I'), new ItemStack(Items.iron_ingot, 1, 0) });
 	}
 	
 	private void registerFurnaceRecipes () {
