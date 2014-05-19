@@ -5,6 +5,7 @@ import fabricator77.scrapworld.ScrapWorldBlocks;
 import fabricator77.scrapworld.items.ScrapItems1;
 import net.minecraft.client.gui.GuiScreen;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.inventory.IInventory;
 import net.minecraft.item.Item;
@@ -132,7 +133,7 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
     	checkIfComplete();
     	// if (!complete) return;
     	getPower();
-    	FMLLog.info("[ScrapWorld] StoredPower "+storedPower);
+    	//FMLLog.info("[ScrapWorld] StoredPower "+storedPower);
     	if (storedPower > 0) operateCycle();
     	
     	//if (storedPower > 0) FMLLog.info("[ScrapWorld] StoredPower "+storedPower);
@@ -164,19 +165,23 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
     			//Check to see if this item burns
     			ItemStack outputProduct = FurnaceRecipes.smelting().getSmeltingResult(this.inv[i]);
     			if (outputProduct != null) {
-    				// reduce input items by 1
-    				if (stackSize > 1) {
-        				this.inv[i].stackSize--;
-        			}
-    				else {
-    					this.inv[i] = null;
-    				}
-    				setInventorySlotContents(i, this.inv[i]);
+    				
+    				//setInventorySlotContents(i, this.inv[i]);
     				// output result.
     				//this.inv[i+9] = outputProduct;
 					//setInventorySlotContents(i+9, this.inv[i+9]);
 					
-					putItemStackIntoOutput(outputProduct);
+					boolean succeed = putItemStackIntoOutput(outputProduct);
+					if (succeed) {
+						// reduce input items by 1
+	    				if (stackSize > 1) {
+	        				this.inv[i].stackSize--;
+	        			}
+	    				else {
+	    					this.inv[i] = null;
+	    				}
+	    				setInventorySlotContents(i, this.inv[i]);
+					}
 					return;
     			}
     			if (storedPower == 0) {
@@ -481,31 +486,46 @@ public class TileEntityScrapGrinder extends TileEntity implements IMachine, IInv
 		return "scrap_grinder";
 	}
 	
-	//
 	public boolean putItemStackIntoOutput (ItemStack itemStack) {
 		boolean partialTranfer = false;
-		for (int i=8; i<17; i++) {
-			if (itemStack.stackSize == 0) return true;
-			if (ItemStack.areItemStacksEqual(this.inv[i], itemStack)) {
+		
+		for (int i=9; i<18; i++) {
+			if (this.inv[i] == null) {} // do nothing with empty slots for now
+			else if (this.inv[i].stackSize == this.inv[i].getMaxStackSize()) {} // do nothing with full slots
+			// ok now see if slot contains this item
+			else if (this.inv[i].getUnlocalizedName().equals(itemStack.getUnlocalizedName())) {
+				
+				//TODO: code from broken version
 				if (this.inv[i].stackSize + itemStack.stackSize > this.inv[i].getMaxStackSize()) {
 					// too big to all fit in this stack.
 					this.inv[i].stackSize = this.inv[i].getMaxStackSize();
 					setInventorySlotContents(i, this.inv[i]);
 					
-					int overflow = (this.inv[i].getMaxStackSize() - this.inv[i].stackSize + itemStack.stackSize);
+					int overflow = (this.inv[i].stackSize + itemStack.stackSize - this.inv[i].getMaxStackSize());
 					//TODO: still possible loose items this way
 					// if all other output slots are full
 					itemStack.stackSize = overflow;
 					partialTranfer = true;
+					FMLLog.info("[ScrapWorld] overflow");
 				}
 				else {
 					this.inv[i].stackSize = this.inv[i].stackSize + itemStack.stackSize;
 					setInventorySlotContents(i, this.inv[i]);
+					FMLLog.info("[ScrapWorld] normal");
 					return true;
 				}
+				
+				//TODO: end of untested old code
 			}
 		}
-		if (partialTranfer) return true; //TODO: item loss
+		for (int i=9; i<18; i++) {
+			if (this.inv[i] == null) {
+				this.inv[i] = itemStack.copy();
+				setInventorySlotContents(i, this.inv[i]);
+				FMLLog.info("[ScrapWorld] empty");
+				return true;
+			}
+		}
 		return false;
 	}
 }
