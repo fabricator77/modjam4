@@ -29,7 +29,7 @@ public class ScrapWorldBlocks {
 	
 	public static Block wireTangle;
 	public static Block scrapFurnace;
-	public static Block litScrapFurnace;
+	// public static Block litScrapFurnace;
 	
 	public static Block concreteBlock;
 	public static Block fridge;
@@ -220,6 +220,7 @@ public class ScrapWorldBlocks {
 		// machines
 		GameRegistry.registerTileEntity(TileEntityMachine.class, "tileEntityMachine");
 		GameRegistry.registerTileEntity(TileEntityScrapGrinder.class, "tileEntityScrapGrinder");
+		GameRegistry.registerTileEntity(TileEntityScrapFurnace.class, "tileEntityScrapFurnace");
 		//generators
 		GameRegistry.registerTileEntity(TileEntityGenerator.class, "tileEntityGenerator");
 		GameRegistry.registerTileEntity(TileEntitySolarPanel.class, "tileEntitySolarPanel");
