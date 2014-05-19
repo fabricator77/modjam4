@@ -4,7 +4,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fabricator77.scrapworld.ScrapWorldBlocks;
-import fabricator77.scrapworld.blocks.BlockScrapFurnace;
+import fabricator77.scrapworld.blocks.BlockScrapFurnace_old;
 import net.minecraft.block.Block;
 // import net.minecraft.block.BlockFurnace;
 import net.minecraft.block.material.Material;
@@ -286,7 +286,7 @@ public class TileEntityScrapFurnace_old extends TileEntity{
             if (flag != this.furnaceBurnTime > 0)
             {
                 flag1 = true;
-                BlockScrapFurnace.updateFurnaceBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
+                BlockScrapFurnace_old.updateFurnaceBlockState(this.furnaceBurnTime > 0, this.worldObj, this.xCoord, this.yCoord, this.zCoord);
             }
         }
 
