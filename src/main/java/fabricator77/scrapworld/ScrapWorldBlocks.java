@@ -29,7 +29,6 @@ public class ScrapWorldBlocks {
 	
 	public static Block wireTangle;
 	public static Block scrapFurnace;
-	// public static Block litScrapFurnace;
 	
 	public static Block concreteBlock;
 	public static Block fridge;
@@ -84,8 +83,10 @@ public class ScrapWorldBlocks {
 		// machines
 		machine = new BlockMachine().setHardness(3.5F).setBlockName("machine");
 		GameRegistry.registerBlock(machine, "machine");
-		scrapGrinder = new BlockScrapGrinder().setHardness(3.5F).setBlockName("scrapGrinder");
-		GameRegistry.registerBlock(scrapGrinder, "scrapGrinder");
+		scrapGrinder = new BlockScrapGrinder().setHardness(3.5F).setBlockName("scrap_grinder");
+		GameRegistry.registerBlock(scrapGrinder, "scrap_grinder");
+		scrapFurnace = new BlockScrapFurnace().setHardness(3.5F).setBlockName("scrap_furnace");
+		GameRegistry.registerBlock(scrapFurnace, "scrap_furnace");
 		
 		// generators
 		generator = new BlockGenerator().setHardness(3.5F).setBlockName("generator");

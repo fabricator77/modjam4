@@ -7,6 +7,7 @@ import cpw.mods.fml.common.FMLLog;
 import cpw.mods.fml.common.network.IGuiHandler;
 import fabricator77.scrapworld.machines.TileEntityGenerator;
 import fabricator77.scrapworld.machines.TileEntityMachine;
+import fabricator77.scrapworld.machines.TileEntityScrapFurnace;
 import fabricator77.scrapworld.machines.TileEntityScrapGrinder;
 import fabricator77.scrapworld.machines.TileEntitySolarPanel;
 import fabricator77.scrapworld.machines.TileEntityStaticGenerator;
@@ -25,8 +26,9 @@ public class MainGuiHandler implements IGuiHandler {
 			
 			
 		}
-		if(tileEntity != null && tileEntity instanceof TileEntityScrapGrinder){
-			if (ID == 5) return new ContainerScrapGrinder(player.inventory, (TileEntityScrapGrinder)tileEntity);
+		if(tileEntity != null && tileEntity instanceof TileEntityScrapFurnace){
+			if (ID == 5) return new ContainerScrapFurnace(player.inventory, (TileEntityScrapFurnace)tileEntity);
+			if (ID == 6) return new ContainerScrapFurnace(player.inventory, (TileEntityScrapGrinder)tileEntity);
 		}
 		return null;
 	}
@@ -43,8 +45,9 @@ public class MainGuiHandler implements IGuiHandler {
 			
 			
 		}
-		if(tileEntity != null && tileEntity instanceof TileEntityScrapGrinder){
-			if (ID == 5) return new GuiScrapGrinder(player.inventory, (TileEntityScrapGrinder)tileEntity);
+		if(tileEntity != null && tileEntity instanceof TileEntityScrapFurnace){
+			if (ID == 5) return new GuiScrapFurnace(player.inventory, (TileEntityScrapFurnace)tileEntity);
+			if (ID == 6) return new GuiScrapFurnace(player.inventory, (TileEntityScrapGrinder)tileEntity);
 		}
 		return null;
 	}

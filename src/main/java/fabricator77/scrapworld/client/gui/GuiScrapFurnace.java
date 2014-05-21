@@ -3,22 +3,22 @@ package fabricator77.scrapworld.client.gui;
 import org.lwjgl.opengl.GL11;
 
 import fabricator77.scrapworld.ScrapWorld;
-import fabricator77.scrapworld.machines.TileEntityScrapGrinder;
+import fabricator77.scrapworld.machines.TileEntityScrapFurnace;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.resources.I18n;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.util.ResourceLocation;
 
-public class GuiScrapGrinder extends GuiContainer{
+public class GuiScrapFurnace extends GuiContainer{
 
 	public Container container;
 	private ResourceLocation guiTextures = new ResourceLocation(ScrapWorld.modid+":textures/gui/machine_slots.png");
-	public TileEntityScrapGrinder tileentity;
+	public TileEntityScrapFurnace tileentity;
 
-	public GuiScrapGrinder(InventoryPlayer inventory, TileEntityScrapGrinder tileentityMachine) {
-		super(new ContainerScrapGrinder(inventory, tileentityMachine));
-		tileentity = tileentityMachine;
+	public GuiScrapFurnace(InventoryPlayer inventory, TileEntityScrapFurnace tileEntity2) {
+		super(new ContainerScrapFurnace(inventory, tileEntity2));
+		tileentity = tileEntity2;
 	}
 	
 	@Override

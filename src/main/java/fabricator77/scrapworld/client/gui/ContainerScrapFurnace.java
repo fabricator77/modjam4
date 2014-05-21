@@ -1,18 +1,18 @@
 package fabricator77.scrapworld.client.gui;
 
-import fabricator77.scrapworld.machines.TileEntityScrapGrinder;
+import fabricator77.scrapworld.machines.TileEntityScrapFurnace;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 
-public class ContainerScrapGrinder extends Container {
+public class ContainerScrapFurnace extends Container {
 	
-	private TileEntityScrapGrinder tileEntity;
+	private TileEntityScrapFurnace tileEntity;
 
-	public ContainerScrapGrinder(InventoryPlayer inventoryPlayer, TileEntityScrapGrinder tileentityMachine) {
-		this.tileEntity = tileentityMachine;
+	public ContainerScrapFurnace(InventoryPlayer inventoryPlayer, TileEntityScrapFurnace tileEntity2) {
+		this.tileEntity = tileEntity2;
         int i;
         int j;
 
@@ -22,14 +22,14 @@ public class ContainerScrapGrinder extends Container {
             {
             	// inventory (IInventory), slotIndex (int), xDisplayPosition (int), yDisplayPosition (int)
             	//left (input)
-                this.addSlotToContainer(new Slot(tileentityMachine, j + i * 3, 20 + j * 18, 17 + i * 18));
+                this.addSlotToContainer(new Slot(tileEntity2, j + i * 3, 20 + j * 18, 17 + i * 18));
                 //right (input)
-                this.addSlotToContainer(new Slot(tileentityMachine, 9 + j + i * 3, 104 + j * 18, 17 + i * 18));
+                this.addSlotToContainer(new Slot(tileEntity2, 9 + j + i * 3, 104 + j * 18, 17 + i * 18));
             }
         }
         
         // Power cell slot
-        this.addSlotToContainer(new Slot(tileentityMachine, 18, 56 + 24, 17 + 2 * 18));
+        this.addSlotToContainer(new Slot(tileEntity2, 18, 56 + 24, 17 + 2 * 18));
         
         bindPlayerInventory(inventoryPlayer);
 	}

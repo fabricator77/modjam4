@@ -19,21 +19,21 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
-public class BlockScrapGrinder extends BlockMachine{
+public class BlockScrapFurnace extends BlockMachine{
 	
 	@SideOnly(Side.CLIENT)
     protected IIcon topTexture;
     @SideOnly(Side.CLIENT)
     protected IIcon frontTexture;
 
-	public BlockScrapGrinder() {
+	public BlockScrapFurnace() {
 		super();
 		this.setCreativeTab(ScrapWorld.creativeTab);
 	}
 
 	@Override
 	public TileEntity createNewTileEntity(World world, int metadata) {
-		return new TileEntityScrapGrinder();
+		return new TileEntityScrapFurnace();
 	}
 	
 	@Override
@@ -45,7 +45,7 @@ public class BlockScrapGrinder extends BlockMachine{
 		}
         if (!world.isRemote)
         {
-        	player.openGui(ScrapWorld.instance, 6, world, x, y, z);
+        	player.openGui(ScrapWorld.instance, 5, world, x, y, z);
         }
         return true;
     }
@@ -83,7 +83,7 @@ public class BlockScrapGrinder extends BlockMachine{
 
 	@Override
 	public String getMachineName() {
-		return "scrap_grinder";
+		return "scrap_furnace";
 	}
 
 	public int getPowerLevel(World worldObj, int xCoord, int yCoord, int zCoord) {
