@@ -61,13 +61,6 @@ public class ScrapWorldBlocks {
 		wireTangle = new BlockWireTangle().setBlockName("wireTangle").setHardness(4.0F);
 		GameRegistry.registerBlock(wireTangle, "wireTangle");
 		
-		/**
-		scrapFurnace = new BlockScrapFurnace(false).setHardness(3.5F).setBlockName("scrapFurnace");
-		GameRegistry.registerBlock(scrapFurnace, "scrapFurnace");
-		litScrapFurnace = new BlockScrapFurnace(false).setHardness(3.5F).setBlockName("litScrapFurnace");
-		GameRegistry.registerBlock(litScrapFurnace, "litScrapFurnace");
-		*/
-		
 		concreteBlock = new BlockConcrete().setHardness(4F).setBlockName("concreteBlock");
 		GameRegistry.registerBlock(concreteBlock, "concreteBlock");
 		
@@ -178,6 +171,8 @@ public class ScrapWorldBlocks {
 		// grinding disc
 		// 3 flint, 3 iron ingots
 		GameRegistry.addRecipe(new ItemStack(components1Items, 1, 4), new Object[] { "fff", "III", Character.valueOf('f'), new ItemStack(Items.flint, 1, 0), Character.valueOf('I'), new ItemStack(Items.iron_ingot, 1, 0) });
+		// heater barrel
+		GameRegistry.addRecipe(new ItemStack(powerItems, 1, 0), new Object[] { "Cc", "Cc", "Cc", Character.valueOf('C'), new ItemStack(dusts, 1, 7), Character.valueOf('c'), new ItemStack(powerItems, 1, 2)} );
 	}
 	
 	private void registerMachineCraftingRecipes () {

@@ -45,8 +45,10 @@ public class TileEntityScrapGrinder extends TileEntityScrapFurnace {
     			}
     			
     			//Check to see if this item burns
-    			ItemStack outputProduct = processScrap(this.inv[i]);
+    			ItemStack outputProduct = processScrap(this.inv[i].copy());
     			if (outputProduct != null) {
+    				
+    				FMLLog.info("[ScrapWorld] outputProduct="+outputProduct);
     				
     				//setInventorySlotContents(i, this.inv[i]);
     				// output result.
@@ -73,8 +75,16 @@ public class TileEntityScrapGrinder extends TileEntityScrapFurnace {
         }
 	}
 	
+	@Override
+	public void setInventorySlotContents(int slot, ItemStack item) {
+		super.setInventorySlotContents(slot, item);
+	}
+	
 	public ItemStack processScrap(ItemStack itemStack)
     {
+		if (itemStack == null) {
+			return null;
+		}
 		//if (itemStack.stackSize > 1) {
 		//	return itemStack;
 		//}
@@ -97,7 +107,7 @@ public class TileEntityScrapGrinder extends TileEntityScrapFurnace {
     	
     	if (scrapType == "metallic") {
     		if (this.worldObj.rand.nextInt(25) == 0) {
-    			return new ItemStack(itemStack.getItem(), 1, itemNames.length-1);
+    			return new ItemStack(ScrapWorldBlocks.scrapItems1, 1, itemNames.length-1);
     		}
     		// random choice of iron, tin, copper
     		else {
@@ -110,7 +120,7 @@ public class TileEntityScrapGrinder extends TileEntityScrapFurnace {
     		// wire to make into machines/metal
     		// heating element
     		// could also be fibre cable (rare)
-    		return itemStack;
+    		return itemStack.copy();
     	}
     	if (scrapType == "circuit") {
     		// random choice of wires, blank PCB, copper scrap, silicon, redstone, broken PCB, silicon chip (rare), working PCB(rare)
@@ -157,7 +167,7 @@ public class TileEntityScrapGrinder extends TileEntityScrapFurnace {
     	}
     	
     	// anything this machine cannot process, goes to output
-    	return null;
+    	return itemStack.copy();
     }
 	
 

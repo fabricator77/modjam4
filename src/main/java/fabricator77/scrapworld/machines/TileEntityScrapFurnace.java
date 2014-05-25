@@ -301,10 +301,11 @@ public class TileEntityScrapFurnace extends TileEntity implements IMachine, IInv
 	
 	public boolean putItemStackIntoOutput (ItemStack itemStack) {
 		boolean partialTranfer = false;
-		if (itemStack == null) return false;
+		if (itemStack == null || this.inv == null) return false;
 		
 		for (int i=9; i<18; i++) {
-			if (this.inv[i] == null) {} // do nothing with empty slots for now
+			FMLLog.info("[ScrapWorld] "+this.inv[i]+" "+itemStack);
+			if (this.inv[i] == null || this.inv[i].getItem() == null) {} // do nothing with empty slots for now
 			else if (this.inv[i].stackSize == this.inv[i].getMaxStackSize()) {} // do nothing with full slots
 			// ok now see if slot contains this item
 			else if (this.inv[i].getUnlocalizedName().equals(itemStack.getUnlocalizedName())) {

@@ -76,8 +76,9 @@ public class BlockScrapFurnace extends BlockMachine{
     public void registerBlockIcons(IIconRegister iconRegister)
     {
     	int i = 0;
-        this.blockIcon = iconRegister.registerIcon(ScrapWorld.modid+":"+getMachineName() + "_side");
-        this.topTexture = iconRegister.registerIcon(ScrapWorld.modid+":"+getMachineName() + "_top");
+    	String machine = "machine";
+        this.blockIcon = iconRegister.registerIcon(ScrapWorld.modid+":"+machine + "_side");
+        this.topTexture = iconRegister.registerIcon(ScrapWorld.modid+":"+machine + "_top");
         this.frontTexture = iconRegister.registerIcon(ScrapWorld.modid+":"+getMachineName() + "_front");
     }
 
