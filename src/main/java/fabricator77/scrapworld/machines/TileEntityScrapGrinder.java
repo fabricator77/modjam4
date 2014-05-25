@@ -45,10 +45,12 @@ public class TileEntityScrapGrinder extends TileEntityScrapFurnace {
     			}
     			
     			//Check to see if this item burns
-    			ItemStack outputProduct = processScrap(this.inv[i].copy());
+    			ItemStack inputProduct = this.inv[i].copy();
+    			inputProduct.stackSize = 1;
+    			ItemStack outputProduct = processScrap(inputProduct);
     			if (outputProduct != null) {
     				
-    				FMLLog.info("[ScrapWorld] outputProduct="+outputProduct);
+    				//FMLLog.info("[ScrapWorld] outputProduct="+outputProduct);
     				
     				//setInventorySlotContents(i, this.inv[i]);
     				// output result.

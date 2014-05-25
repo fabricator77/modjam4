@@ -54,6 +54,8 @@ public class BlockMachine extends BlockContainer implements IMachineBlock{
 	public void onBlockPlacedBy(World world, int x, int y, int z, EntityLivingBase player, ItemStack item)
     {
         int l = BlockPistonBase.determineOrientation(world, x, y, z, player);
+        if (1 < 2) l = 2;
+        //FMLLog.info("[ScrapWorld] direction="+l);
         world.setBlockMetadataWithNotify(x, y, z, l, 2);
     }
 	
@@ -69,7 +71,7 @@ public class BlockMachine extends BlockContainer implements IMachineBlock{
     public IIcon getIcon(int side, int metadata)
     {
         int k = metadata & 7;
-        return side == k ? (this.frontTexture) : (k != 1 && k != 0 ? (side != 1 && side != 0 ? this.blockIcon : this.topTexture) : this.topTexture);
+        return side == k ? (this.frontTexture) : (k != 1 && k != 0 ? (side != 1 ? this.blockIcon : this.topTexture) : this.topTexture);
     }
 
     @SideOnly(Side.CLIENT)
